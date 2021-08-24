@@ -107,3 +107,15 @@ const startQuiz = () => {
 	getNewQuestion();
 	loadingSpinner.classList.add('hidden');
 };
+
+/** function to set the correct points per question dependant on the user selected difficulty level
+*/
+function pointsPerQuestion() {
+	if (level == "hard") {
+		pointsPerCorrectAnswer = pointsPerCorrectAnswerHard;
+	} else if (level == "medium") {
+		pointsPerCorrectAnswer = pointsPerCorrectAnswerMedium;
+	} else {
+		pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy;
+	}
+}
