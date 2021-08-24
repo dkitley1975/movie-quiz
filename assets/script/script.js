@@ -25,3 +25,8 @@ const mostRecentScore = localStorage.getItem('mostRecentScore');
 
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 const highScoresToShow = 8;
+
+//* Points for question difficulties - Remember to update home container points information if altering
+const pointsPerCorrectAnswerEasy = 1
+const pointsPerCorrectAnswerMedium = 1.5
+const pointsPerCorrectAnswerHard = 2
