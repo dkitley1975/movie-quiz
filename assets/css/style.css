@@ -81,3 +81,22 @@ h6 {
   background-size: cover;
   background-position: center;
 }
+
+
+
+.glass {
+  z-index: 99;
+  height: 90%;
+  width: 90%;
+  max-width: 800px;
+  max-height: 1000px;
+  background-color: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(2rem);
+  backdrop-filter: blur(2rem);
+  position: absolute;
+  margin: 0 auto;
+  padding: 5rem 2rem 2rem;
+  border-radius: 2rem;
+  -webkit-box-shadow: 20px 20px 22px var(--clr-box-shadow);
+  box-shadow: 20px 20px 22px var(--clr-box-shadow);
+}
