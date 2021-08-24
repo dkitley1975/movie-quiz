@@ -296,3 +296,13 @@ input::placeholder {
   margin-bottom: 2rem;
 }
 
+/* Correct Incorrect Answer indicator */
+
+.correct {
+  background-color: var(--clr-primary-Green);
+}
+
+.incorrect {
+  background-color: var(--clr-primary-Red);
+}
+
