@@ -144,3 +144,7 @@ h6 {
 .hidden {
   display: none;
 }
+
+.justify-center {
+  justify-content: center;
+}
