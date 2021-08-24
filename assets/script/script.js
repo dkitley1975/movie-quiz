@@ -84,3 +84,15 @@ function returnToHomeScreen() {
 	//* removes the hidden class from the home container
 	homeContainer.classList.remove('hidden');
 }
+
+/** function to add some sample high scores to local storage */
+function letsAddSomeSampleHighScores(){
+let letsAddSomeSampleHighScores = [
+	{"score":"14","name":"Ms PacMan"},
+	{"score":"12","name":"Gandalf"},
+	{"score":"10","name":"Kermit"},
+	{"score":"8","name":"Miss Piggy"}
+];
+localStorage.setItem("highScores", JSON.stringify(letsAddSomeSampleHighScores));
+}
+letsAddSomeSampleHighScores()
