@@ -275,3 +275,19 @@ highScoresList.innerHTML = highScores
     </tr>`;
 	})
 	.join("");
+
+    //* function to show the high Scores
+function showHighScoresScreen() {
+	homeContainer.classList.add('hidden');
+	highScoresContainer.classList.remove('hidden');  
+    const prevHighScoresList = document.getElementById('prev-high-scores-list'); 
+    let prevHighScores = JSON.parse(localStorage.getItem('highScores')) || [];
+    prevHighScoresList.innerHTML = prevHighScores
+	.map(score => {
+		return `<tr>
+    <td>${score.name}</td>
+    <td>${score.score}</td>
+    </tr>`;
+	})
+    .join("");
+}
