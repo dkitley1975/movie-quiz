@@ -62,6 +62,34 @@
             </div>
          </div>
       </div>
+       <div id="user-final-score-container" class="flex-center flex-column glass hidden">
+         <h1>High Scores</h1>
+         <div id="high-scores-lists">
+            <table class="table">
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Score</th>
+                  </tr>
+               </thead>
+               <tbody id="high-scores-list"></tbody>
+            </table>
+         </div>
+         <h2>You Scored</h2>
+         <h1 id="playerFinalScore">0</h1>
+         <form>
+            <input type="text" name="username" id="username" placeholder="username" />
+            <button type="submit" class="btn" id="btn-save-score" onclick="saveHighScore(event)" disabled>
+            Save & Play Again
+            </button>
+         </form>
+         <button id="btn-view-home-screen" class="btn">Don't Save & Play Again</button>
+      </div>
+
+
+
+
+      
 <script src="/assets/script/script.js"></script>
    </body>
 </html>
