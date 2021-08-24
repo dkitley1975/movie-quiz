@@ -63,3 +63,15 @@ h6 {
   font-weight: var(--fw-b);
   color: var(--clr-primary-000);
 }
+
+#main-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--clr-background);
+  background-image: url(../images/background-img.jpg);
+  background-size: cover;
+  background-position: center;
+}
