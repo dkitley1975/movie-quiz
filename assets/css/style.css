@@ -64,6 +64,12 @@ h6 {
   color: var(--clr-primary-000);
 }
 
+#home-container h1 {
+  font-size: 400%;
+  margin-bottom: 1rem;
+  color: var(--clr-primary-400);
+}
+
 #main-container {
   width: 100vw;
   height: 100vh;
