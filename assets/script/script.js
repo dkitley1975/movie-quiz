@@ -54,3 +54,12 @@ let questionCounter = 0;
 let availableQuestions = [];
 let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //default value for easy - 
 let questions = [];
+
+
+/** Function to add the points information to the home screen. */
+function addPointsInformationToTheHomePage(){
+let pointsInformation = document.getElementById('points-information');
+let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per question, Medium - ${pointsPerCorrectAnswerMedium} points per question<br> and Hard - ${pointsPerCorrectAnswerHard} points per question`;
+pointsInformation.innerHTML = pointsInformationText;
+}
+addPointsInformationToTheHomePage();
