@@ -41,3 +41,5 @@ this.soundIncorrect = new Audio('assets/sounds/sound-incorrect.mp3');
 // amend volume to .2 volume.  Use this to mute later
 this.soundCorrect.volume = .2;
 this.soundIncorrect.volume = .2;
+
+const loadingSpinner = document.querySelector('#loadingSpinner');
