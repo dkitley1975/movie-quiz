@@ -166,3 +166,35 @@ function maxQuestionsReached() {
 		userFinalScoreContainer.classList.remove('hidden');
 	}
 }
+
+/**  Function to sort the questions */
+getNewQuestion = () => {
+	maxQuestionsReached()
+
+	questionCounter++;
+
+	//Updates the progress bar
+	progressText.innerText = `Question ${questionCounter}/${SetQtyOfQuestions}`;
+
+	progressBarFull.style.width = `${(questionCounter / SetQtyOfQuestions) * 100}%`;
+	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
+		progressBarFull.classList.add('progress-bar-rounded');
+	}
+
+	//creates a random number between 1 and the qty of remaining questions and sets the current question to that question number
+	const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+	currentQuestion = availableQuestions[questionIndex];
+
+	// adds current question to the Question section 
+	question.innerHTML = currentQuestion.question;
+
+	// gets the correct answer information from the set of questions
+	answers.forEach((answers) => {
+		const number = answers.dataset['number'];
+		answers.innerHTML = currentQuestion['answers' + number];
+	});
+	//removes the current question from the available questions list
+	availableQuestions.splice(questionIndex, 1);
+	console.log("After this question these are the available questions ", availableQuestions);
+	acceptingAnswers = true;
+};
