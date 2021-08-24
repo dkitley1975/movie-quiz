@@ -43,3 +43,14 @@ this.soundCorrect.volume = .2;
 this.soundIncorrect.volume = .2;
 
 const loadingSpinner = document.querySelector('#loadingSpinner');
+
+const username = document.getElementById('username');
+
+
+let currentQuestion = {};
+let acceptingAnswers = false;
+let score = 0;
+let questionCounter = 0;
+let availableQuestions = [];
+let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //default value for easy - 
+let questions = [];
