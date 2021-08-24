@@ -235,3 +235,9 @@ incrementScore = (num) => {
 	playerFinalScore.innerText = score;
 
 };
+
+
+//*event listener to allow user to click the save button once username entered
+username.addEventListener('keyup', () => {
+	saveScoreBtn.disabled = !username.value;
+});
