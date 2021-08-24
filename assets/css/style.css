@@ -108,3 +108,7 @@ h6 {
   -webkit-box-shadow: 20px 20px 22px var(--clr-box-shadow);
   box-shadow: 20px 20px 22px var(--clr-box-shadow);
 }
+
+.hidden {
+  display: none;
+}
