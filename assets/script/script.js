@@ -265,3 +265,13 @@ saveHighScore = e => {
 	localStorage.setItem('highScores', JSON.stringify(highScores));
 	window.location.assign('index.html');
 };
+
+//*high scores added to the high score list if user saves the score
+highScoresList.innerHTML = highScores
+	.map(score => {
+		return `<tr>
+    <td>${score.name}</td>
+    <td>${score.score}</td>
+    </tr>`;
+	})
+	.join("");
