@@ -291,3 +291,12 @@ function showHighScoresScreen() {
 	})
     .join("");
 }
+
+
+//* event listener to start the quiz game once clicked
+playButton.addEventListener('click', startQuiz);
+//* event listener to return to the home screen once clicked
+homeScreenButton.addEventListener('click', returnToHomeScreen);
+returnHomeScreenButton.addEventListener('click', returnToHomeScreen);
+//* event listener to display the high scores once clicked
+viewHighScoresButton.addEventListener('click', showHighScoresScreen);
