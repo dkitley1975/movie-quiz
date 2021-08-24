@@ -226,3 +226,12 @@ answers.forEach((answers) => {
 		}, 1500);
 	});
 });
+
+
+//** Function to update the users score */ 
+incrementScore = (num) => {
+	score += num;
+	scoreText.innerText = score;
+	playerFinalScore.innerText = score;
+
+};
