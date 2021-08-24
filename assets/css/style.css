@@ -306,3 +306,22 @@ input::placeholder {
   background-color: var(--clr-primary-Red);
 }
 
+/* loadingSpinner */
+
+#loadingSpinner {
+  border: 1.6rem solid white;
+  border-radius: 50%;
+  border-top: 1.6rem solid var(--clr-primary-200);
+  width: 12rem;
+  height: 12rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
