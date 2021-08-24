@@ -96,3 +96,14 @@ let letsAddSomeSampleHighScores = [
 localStorage.setItem("highScores", JSON.stringify(letsAddSomeSampleHighScores));
 }
 letsAddSomeSampleHighScores()
+
+
+//* function to start the game
+const startQuiz = () => {
+	showQuizContainer()
+	questionCounter = 0;
+	score = 0;
+	availableQuestions = [...questions];
+	getNewQuestion();
+	loadingSpinner.classList.add('hidden');
+};
