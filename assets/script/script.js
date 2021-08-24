@@ -30,3 +30,7 @@ const highScoresToShow = 8;
 const pointsPerCorrectAnswerEasy = 1
 const pointsPerCorrectAnswerMedium = 1.5
 const pointsPerCorrectAnswerHard = 2
+
+//* Game Progress
+const progressText = document.getElementById('progressText');
+const progressBarFull = document.querySelector('#progressBarFull');
