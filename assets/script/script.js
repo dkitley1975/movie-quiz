@@ -17,3 +17,11 @@ const answers = Array.from(document.getElementsByClassName('answers-text'));
 const SetQtyOfQuestions = 10;
 //* increase this value to increase the randomness of the questions
 const qtyOfQuestionsToFetch = 40;
+
+//* Scoring and scores
+const scoreText = document.querySelector('#score');
+const playerFinalScore = document.getElementById('playerFinalScore');
+const mostRecentScore = localStorage.getItem('mostRecentScore');
+
+const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+const highScoresToShow = 8;
