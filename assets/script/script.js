@@ -34,3 +34,10 @@ const pointsPerCorrectAnswerHard = 2
 //* Game Progress
 const progressText = document.getElementById('progressText');
 const progressBarFull = document.querySelector('#progressBarFull');
+
+//*Sound Effects
+this.soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
+this.soundIncorrect = new Audio('assets/sounds/sound-incorrect.mp3');
+// amend volume to .2 volume.  Use this to mute later
+this.soundCorrect.volume = .2;
+this.soundIncorrect.volume = .2;
