@@ -156,3 +156,13 @@ fetch(quizUrl)
 	.catch((err) => {
 		console.error(err);
 	});
+
+    /**Function checks if the maximum amount of questions per quiz has been reached */
+function maxQuestionsReached() {
+	// checking if maximum availableQuestions has been reached and if so go to user final score page
+	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
+		localStorage.setItem('mostRecentScore', score);
+		quizContainer.classList.add('hidden');
+		userFinalScoreContainer.classList.remove('hidden');
+	}
+}
