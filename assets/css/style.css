@@ -13,6 +13,34 @@
   box-sizing: border-box;
 }
 
+:root {
+  /*  Fonts */
+  --ff-main: "Montserrat", sans-serif;
+  --ff-headline: "Limelight", cursive;
+  /*  FONT WEIGHTS */
+  --fw-l: 300;
+  --fw-n: 400;
+  --fw-m: 600;
+  --fw-b: 700;
+  /* Font Sizes */
+  --fs-1: 3.2rem;
+  --fs-2: 2.4rem;
+  --fs-3: 1.87rem;
+  --fs-4: 1.6rem;
+  --fs-5: 1.33rem;
+  --fs-6: 1.072rem;
+  --fs-default: 1.6rem;
+  /* Default colours */
+  --clr-background: rgba(110, 194, 181, 0.5);
+  --clr-primary-000: black;
+  --clr-primary-100: rgb(110, 194, 181);
+  --clr-primary-200: rgb(120, 165, 194);
+  --clr-primary-400: rgb(190, 91, 141);
+  --clr-primary-Green: rgb(51, 194, 97);
+  --clr-primary-Red: rgb(194, 68, 68);
+  --clr-hover: rgb(105, 201, 172);
+  --clr-box-shadow: rgba(250, 229, 114, 0.1);
+}
 
 html {
   scroll-behavior: smooth;
