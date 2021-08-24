@@ -198,3 +198,31 @@ getNewQuestion = () => {
 	console.log("After this question these are the available questions ", availableQuestions);
 	acceptingAnswers = true;
 };
+
+//*check which answer the user has chosen
+answers.forEach((answers) => {
+	answers.addEventListener('click', (e) => {
+		if (!acceptingAnswers) return;
+
+		acceptingAnswers = false;
+		const selectedAnswers = e.target;
+		const selectedAnswer = selectedAnswers.dataset['number'];
+
+		//check if the user has selected the correct answer 
+		const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+		//if  answer correct increase the user score
+		if (classToApply === 'correct') {
+			incrementScore(pointsPerCorrectAnswer);
+			soundCorrect.play();
+		}else{
+			soundIncorrect.play();
+		}
+
+		selectedAnswers.parentElement.classList.add(classToApply);
+
+		setTimeout(() => {
+			selectedAnswers.parentElement.classList.remove(classToApply);
+			getNewQuestion();
+		}, 1500);
+	});
+});
