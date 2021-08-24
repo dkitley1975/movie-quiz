@@ -192,3 +192,66 @@ h6 {
 .text-center {
   text-align: center;
 }
+
+/* BUTTONS */
+
+.btn {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  width: 30rem;
+  text-align: center;
+  border: 0.1rem solid var(--clr-primary-300);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  text-decoration: none;
+  border-radius: 2rem;
+}
+
+.btn-difficulty {
+  font-size: var(--fs-4);
+  padding: 1rem 3rem;
+  width: 30rem;
+  text-align-last: center;
+  border: 0.1rem solid var(--clr-primary-300);
+  margin-top: 4rem;
+  margin-bottom: 0;
+  text-decoration: none;
+  border-radius: 2rem;
+}
+
+.btn-play-game {
+  background-color: var(--clr-primary-100);
+  color: var(--clr-primary-000);
+}
+
+.btnViewHighScore {
+  background-color: var(--clr-primary-200);
+  color: var(--clr-primary-000);
+}
+
+.btnSave {
+  background-color: var(--clr-primary-Green);
+  color: var(--clr-primary-000);
+  margin-top: 0;
+}
+
+.play-buttons {
+  margin-top: 5rem;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--clr-hover);
+  box-shadow: 0 0.4rem 1.4rem 0 var(--clr-primary-200);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+
+
