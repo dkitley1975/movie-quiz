@@ -126,3 +126,33 @@ function updateQuizLevel() {
 	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=9&difficulty=${level}&type=multiple`;
 	pointsPerQuestion()
 }
+
+/** Function to fetch the questions from an API using the user selected difficulty as the quiz level and map the question to an array */
+fetch(quizUrl)
+	.then((res) => {
+		return res.json();
+	})
+	.then((loadedQuestions) => {
+		questions = loadedQuestions.results.map((loadedQuestion) => {
+			const formattedQuestion = {
+				question: loadedQuestion.question,
+			};
+			const availableAnswers = [...loadedQuestion.incorrect_answers];
+			formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
+			availableAnswers.splice(
+				formattedQuestion.answer - 1,
+				0,
+				loadedQuestion.correct_answer
+			);
+
+			availableAnswers.forEach((answers, index) => {
+				formattedQuestion['answers' + (index + 1)] = answers;
+			});
+
+			return formattedQuestion;
+		});
+
+	})
+	.catch((err) => {
+		console.error(err);
+	});
