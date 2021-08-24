@@ -63,3 +63,7 @@ let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per ques
 pointsInformation.innerHTML = pointsInformationText;
 }
 addPointsInformationToTheHomePage();
+
+//* Quiz difficulty and API information
+let level = document.getElementById("selectLevelRef").value;
+let quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=easy&type=multiple`;
