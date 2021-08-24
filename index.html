@@ -11,7 +11,19 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
       <link rel="stylesheet" href="assets/css/style.css">
    </head>
-  
+  <body id="main-container"></body>
+  <div id="home-container" class="flex-center flex-column glass">
+         <h1>Movie Quiz</h1>
+          <p><span class="points-info">Please select a difficulty level before proceeding</span></p>
+         <div id="points-information" class="text-center"></div>
+         <select id="selectLevelRef" class="btn-difficulty" onchange="updateQuizLevel()">
+            <option value="easy" selected="selected">Difficulty - Easy</option>
+            <option value="medium">Difficulty - Medium</option>
+            <option value="hard">Difficulty - Hard</option>
+         </select>
+         <button id="btn-play-game" class="btn">Play</button>
+         <button id="btn-view-high-scores" class="btn">High Scores</button>
+      </div>
 <script src="/assets/script/script.js"></script>
    </body>
 </html>
