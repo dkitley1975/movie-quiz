@@ -67,3 +67,20 @@ addPointsInformationToTheHomePage();
 //* Quiz difficulty and API information
 let level = document.getElementById("selectLevelRef").value;
 let quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=easy&type=multiple`;
+
+
+//* function to hide the welcome page and show the quiz
+function showQuizContainer() {
+	homeContainer.classList.add('hidden');
+	quizContainer.classList.remove('hidden');
+}
+
+//* function to return to the home screen
+function returnToHomeScreen() {
+	//* just in case some containers are visible this will add the hidden class to them
+	quizContainer.classList.add('hidden');
+	userFinalScoreContainer.classList.add('hidden');
+	highScoresContainer.classList.add('hidden');
+	//* removes the hidden class from the home container
+	homeContainer.classList.remove('hidden');
+}
