@@ -119,3 +119,10 @@ function pointsPerQuestion() {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy;
 	}
 }
+
+/** function to allow the user to select a difficulty level for the quiz */
+function updateQuizLevel() {
+	level = document.getElementById("selectLevelRef").value;
+	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=9&difficulty=${level}&type=multiple`;
+	pointsPerQuestion()
+}
