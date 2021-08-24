@@ -82,6 +82,38 @@ h6 {
   background-position: center;
 }
 
+.answers-container {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  font-size: 1.8rem;
+  border: 0.1rem solid rgb(86, 165, 235, 0.25);
+  background-color: white;
+  border-top-left-radius: 1.8rem;
+  border-bottom-left-radius: 1.8rem;
+}
+
+.answers-container:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 var(--clr-box-shadow);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.answers-prefix {
+  padding: 1.5rem 2.5rem;
+  background-color: var(--clr-primary-100);
+  border-top-left-radius: 1.8rem;
+  border-bottom-left-radius: 1.8rem;
+  color: white;
+}
+
+.answers-text {
+  padding: 1.5rem;
+  width: 100%;
+}
+
 .flex-center {
   justify-content: center;
   align-items: center;
