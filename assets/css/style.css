@@ -82,6 +82,28 @@ h6 {
   background-position: center;
 }
 
+#progress {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+#progressBar {
+  width: 20rem;
+  height: 4rem;
+  border: 0.3rem solid var(--clr-primary-400);
+  border-radius: 2rem;
+  margin-top: 1.5rem;
+}
+
+#progressBarFull {
+  height: 3.4rem;
+  background-color: var(--clr-primary-400);
+  width: 0%;
+  border-top-left-radius: 1.8rem;
+  border-bottom-left-radius: 1.8rem;
+}
+
 .answers-container {
   display: flex;
   margin-top: 1rem;
@@ -149,6 +171,23 @@ h6 {
   justify-content: center;
 }
 
+.progress-bar-rounded {
+  border-radius: 1.8rem;
+}
+
+.progress-prefix {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.progress-main-text {
+  text-align: center;
+  color: #be5b8d;
+}
+
+.points-info {
+  font-weight: var(--fw-b);
+}
 
 .text-center {
   text-align: center;
