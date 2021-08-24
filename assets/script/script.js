@@ -10,3 +10,10 @@ const homeScreenButton = document.querySelector('#btn-view-home-screen');
 const returnHomeScreenButton = document.querySelector('#btn-return-to-home-screen');
 const viewHighScoresButton = document.querySelector('#btn-view-high-scores');
 const saveScoreBtn = document.getElementById('btn-save-score');
+
+//* Question and Answers
+const question = document.getElementById('question');
+const answers = Array.from(document.getElementsByClassName('answers-text'));
+const SetQtyOfQuestions = 10;
+//* increase this value to increase the randomness of the questions
+const qtyOfQuestionsToFetch = 40;
