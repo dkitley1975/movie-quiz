@@ -241,3 +241,27 @@ incrementScore = (num) => {
 username.addEventListener('keyup', () => {
 	saveScoreBtn.disabled = !username.value;
 });
+
+
+//*function to save the high score
+const highScoresList = document.getElementById('high-scores-list');
+
+saveHighScore = e => {
+	e.preventDefault();
+
+	const score = {
+		score: playerFinalScore.innerText,
+		name: username.value
+	};
+
+	highScores.push(score);
+
+	highScores.sort((a, b) => {
+		return b.score - a.score;
+	});
+
+	highScores.splice(highScoresToShow);
+
+	localStorage.setItem('highScores', JSON.stringify(highScores));
+	window.location.assign('index.html');
+};
