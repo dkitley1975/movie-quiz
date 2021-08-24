@@ -46,3 +46,20 @@ html {
   scroll-behavior: smooth;
   font-size: 62.5%;
 }
+
+body {
+  font-family: var(--ff-main);
+  font-size: var(--fs-default);
+  font-weight: var(--fw-n);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ff-headline);
+  font-weight: var(--fw-b);
+  color: var(--clr-primary-000);
+}
