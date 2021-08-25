@@ -207,6 +207,9 @@ h6 {
 	margin-top: 2rem;
 	text-decoration: none;
 	border-radius: 2rem;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
 .btn-difficulty {
