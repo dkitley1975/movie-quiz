@@ -85,28 +85,24 @@ function returnToHomeScreen() {
 	homeContainer.classList.remove('hidden');
 }
 
-/** function to add some sample high scores to local storage */
-function letsAddSomeSampleHighScores() {
-	let letsAddSomeSampleHighScores = [{
-			"score": "14",
-			"name": "Ms PacMan"
-		},
-		{
-			"score": "12",
-			"name": "Gandalf"
-		},
-		{
-			"score": "10",
-			"name": "Kermit"
-		},
-		{
-			"score": "8",
-			"name": "Miss Piggy"
-		}
-	];
-	localStorage.setItem("highScores", JSON.stringify(letsAddSomeSampleHighScores));
+/** function tThe statement checks if the onetime function has NOT been executed before */
+window.onload = function () {
+	if (localStorage.getItem("hasSampleScoresBeenAddedBefore") === null) {
+
+		/** this is to add some sample high scores to local storage */
+			let letsAddSomeSampleHighScores = [
+				{"score":"14","name":"Ms PacMan"},
+				{"score":"12","name":"Gandalf"},
+				{"score":"10","name":"Kermit"},
+				{"score":"8","name":"Miss Piggy"}
+			];
+
+			localStorage.setItem('highScores', JSON.stringify(letsAddSomeSampleHighScores));
+			console.log("adding some temp high scores")
+		
+		localStorage.setItem("hasSampleScoresBeenAddedBefore", true);
+	}
 }
-letsAddSomeSampleHighScores()
 
 
 //* function to start the game
@@ -292,8 +288,9 @@ function showHighScoresScreen() {
 	homeContainer.classList.add('hidden');
 	highScoresContainer.classList.remove('hidden');
 	const prevHighScoresList = document.getElementById('prev-high-scores-list');
-	let prevHighScores = JSON.parse(localStorage.getItem('highScores')) || [];
-	prevHighScoresList.innerHTML = prevHighScores
+	HighScoresList = JSON.parse(localStorage.getItem('highScores')) || [];
+		
+prevHighScoresList.innerHTML = highScores
 		.map(score => {
 			return `<tr>
     <td>${score.name}</td>
