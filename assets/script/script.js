@@ -57,10 +57,10 @@ let questions = [];
 
 
 /** Function to add the points information to the home screen. */
-function addPointsInformationToTheHomePage(){
-let pointsInformation = document.getElementById('points-information');
-let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per question, Medium - ${pointsPerCorrectAnswerMedium} points per question<br> and Hard - ${pointsPerCorrectAnswerHard} points per question`;
-pointsInformation.innerHTML = pointsInformationText;
+function addPointsInformationToTheHomePage() {
+	let pointsInformation = document.getElementById('points-information');
+	let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per question, Medium - ${pointsPerCorrectAnswerMedium} points per question<br> and Hard - ${pointsPerCorrectAnswerHard} points per question`;
+	pointsInformation.innerHTML = pointsInformationText;
 }
 addPointsInformationToTheHomePage();
 
@@ -86,14 +86,25 @@ function returnToHomeScreen() {
 }
 
 /** function to add some sample high scores to local storage */
-function letsAddSomeSampleHighScores(){
-let letsAddSomeSampleHighScores = [
-	{"score":"14","name":"Ms PacMan"},
-	{"score":"12","name":"Gandalf"},
-	{"score":"10","name":"Kermit"},
-	{"score":"8","name":"Miss Piggy"}
-];
-localStorage.setItem("highScores", JSON.stringify(letsAddSomeSampleHighScores));
+function letsAddSomeSampleHighScores() {
+	let letsAddSomeSampleHighScores = [{
+			"score": "14",
+			"name": "Ms PacMan"
+		},
+		{
+			"score": "12",
+			"name": "Gandalf"
+		},
+		{
+			"score": "10",
+			"name": "Kermit"
+		},
+		{
+			"score": "8",
+			"name": "Miss Piggy"
+		}
+	];
+	localStorage.setItem("highScores", JSON.stringify(letsAddSomeSampleHighScores));
 }
 letsAddSomeSampleHighScores()
 
@@ -109,7 +120,7 @@ const startQuiz = () => {
 };
 
 /** function to set the correct points per question dependant on the user selected difficulty level
-*/
+ */
 function pointsPerQuestion() {
 	if (level == "hard") {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerHard;
@@ -157,7 +168,7 @@ fetch(quizUrl)
 		console.error(err);
 	});
 
-    /**Function checks if the maximum amount of questions per quiz has been reached */
+/**Function checks if the maximum amount of questions per quiz has been reached */
 function maxQuestionsReached() {
 	// checking if maximum availableQuestions has been reached and if so go to user final score page
 	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
@@ -214,7 +225,7 @@ answers.forEach((answers) => {
 		if (classToApply === 'correct') {
 			incrementScore(pointsPerCorrectAnswer);
 			soundCorrect.play();
-		}else{
+		} else {
 			soundIncorrect.play();
 		}
 
@@ -276,20 +287,20 @@ highScoresList.innerHTML = highScores
 	})
 	.join("");
 
-    //* function to show the high Scores
+//* function to show the high Scores
 function showHighScoresScreen() {
 	homeContainer.classList.add('hidden');
-	highScoresContainer.classList.remove('hidden');  
-    const prevHighScoresList = document.getElementById('prev-high-scores-list'); 
-    let prevHighScores = JSON.parse(localStorage.getItem('highScores')) || [];
-    prevHighScoresList.innerHTML = prevHighScores
-	.map(score => {
-		return `<tr>
+	highScoresContainer.classList.remove('hidden');
+	const prevHighScoresList = document.getElementById('prev-high-scores-list');
+	let prevHighScores = JSON.parse(localStorage.getItem('highScores')) || [];
+	prevHighScoresList.innerHTML = prevHighScores
+		.map(score => {
+			return `<tr>
     <td>${score.name}</td>
     <td>${score.score}</td>
     </tr>`;
-	})
-    .join("");
+		})
+		.join("");
 }
 
 
