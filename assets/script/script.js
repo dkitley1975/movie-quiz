@@ -23,8 +23,8 @@ const scoreText = document.querySelector('#score');
 const playerFinalScore = document.getElementById('playerFinalScore');
 const mostRecentScore = localStorage.getItem('mostRecentScore');
 
-const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 const highScoresToShow = 8;
+
 
 //* Points for question difficulties - Remember to update home container points information if altering
 const pointsPerCorrectAnswerEasy = 1
@@ -90,16 +90,35 @@ window.onload = function () {
 	if (localStorage.getItem("hasSampleScoresBeenAddedBefore") === null) {
 
 		/** this is to add some sample high scores to local storage */
-			let letsAddSomeSampleHighScores = [
-				{"score":"14","name":"Ms PacMan"},
-				{"score":"12","name":"Gandalf"},
-				{"score":"10","name":"Kermit"},
-				{"score":"8","name":"Miss Piggy"}
-			];
+		let letsAddSomeSampleHighScores = [{
+				"score": "16",
+				"name": "Ms PacMan"
+			},
+			{
+				"score": "14",
+				"name": "Gandalf"
+			},
+			{
+				"score": "12",
+				"name": "ALF"
+			},
+			{
+				"score": "10",
+				"name": "Kermit"
+			},
+			{
+				"score": "8",
+				"name": "Miss Piggy"
+			},
+			{
+				"score": "8",
+				"name": "Papa Smurf"
+			}
+		];
 
-			localStorage.setItem('highScores', JSON.stringify(letsAddSomeSampleHighScores));
-			console.log("adding some temp high scores")
-		
+		localStorage.setItem('highScores', JSON.stringify(letsAddSomeSampleHighScores));
+		console.log("adding some temp high scores")
+
 		localStorage.setItem("hasSampleScoresBeenAddedBefore", true);
 	}
 }
@@ -273,7 +292,9 @@ saveHighScore = e => {
 	window.location.assign('index.html');
 };
 
+
 //*high scores added to the high score list if user saves the score
+let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 highScoresList.innerHTML = highScores
 	.map(score => {
 		return `<tr>
@@ -283,14 +304,15 @@ highScoresList.innerHTML = highScores
 	})
 	.join("");
 
+
 //* function to show the high Scores
 function showHighScoresScreen() {
 	homeContainer.classList.add('hidden');
 	highScoresContainer.classList.remove('hidden');
 	const prevHighScoresList = document.getElementById('prev-high-scores-list');
-	HighScoresList = JSON.parse(localStorage.getItem('highScores')) || [];
-		
-prevHighScoresList.innerHTML = highScores
+	highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+	prevHighScoresList.innerHTML = highScores
 		.map(score => {
 			return `<tr>
     <td>${score.name}</td>
