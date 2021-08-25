@@ -15,8 +15,8 @@ const saveScoreBtn = document.getElementById('btn-save-score');
 const question = document.getElementById('question');
 const answers = Array.from(document.getElementsByClassName('answers-text'));
 const SetQtyOfQuestions = 10;
-//* increase this value to increase the randomness of the questions
-const qtyOfQuestionsToFetch = 40;
+//* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API 
+const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 4);
 
 //* Scoring and scores
 const scoreText = document.querySelector('#score');
