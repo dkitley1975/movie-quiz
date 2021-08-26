@@ -10,6 +10,8 @@ const homeScreenButton = document.querySelector('#btn-view-home-screen');
 const returnHomeScreenButton = document.querySelector('#btn-return-to-home-screen');
 const viewHighScoresButton = document.querySelector('#btn-view-high-scores');
 const saveScoreBtn = document.getElementById('btn-save-score');
+const muteButton = document.getElementById('btn-mute');
+const unMuteButton = document.getElementById('btn-unmute');
 
 //* Question and Answers
 const question = document.getElementById('question');
@@ -342,3 +344,7 @@ homeScreenButton.addEventListener('click', returnToHomeScreen);
 returnHomeScreenButton.addEventListener('click', returnToHomeScreen);
 //* event listener to display the high scores once clicked
 viewHighScoresButton.addEventListener('click', showHighScoresScreen);
+//* event listener to mute the SFX once clicked
+muteButton.addEventListener('click', sfxMuted);
+//* event listener to un-mute the SFX once clicked
+unMuteButton.addEventListener('click', sfxPlay);
