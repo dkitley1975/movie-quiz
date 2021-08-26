@@ -17,8 +17,8 @@
    </head>
    <body id="main-container">
       <div id="home-container" class="flex-center flex-column glass">
-         <h1>Movie Quiz</h1>
-         <p><span class="points-info">Please select a difficulty level before proceeding</span></p>
+         <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
+         <p><span class="points-info text-center">Please select a difficulty level before proceeding</span></p>
          <div id="points-information" class="text-center"></div>
          <select id="selectLevelRef" class="btn-difficulty" onchange="updateQuizLevel()">
             <option value="easy" selected="selected">Difficulty - Easy</option>
@@ -29,6 +29,7 @@
          <button id="btn-view-high-scores" class="btn">High Scores</button>
       </div>
       <div id="quiz-container" class="justify-center flex-column glass hidden">
+         <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <div id="loadingSpinner"></div>
          <h2 id="question"></h2>
          <div class="answers-container">
@@ -67,6 +68,7 @@
          </div>
       </div>
       <div id="user-final-score-container" class="flex-center flex-column glass hidden">
+         <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <h1>High Scores</h1>
          <div id="high-scores-lists">
             <table class="table">
@@ -90,6 +92,7 @@
          <button id="btn-view-home-screen" class="btn">Don't Save & Play Again</button>
       </div>
       <div id="high-score-container" class="flex-center flex-column glass hidden">
+         <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <h1>High Scores</h1>
          <div id="prev-high-scores-lists">
             <table class="table">
