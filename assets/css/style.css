@@ -41,7 +41,7 @@
   --clr-primary-Red: rgb(194, 68, 68);
   --clr-hover: rgb(105, 201, 172);
   --clr-box-shadow: rgba(250, 229, 114, 0.1);
-  --clr-button-background: rgba(191, 255, 245, 0.747);
+  --clr-button-background: rgb(255, 255, 255);
 }
 
 html {
