@@ -42,6 +42,18 @@ this.soundIncorrect = new Audio('assets/sounds/sound-incorrect.mp3');
 this.soundCorrect.volume = .2;
 this.soundIncorrect.volume = .2;
 
+/** Function to mute the correct and incorrect SFX audio */
+function sfxMuted() {
+this.soundCorrect.muted = true
+this.soundIncorrect.muted = true
+}
+
+/** Function to un-mute the correct and incorrect SFX audio */
+function sfxPlay() {
+this.soundCorrect.muted = false
+this.soundIncorrect.muted = false
+}
+
 const loadingSpinner = document.querySelector('#loadingSpinner');
 
 const username = document.getElementById('username');
