@@ -211,6 +211,9 @@ h6 {
   text-align: center;
 }
 
+.question-text {
+  font-size: 3.5vw;
+}
 /* BUTTONS */
 
 .btn {
