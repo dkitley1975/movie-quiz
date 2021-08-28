@@ -209,6 +209,13 @@ h6 {
 
 .points-info {
   font-weight: var(--fw-b);
+  text-align: center !important;
+}
+
+.points-information-scores{
+  margin-top: .5rem;
+  font-size: 90%;
+  text-align: center !important;
 }
 
 #sfx-control{
