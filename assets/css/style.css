@@ -230,7 +230,8 @@ h6 {
   -webkit-appearance: none;
   font-size: 1.8rem;
   padding: 1rem 0;
-  width: 30rem;
+  width: 80vw;
+  max-width: 30rem;
   text-align: center;
   border: 0.1rem solid var(--clr-primary-300);
   background-color: var(--clr-button-background);
@@ -243,14 +244,8 @@ h6 {
 
 .btn-difficulty {
   font-size: var(--fs-4);
-  padding: 1rem 3rem;
-  width: 30rem;
-  text-align-last: center;
-  border: 0.1rem solid var(--clr-primary-300);
+  text-align-last: center; 
   margin-top: 4rem;
-  margin-bottom: 0;
-  text-decoration: none;
-  border-radius: 2rem;
 }
 
 .btn-play-game {
