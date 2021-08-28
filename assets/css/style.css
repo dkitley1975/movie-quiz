@@ -374,10 +374,6 @@ input::placeholder {
   background-size: cover;
   background-position: center;
 }
-.fa-volume-mute, .fa-volume-up{
-  color: var(--clr-primary-400);
-  font-size: 3rem;
-}
 .glass {
   height: 80%;
   width: 80%;
@@ -395,10 +391,6 @@ input::placeholder {
   background-image: url(../images/background-img-1024.jpg);
   background-size: cover;
   background-position: center;
-}
-.fa-volume-mute, .fa-volume-up{
-  color: var(--clr-primary-400);
-  font-size: 3rem;
 }
 .glass {
   height: 80%;
@@ -418,10 +410,6 @@ input::placeholder {
   background-image: url(../images/background-img-1400.jpg);
   background-size: cover;
   background-position: center;
-}
-.fa-volume-mute, .fa-volume-up{
-  color: var(--clr-primary-400);
-  font-size: 3rem;
 }
 .glass {
   height: 80%;
