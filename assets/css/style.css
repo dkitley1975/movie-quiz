@@ -218,7 +218,8 @@ h6 {
 
 #sfx-control{
   position: absolute;
-  bottom: 0px;
+  bottom: 5%;
+  z-index: 100;
 }
 
 .text-center {
