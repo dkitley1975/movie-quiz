@@ -91,15 +91,15 @@ h6 {
 }
 
 #progressBar {
-  width: 20rem;
-  height: 4rem;
+  width: 15rem;
+  height: 3rem;
   border: 0.3rem solid var(--clr-primary-400);
   border-radius: 2rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 #progressBarFull {
-  height: 3.4rem;
+  height: 2.4rem;
   background-color: var(--clr-primary-400);
   width: 0%;
   border-top-left-radius: 1.8rem;
@@ -111,7 +111,7 @@ h6 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   width: 100%;
-  font-size: 1.8rem;
+  font-size: var(--fs-default);
   border: 0.1rem solid rgb(86, 165, 235, 0.25);
   background-color: white;
   border-top-left-radius: 1.8rem;
@@ -126,21 +126,24 @@ h6 {
 }
 
 .answers-prefix {
-  padding: 1.5rem 2.5rem;
+  padding: 1rem;
   background-color: var(--clr-primary-100);
+  font-size: var(--fs-default);
   border-top-left-radius: 1.8rem;
   border-bottom-left-radius: 1.8rem;
   color: white;
 }
 
 .answers-text {
-  padding: 1.5rem;
+  padding: 1rem;
   width: 100%;
+  font-size: var(--fs-default);
+
 }
 
 .fa-volume-mute, .fa-volume-up{
   color: var(--clr-primary-400);
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .flex-center {
@@ -169,7 +172,7 @@ h6 {
   backdrop-filter: blur(2rem);
   position: absolute;
   margin: 0 auto;
-  padding: 5rem 2rem 2rem;
+  padding: 2rem 2rem;
   border-radius: 2rem;
   -webkit-box-shadow: 20px 20px 22px var(--clr-box-shadow);
   box-shadow: 20px 20px 22px var(--clr-box-shadow);
@@ -184,9 +187,9 @@ h6 {
 }
 
 .logo {
-  width: 20vw;
-  min-width: 200px;
-  margin: 2rem auto;
+  width: 5vw;
+  min-width: 150px;
+  margin: 1rem auto;
 }
 
 .progress-bar-rounded {
@@ -195,7 +198,7 @@ h6 {
 
 .progress-prefix {
   text-align: center;
-  font-size: 2rem;
+  font-size: var(--fs-default);
 }
 
 .progress-main-text {
@@ -207,12 +210,19 @@ h6 {
   font-weight: var(--fw-b);
 }
 
+#sfx-control{
+  position: absolute;
+  bottom: 0px;
+}
+
 .text-center {
   text-align: center;
 }
 
 .question-text {
-  font-size: 3.5vw;
+  font-size: var(--fs-default);
+  font-weight: var(--fw-b);
+
 }
 /* BUTTONS */
 
