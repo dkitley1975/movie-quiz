@@ -46,14 +46,18 @@ this.soundIncorrect.volume = .2;
 
 /** Function to mute the correct and incorrect SFX audio */
 function sfxMuted() {
-this.soundCorrect.muted = true
-this.soundIncorrect.muted = true
+soundCorrect.muted = true;
+soundIncorrect.muted = true;
+muteButton.classList.add('hidden');
+unMuteButton.classList.remove('hidden');
 }
 
 /** Function to un-mute the correct and incorrect SFX audio */
 function sfxPlay() {
-this.soundCorrect.muted = false
-this.soundIncorrect.muted = false
+soundCorrect.muted = false;
+soundIncorrect.muted = false;
+unMuteButton.classList.add('hidden');
+muteButton.classList.remove('hidden');
 }
 
 const loadingSpinner = document.querySelector('#loadingSpinner');
