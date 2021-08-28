@@ -165,8 +165,6 @@ h6 {
   z-index: 99;
   height: 90%;
   width: 90%;
-  max-width: 800px;
-  max-height: 1000px;
   background-color: rgba(255, 255, 255, 0.2);
   -webkit-backdrop-filter: blur(2rem);
   backdrop-filter: blur(2rem);
@@ -188,8 +186,8 @@ h6 {
 
 .logo {
   width: 5vw;
-  min-width: 150px;
-  margin: 1rem auto;
+  min-width: 200px;
+  margin: 1rem auto 2rem;
 }
 
 .progress-bar-rounded {
@@ -364,4 +362,61 @@ input::placeholder {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* Media Queries */
+
+/* On screens that are 768px or more */
+@media screen and (min-width: 768px) {
+  #main-container {
+  background-image: url(../images/background-img-768.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.glass {
+  height: 80%;
+  width: 80%;
+  padding: 3rem 7rem;
+}
+.logo {
+  width: 15vw;
+  margin: 1rem auto 2rem;
+}
+}
+
+/* On screens that are 1024px or more */
+@media screen and (min-width: 1024px) {
+  #main-container {
+  background-image: url(../images/background-img-1024.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.glass {
+  height: 80%;
+  width: 75%;
+  padding: 6rem 12rem;
+}
+.logo {
+  width: 20vw;
+  margin: 1rem auto 2rem;
+}
+}
+
+
+/* On screens that are 1400px or more */
+@media screen and (min-width: 1400px) {
+  #main-container {
+  background-image: url(../images/background-img-1400.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.glass {
+  height: 80%;
+  width: 75%;
+  padding: 10rem 20rem;
+}
+.logo {
+  width: 15vw;
+  margin: 1rem auto 2rem;
+}
 }
