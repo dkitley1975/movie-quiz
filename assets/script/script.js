@@ -91,6 +91,8 @@ let quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&categ
 function showQuizContainer() {
 	homeContainer.classList.add('hidden');
 	quizContainer.classList.remove('hidden');
+	muteButton.classList.remove('hidden');
+
 }
 
 //* function to return to the home screen
@@ -99,6 +101,10 @@ function returnToHomeScreen() {
 	quizContainer.classList.add('hidden');
 	userFinalScoreContainer.classList.add('hidden');
 	highScoresContainer.classList.add('hidden');
+	muteButton.classList.add('hidden');
+	unMuteButton.classList.add('hidden');
+
+
 	//* removes the hidden class from the home container
 	homeContainer.classList.remove('hidden');
 }
@@ -207,7 +213,9 @@ function maxQuestionsReached() {
 	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
 		localStorage.setItem('mostRecentScore', score);
 		quizContainer.classList.add('hidden');
-		userFinalScoreContainer.classList.remove('hidden');
+		userFinalScoreContainer.classList.remove('hidden');	
+		muteButton.classList.add('hidden');
+		unMuteButton.classList.add('hidden');
 	}
 }
 
