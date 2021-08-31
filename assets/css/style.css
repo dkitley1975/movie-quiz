@@ -73,8 +73,8 @@ h6 {
 }
 
 #main-container {
-  width: 100vw;
   height: 100vh;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,7 +110,7 @@ h6 {
 
 #sfx-control{
  position: absolute;
-  bottom: 1px;
+  bottom: 5px;
   z-index: 100;
 }
 .answers-container {
