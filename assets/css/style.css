@@ -81,6 +81,8 @@ h6 {
   background-color: var(--clr-background);
   background-image: url(../images/background-img.jpg);
   background-size: cover;
+  overflow: hidden;  
+  background-repeat: no-repeat;
   background-position: center;
 }
 
@@ -223,7 +225,7 @@ h6 {
 
 #sfx-control{
   position: absolute;
-  bottom: 1rem;
+  bottom: 1vw;
   z-index: 100;
 }
 
