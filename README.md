@@ -174,6 +174,6 @@ To run the project locally:
 
 ### Special Thanks
 
-Special thanks to my mentor Simen Daehlin. Without his encouragement I wouldn't of considered to attempt to try this as as my second project.
+Special thanks to my mentor Simen Daehlin. Without his encouragement I wouldn't of considered to attempt to try this as as my second project, and for the help and pointers he provided along along the way.
 
 Well thanks for reading all the way to the bottom, and for visiting this [my second project](https://dkitley1975.github.io/movie-quiz/)
