@@ -3,6 +3,8 @@ const homeContainer = document.querySelector('#home-container');
 const quizContainer = document.querySelector('#quiz-container');
 const userFinalScoreContainer = document.querySelector('#user-final-score-container');
 const highScoresContainer = document.querySelector('#high-score-container');
+const exitQuizContainer = document.querySelector('#exit-quiz-container');
+
 
 //* grab the button elements for the event listeners
 const playButton = document.querySelector('#btn-play-game');
@@ -10,8 +12,11 @@ const homeScreenButton = document.querySelector('#btn-view-home-screen');
 const returnHomeScreenButton = document.querySelector('#btn-return-to-home-screen');
 const viewHighScoresButton = document.querySelector('#btn-view-high-scores');
 const saveScoreBtn = document.getElementById('btn-save-score');
+const continuePlayingButton = document.querySelector('#btn-continue-playing');
+const exitGame = document.getElementById('btn-exit-game');
 const muteButton = document.getElementById('btn-mute');
 const unMuteButton = document.getElementById('btn-unmute');
+const showExitGameOptions = document.getElementById('exit-quiz-options');
 
 //* Question and Answers
 const question = document.getElementById('question');
@@ -103,13 +108,27 @@ function returnToHomeScreen() {
 	highScoresContainer.classList.add('hidden');
 	muteButton.classList.add('hidden');
 	unMuteButton.classList.add('hidden');
-
+	exitQuizContainer.classList.add('hidden');
 
 	//* removes the hidden class from the home container
 	homeContainer.classList.remove('hidden');
 }
 
-/** function tThe statement checks if the onetime function has NOT been executed before */
+//* function to hide the welcome page and show the quiz
+function showExitQuizContainer() {
+	console.log("clicked exit game");
+	exitQuizContainer.classList.remove('hidden');
+
+}
+
+//* function Exit quiz Yes or No
+function closeExitOverlayScreen() {
+	console.log("choosen to continue playing game")
+	exitQuizContainer.classList.add('hidden');
+}
+
+
+/** function tThe statement checks if the one time function has NOT been executed before */
 window.onload = function () {
 	if (localStorage.getItem("hasSampleScoresBeenAddedBefore") === null) {
 
@@ -360,3 +379,12 @@ viewHighScoresButton.addEventListener('click', showHighScoresScreen);
 muteButton.addEventListener('click', sfxMuted);
 //* event listener to un-mute the SFX once clicked
 unMuteButton.addEventListener('click', sfxPlay);
+//* event listener to un-mute the SFX once clicked
+showExitGameOptions.addEventListener('click', showExitQuizContainer);
+
+
+
+//* event listener to Exit the quiz game and return home once clicked
+exitGame.addEventListener('click', returnToHomeScreen);
+//* event listener to return to the game once clicked
+continuePlayingButton.addEventListener('click', closeExitOverlayScreen);
