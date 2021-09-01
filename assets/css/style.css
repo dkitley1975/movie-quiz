@@ -254,6 +254,10 @@ h6 {
   border-radius: 2rem;
 }
 
+.continue-game-button{
+  margin-top: 2rem;
+  background-color: var(--clr-primary-Green);
+}
 .btn-difficulty {
   font-size: var(--fs-4);
   text-align-last: center;
@@ -264,6 +268,11 @@ h6 {
   font-size: var(--fs-4);
   text-align-last: center;
   margin-top: 4rem;
+}
+.exit-game-button{
+  margin-top: 4rem;
+  background-color: var(--clr-primary-Red);
+  color: white;
 }
 
 .btn-play-game {
