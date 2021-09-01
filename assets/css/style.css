@@ -110,9 +110,11 @@ h6 {
 
 #sfx-control {
   position: absolute;
-  bottom: 5px;
+  bottom: 1rem;
+  right: 1rem;
   z-index: 100;
 }
+
 .answers-container {
   display: flex;
   margin-top: 1rem;
@@ -197,6 +199,13 @@ h6 {
   margin: 1rem auto 2rem;
 }
 
+.mute-text{
+  font-family: var(--ff-main);
+/* font-size: var(--fs-default); */
+font-size: var(--fs-h3);
+font-weight: var(--fw-b);
+}
+
 .progress-bar-rounded {
   border-radius: 1.8rem;
 }
@@ -221,12 +230,6 @@ h6 {
   margin-top: 0.5rem;
   font-size: 90%;
   text-align: center !important;
-}
-
-#sfx-control {
-  position: absolute;
-  bottom: 1vw;
-  z-index: 100;
 }
 
 .text-center {
