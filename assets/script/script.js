@@ -51,18 +51,18 @@ this.soundIncorrect.volume = .2;
 
 /** Function to mute the correct and incorrect SFX audio */
 function sfxMuted() {
-soundCorrect.muted = true;
-soundIncorrect.muted = true;
-muteButton.classList.add('hidden');
-unMuteButton.classList.remove('hidden');
+	soundCorrect.muted = true;
+	soundIncorrect.muted = true;
+	muteButton.classList.add('hidden');
+	unMuteButton.classList.remove('hidden');
 }
 
 /** Function to un-mute the correct and incorrect SFX audio */
 function sfxPlay() {
-soundCorrect.muted = false;
-soundIncorrect.muted = false;
-unMuteButton.classList.add('hidden');
-muteButton.classList.remove('hidden');
+	soundCorrect.muted = false;
+	soundIncorrect.muted = false;
+	unMuteButton.classList.add('hidden');
+	muteButton.classList.remove('hidden');
 }
 
 const loadingSpinner = document.querySelector('#loadingSpinner');
@@ -232,7 +232,7 @@ function maxQuestionsReached() {
 	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
 		localStorage.setItem('mostRecentScore', score);
 		quizContainer.classList.add('hidden');
-		userFinalScoreContainer.classList.remove('hidden');	
+		userFinalScoreContainer.classList.remove('hidden');
 		muteButton.classList.add('hidden');
 		unMuteButton.classList.add('hidden');
 	}
@@ -381,7 +381,6 @@ muteButton.addEventListener('click', sfxMuted);
 unMuteButton.addEventListener('click', sfxPlay);
 //* event listener to un-mute the SFX once clicked
 showExitGameOptions.addEventListener('click', showExitQuizContainer);
-
 
 
 //* event listener to Exit the quiz game and return home once clicked
