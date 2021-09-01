@@ -23,7 +23,7 @@ const question = document.getElementById('question');
 const answers = Array.from(document.getElementsByClassName('answers-text'));
 const SetQtyOfQuestions = 10;
 //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API 
-const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 4);
+const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 5);
 
 //* Scoring and scores
 const scoreText = document.querySelector('#score');
