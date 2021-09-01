@@ -123,7 +123,7 @@ function showExitQuizContainer() {
 
 //* function Exit quiz Yes or No
 function closeExitOverlayScreen() {
-	console.log("choosen to continue playing game")
+	console.log("chosen to continue playing game")
 	exitQuizContainer.classList.add('hidden');
 }
 
