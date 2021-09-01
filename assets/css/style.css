@@ -81,7 +81,7 @@ h6 {
   background-color: var(--clr-background);
   background-image: url(../images/background-img.jpg);
   background-size: cover;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-repeat: no-repeat;
   background-position: center;
 }
