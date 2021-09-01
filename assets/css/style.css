@@ -195,7 +195,7 @@ h6 {
 
 .logo {
   width: 5vw;
-  min-width: 200px;
+  min-width: 150px;
   margin: 1rem auto 2rem;
 }
 
@@ -268,9 +268,9 @@ font-weight: var(--fw-b);
 }
 
 .btn-exit-quiz {
-  font-size: var(--fs-4);
+  font-size: var(--fs-default);
   text-align-last: center;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 .exit-game-button{
   margin-top: 4rem;
@@ -390,6 +390,18 @@ input::placeholder {
 
 /* Media Queries */
 
+
+@media screen and (max-height: 450px) {
+  .glass {
+    height: 80%;
+    padding: 3rem 7rem;
+  }
+  .logo {
+  display:none !important;
+  }
+  }
+
+
 /* On screens that are 768px or more */
 @media screen and (min-width: 768px) {
   #main-container {
@@ -410,10 +422,9 @@ input::placeholder {
     width: 15vw;
     margin: 1rem auto 2rem;
   }
-  #sfx-control {
-    bottom: 2rem;
+
   }
-}
+
 
 /* On screens that are 1024px or more */
 @media screen and (min-width: 1024px) {
@@ -431,9 +442,7 @@ input::placeholder {
     width: 20vw;
     margin: 1rem auto 2rem;
   }
-  #sfx-control {
-    bottom: 2rem;
-  }
+  
 }
 
 /* On screens that are 1400px or more */
@@ -452,7 +461,5 @@ input::placeholder {
     width: 15vw;
     margin: 1rem auto 2rem;
   }
-  #sfx-control {
-    bottom: 2rem;
-  }
+  
 }
