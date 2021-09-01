@@ -265,6 +265,7 @@ font-weight: var(--fw-b);
   font-size: var(--fs-4);
   text-align: center;
   text-align-last: center;
+  -webkit-appearance: none;
   -moz-text-align-last: center;
   margin-top: 4rem;
 }
