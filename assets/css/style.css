@@ -263,7 +263,9 @@ font-weight: var(--fw-b);
 }
 .btn-difficulty {
   font-size: var(--fs-4);
+  text-align: center;
   text-align-last: center;
+  -moz-text-align-last: center;
   margin-top: 4rem;
 }
 
