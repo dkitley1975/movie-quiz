@@ -81,7 +81,7 @@ h6 {
   background-color: var(--clr-background);
   background-image: url(../images/background-img.jpg);
   background-size: cover;
-  overflow: hidden;  
+  overflow: hidden;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -108,8 +108,8 @@ h6 {
   border-bottom-left-radius: 1.8rem;
 }
 
-#sfx-control{
- position: absolute;
+#sfx-control {
+  position: absolute;
   bottom: 5px;
   z-index: 100;
 }
@@ -145,10 +145,10 @@ h6 {
   padding: 1rem;
   width: 100%;
   font-size: var(--fs-default);
-
 }
 
-.fa-volume-mute, .fa-volume-up{
+.fa-volume-mute,
+.fa-volume-up {
   color: var(--clr-primary-400);
   font-size: 2rem;
 }
@@ -209,7 +209,7 @@ h6 {
 .progress-main-text {
   text-align: center;
   color: #be5b8d;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .points-info {
@@ -217,13 +217,13 @@ h6 {
   text-align: center !important;
 }
 
-.points-information-scores{
-  margin-top: .5rem;
+.points-information-scores {
+  margin-top: 0.5rem;
   font-size: 90%;
   text-align: center !important;
 }
 
-#sfx-control{
+#sfx-control {
   position: absolute;
   bottom: 1vw;
   z-index: 100;
@@ -236,7 +236,6 @@ h6 {
 .question-text {
   font-size: var(--fs-default);
   font-weight: var(--fw-b);
-
 }
 /* BUTTONS */
 
@@ -257,7 +256,13 @@ h6 {
 
 .btn-difficulty {
   font-size: var(--fs-4);
-  text-align-last: center; 
+  text-align-last: center;
+  margin-top: 4rem;
+}
+
+.btn-exit-quiz {
+  font-size: var(--fs-4);
+  text-align-last: center;
   margin-top: 4rem;
 }
 
@@ -273,7 +278,6 @@ h6 {
   color: var(--clr-primary-000);
   margin-top: 0;
   font-size: var(--fs-default);
-
 }
 
 .play-buttons {
@@ -308,7 +312,7 @@ input {
   width: 80vw;
   max-width: 30rem;
   padding: 1rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   font-size: var(--fs-normal);
   border: none;
   box-shadow: 0 0.1rem 1.4rem 0 var(--clr-box-shadow);
@@ -377,66 +381,66 @@ input::placeholder {
 /* On screens that are 768px or more */
 @media screen and (min-width: 768px) {
   #main-container {
-  background-image: url(../images/background-img-768.jpg);
-  background-size: cover;
-  background-position: center;
-}
-.fa-volume-mute, .fa-volume-up{
-  font-size: 3rem;
-}
-.glass {
-  height: 80%;
-  width: 80%;
-  padding: 3rem 7rem;
-}
-.logo {
-  width: 15vw;
-  margin: 1rem auto 2rem;
-}
-#sfx-control{
-  bottom: 2rem;
-}
+    background-image: url(../images/background-img-768.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .fa-volume-mute,
+  .fa-volume-up {
+    font-size: 3rem;
+  }
+  .glass {
+    height: 80%;
+    width: 80%;
+    padding: 3rem 7rem;
+  }
+  .logo {
+    width: 15vw;
+    margin: 1rem auto 2rem;
+  }
+  #sfx-control {
+    bottom: 2rem;
+  }
 }
 
 /* On screens that are 1024px or more */
 @media screen and (min-width: 1024px) {
   #main-container {
-  background-image: url(../images/background-img-1024.jpg);
-  background-size: cover;
-  background-position: center;
+    background-image: url(../images/background-img-1024.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .glass {
+    height: 80%;
+    width: 75%;
+    padding: 6rem 12rem;
+  }
+  .logo {
+    width: 20vw;
+    margin: 1rem auto 2rem;
+  }
+  #sfx-control {
+    bottom: 2rem;
+  }
 }
-.glass {
-  height: 80%;
-  width: 75%;
-  padding: 6rem 12rem;
-}
-.logo {
-  width: 20vw;
-  margin: 1rem auto 2rem;
-}
-#sfx-control{
-  bottom: 2rem;
-}
-}
-
 
 /* On screens that are 1400px or more */
 @media screen and (min-width: 1400px) {
   #main-container {
-  background-image: url(../images/background-img-1400.jpg);
-  background-size: cover;
-  background-position: center;
-}
-.glass {
-  height: 80%;
-  width: 75%;
-  padding: 10rem 20rem;
-}
-.logo {
-  width: 15vw;
-  margin: 1rem auto 2rem;
-}
-#sfx-control{
-  bottom: 2rem;
-}
+    background-image: url(../images/background-img-1400.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .glass {
+    height: 80%;
+    width: 75%;
+    padding: 10rem 20rem;
+  }
+  .logo {
+    width: 15vw;
+    margin: 1rem auto 2rem;
+  }
+  #sfx-control {
+    bottom: 2rem;
+  }
 }
