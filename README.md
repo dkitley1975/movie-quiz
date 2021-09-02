@@ -4,13 +4,13 @@ NOTE to Self Testing section  NEEDS to be completed
 
 ![Responsive mock up](./docs/screenshots/screen-view-mockup-image.png)
 Welcome, this is my movie question site.
-The goal of the site is to provide a fun quiz game with 10 questions, with an option to choose a difficulty level which will vary the points per question. The questions are are pulled from the site [Open Trivia (API) Database](https://opentdb.com/api_config.php)
+The goal of the site is to provide a fun quiz game with 10 questions, with an option to choose a difficulty level which will vary the points per question. These questions are fetched from [Open Trivia (API) Database](https://opentdb.com/api_config.php)
 
 Thank you for visiting [my project!](https://dkitley1975.github.io/movie-quiz/)
 
 ## Project Overview
 
-This Movie Quiz is a website that aims to provide a fun challenge to the end user with a quiz. This site has been created as part of my Portfolio Project 2 for Code Institute.
+This Movie Quiz is a website that aims to provide a fun challenge to the end user with a quiz. This site has been created as part of my Portfolio Project 2 for Code Institute, the site is aimed to show my newly developing knowledge of JavaScript whilst continuing to develop my HTML and CSS.
 
 __Site User Goals:__
 
@@ -170,7 +170,6 @@ To run the project locally:
 - The icons for the audio mute and play are from [Font Awesome](https://fontawesome.com/)
 - The Correct and Incorrect SFX are from [My Instants](https://www.myinstants.com/)
 - Mock up graphic from [Am I Responsive](http://ami.responsivedesign.is/).
-
 
 ### Special Thanks
 
