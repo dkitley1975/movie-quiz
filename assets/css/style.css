@@ -40,7 +40,7 @@
 	--clr-primary-Green: rgb(51, 194, 97);
 	--clr-primary-Red: rgb(194, 68, 68);
 	--clr-hover: rgb(105, 201, 172);
-	--clr-box-shadow: rgba(250, 229, 114, 0.1);
+	--clr-box-shadow: rgba(110, 194, 181, 0.7);
 	--clr-button-background: rgb(255, 255, 255);
 }
 
@@ -53,6 +53,12 @@ body {
 	font-family: var(--ff-main);
 	font-size: var(--fs-default);
 	font-weight: var(--fw-n);
+	background-color: var(--clr-background);
+	background-image: url(../images/background-img.jpg);
+	background-size: cover;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 h1,
@@ -75,16 +81,11 @@ h6 {
 #main-container {
 	height: 90vh;
 	width: 90vw;
+	margin: 5vh 5vw;
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: var(--clr-background);
-	background-image: url(../images/background-img.jpg);
-	background-size: cover;
-	/* overflow: hidden; */
-	background-repeat: no-repeat;
-	background-position: center;
 }
 
 #progress {
@@ -153,17 +154,12 @@ h6 {
 .fa-volume-mute,
 .fa-volume-up {
 	color: var(--clr-primary-400);
-	font-size: 2rem;
+	font-size: var(--fs-5);
 }
 
 .flex-center {
 	justify-content: center;
 	align-items: center;
-}
-
-.flex-right {
-	justify-content: center;
-	text-align: right !important;
 }
 
 .flex-column {
@@ -175,15 +171,16 @@ h6 {
 	z-index: 99;
 	height: 90vh;
 	width: 90vw;
+	margin: auto;
 	background-color: rgba(255, 255, 255, 0.2);
 	-webkit-backdrop-filter: blur(15px);
 	backdrop-filter: blur(15px);	
-	position: absolute;
-	margin: 0 auto;
+	/* position: absolute;
+	margin: 0 auto; */
 	padding: 2rem 2rem;
 	border-radius: 2rem;
 	-webkit-box-shadow: 20px 20px 22px var(--clr-box-shadow);
-	box-shadow: 20px 20px 22px var(--clr-box-shadow);
+	box-shadow: 10px 10px 20px var(--clr-box-shadow);
 }
 
 .hidden {
@@ -202,7 +199,7 @@ h6 {
 
 .mute-text {
 	font-family: var(--ff-main);
-	font-size: var(--fs-h3);
+	font-size: var(--fs-5);
 	font-weight: var(--fw-b);
 }
 
@@ -417,11 +414,7 @@ input::placeholder {
 /* On screens that are 768px or more */
 
 @media screen and (min-width: 768px) {
-	#main-container {
-		background-image: url(../images/background-img-768.jpg);
-		background-size: cover;
-		background-position: center;
-	}
+	
 	.fa-volume-mute,
 	.fa-volume-up {
 		font-size: 3rem;
@@ -441,11 +434,7 @@ input::placeholder {
 /* On screens that are 1024px or more */
 
 @media screen and (min-width: 1024px) {
-	#main-container {
-		background-image: url(../images/background-img-1024.jpg);
-		background-size: cover;
-		background-position: center;
-	}
+	
 	.glass {
 		height: 80%;
 		width: 75%;
@@ -461,11 +450,7 @@ input::placeholder {
 /* On screens that are 1400px or more */
 
 @media screen and (min-width: 1400px) {
-	#main-container {
-		background-image: url(../images/background-img-1400.jpg);
-		background-size: cover;
-		background-position: center;
-	}
+	
 	.glass {
 		height: 80%;
 		width: 75%;
