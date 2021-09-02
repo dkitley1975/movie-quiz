@@ -21,7 +21,7 @@ const showExitGameOptions = document.getElementById('exit-quiz-options');
 //* Question and Answers
 const question = document.getElementById('question');
 const answers = Array.from(document.getElementsByClassName('answers-text'));
-const SetQtyOfQuestions = 10;
+const SetQtyOfQuestions = 2;
 //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API 
 const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 5);
 
@@ -161,8 +161,9 @@ window.onload = function () {
 
 		localStorage.setItem('highScores', JSON.stringify(letsAddSomeSampleHighScores));
 		console.log("adding some temp high scores")
-
 		localStorage.setItem("hasSampleScoresBeenAddedBefore", true);
+		console.log(highScores)
+
 	}
 }
 
