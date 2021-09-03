@@ -16,6 +16,10 @@
       <link rel="stylesheet" href="assets/css/style.css">
    </head>
    <body id="main-container">
+      <div id="height-to-small-to-play" class="justify-center flex-column glass text-center">
+         <h1>This Quiz is best played in portrait mode on smaller devices.</h1>
+         <h2>Please rotate your device to <br>continue with the quiz</h2>
+      </div>
       <div id="home-container" class="flex-center flex-column glass">
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <p class="points-info text-center">Please select a difficulty level before proceeding</p>
@@ -65,14 +69,14 @@
                   0
                </h2>
             </div>
+            <div id="sfx-control">
+               <div id="btn-mute" class="hidden"><i class="fas fa-volume-mute"> <span class="mute-text"> SFX</span> </i></div>
+               <div id="btn-unmute" class="hidden"><i class="fas fa-volume-up"> <span class="mute-text"> SFX</span></i></div>
+            </div>
          </div>
          <div id="exit-quiz-options" class="flex-column flex-center">
-            <button class="btn btn-exit-quiz" type="button">exit quiz</button>
+            <button class="btn btn-exit-quiz" type="button">Exit Quiz</button>
          </div>
-      </div>
-      <div id="sfx-control">
-         <div id="btn-mute" class="hidden"><i class="fas fa-volume-mute"> <span class="mute-text"> SFX</span> </i></div>
-         <div id="btn-unmute" class="hidden"><i class="fas fa-volume-up"> <span class="mute-text"> SFX</span></i></div>
       </div>
       <div id="user-final-score-container" class="flex-center flex-column glass hidden">
          <h1>High Scores</h1>
