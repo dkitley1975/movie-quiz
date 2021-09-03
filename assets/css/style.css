@@ -73,8 +73,23 @@ h6 {
 	font-weight: var(--fw-b);
 	color: var(--clr-primary-000);
 }
-#exit-quiz-container{
+
+#exit-quiz-container {
 	z-index: 101;
+}
+
+#height-to-small-to-play {
+	display: none;
+	padding: 3rem;
+	padding-top: 25vh;
+	padding-bottom: 25vh;
+}
+
+#height-to-small-to-play h2 {
+	font-family: var(--ff-main);
+	color: var(--clr-primary-400);
+	margin-top: 2rem;
+	line-height: 4rem;
 }
 
 #home-container h1 {
@@ -179,7 +194,7 @@ h6 {
 	margin: auto;
 	background-color: rgba(255, 255, 255, 0.2);
 	-webkit-backdrop-filter: blur(15px);
-	backdrop-filter: blur(15px);	
+	backdrop-filter: blur(15px);
 	position: absolute;
 	margin: 0 auto;
 	padding: 2rem 2rem;
@@ -276,9 +291,10 @@ h6 {
 }
 
 .btn-exit-quiz {
-	font-size: var(--fs-default);
-	text-align-last: center;
-	margin-top: 2rem;
+	font-size: var(--fs-5);
+	width: 10rem;
+	height: auto;
+	color: var(--clr-primary-200);
 }
 
 .exit-game-button {
@@ -406,53 +422,9 @@ input::placeholder {
 /* Media Queries */
 
 @media screen and (max-height: 450px) {
-	
-	#main-container {
-	height: 100vh;
-	width: 100vw;
-	overflow: scroll
-	}
-	.answers-container {
-		margin-top: .5rem;
-		margin-bottom: 0.5rem;
-		width: 90%;
-	}
-	.answers-prefix {
-	padding: .5rem;
-	background-color: var(--clr-primary-100);
-	font-size: var(--fs-h4);
-	}
-	.answers-text {
-		padding: .5rem;
-		width: 100%;
-		font-size: var(--fs-default);
-	}	
-	.glass {
-		height: 95vh;
-		width: 95vw;
-		margin: 2.5vh 2.5vw;
-		padding: 5vh 5vw;
-	}
-	.logo {
-		display: none !important;
-	}
-	.question-text {
-	font-size: var(--fs-h4);
-	font-weight: var(--fw-b);
-	margin-bottom: 1rem;
-	}
-	.progress-bar-rounded {
-		border-radius: 1.8rem;
-	}
-	.progress-prefix {
-		text-align: center;
-		font-size: var(--fs-h4);
-	}
-	.progress-main-text {
-		text-align: center;
-		color: #be5b8d;
-		margin-top: 0.5rem;
-		font-size: var(--fs-h4)
+	#height-to-small-to-play {
+		display: unset !important;
+		z-index: 110;
 	}
 }
 
@@ -460,7 +432,6 @@ input::placeholder {
 /* On screens that are 768px or more */
 
 @media screen and (min-width: 768px) {
-	
 	.fa-volume-mute,
 	.fa-volume-up {
 		font-size: 3rem;
@@ -474,13 +445,12 @@ input::placeholder {
 		width: 15vw;
 		margin: 1rem auto 2rem;
 	}
-} 
+}
 
 
 /* On screens that are 1024px or more */
 
 @media screen and (min-width: 1024px) {
-	
 	.glass {
 		height: 80%;
 		width: 75%;
@@ -496,7 +466,6 @@ input::placeholder {
 /* On screens that are 1400px or more */
 
 @media screen and (min-width: 1400px) {
-	
 	.glass {
 		height: 80%;
 		width: 75%;
