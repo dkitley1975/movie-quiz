@@ -1,73 +1,73 @@
 //* grab sites different containers for show/hiding
-const homeContainer = document.querySelector('#home-container');
-const quizContainer = document.querySelector('#quiz-container');
-const userFinalScoreContainer = document.querySelector('#user-final-score-container');
-const highScoresContainer = document.querySelector('#high-score-container');
-const exitQuizContainer = document.querySelector('#exit-quiz-container');
+const homeContainer = document.querySelector("#home-container");
+const quizContainer = document.querySelector("#quiz-container");
+const userFinalScoreContainer = document.querySelector("#user-final-score-container");
+const highScoresContainer = document.querySelector("#high-score-container");
+const exitQuizContainer = document.querySelector("#exit-quiz-container");
 
 
 //* grab the button elements for the event listeners
-const playButton = document.querySelector('#btn-play-game');
-const homeScreenButton = document.querySelector('#btn-view-home-screen');
-const returnHomeScreenButton = document.querySelector('#btn-return-to-home-screen');
-const viewHighScoresButton = document.querySelector('#btn-view-high-scores');
-const saveScoreBtn = document.getElementById('btn-save-score');
-const continuePlayingButton = document.querySelector('#btn-continue-playing');
-const exitGame = document.getElementById('btn-exit-game');
-const muteButton = document.getElementById('btn-mute');
-const unMuteButton = document.getElementById('btn-unmute');
-const showExitGameOptions = document.getElementById('exit-quiz-options');
+const playButton = document.querySelector("#btn-play-game");
+const homeScreenButton = document.querySelector("#btn-view-home-screen");
+const returnHomeScreenButton = document.querySelector("#btn-return-to-home-screen");
+const viewHighScoresButton = document.querySelector("#btn-view-high-scores");
+const saveScoreBtn = document.getElementById("btn-save-score");
+const continuePlayingButton = document.querySelector("#btn-continue-playing");
+const exitGame = document.getElementById("btn-exit-game");
+const muteButton = document.getElementById("btn-mute");
+const unMuteButton = document.getElementById("btn-unmute");
+const showExitGameOptions = document.getElementById("exit-quiz-options");
 
 //* Question and Answers
-const question = document.getElementById('question');
-const answers = Array.from(document.getElementsByClassName('answers-text'));
+const question = document.getElementById("question");
+const answers = Array.from(document.getElementsByClassName("answers-text"));
 const SetQtyOfQuestions = 2;
 //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API 
 const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 5);
 
 //* Scoring and scores
-const scoreText = document.querySelector('#score');
-const playerFinalScore = document.getElementById('playerFinalScore');
-const mostRecentScore = localStorage.getItem('mostRecentScore');
+const scoreText = document.querySelector("#score");
+const playerFinalScore = document.getElementById("playerFinalScore");
+const mostRecentScore = localStorage.getItem("mostRecentScore");
 
 const highScoresToShow = 8;
 
 
 //* Points for question difficulties - Remember to update home container points information if altering
-const pointsPerCorrectAnswerEasy = 1
-const pointsPerCorrectAnswerMedium = 1.5
-const pointsPerCorrectAnswerHard = 2
+const pointsPerCorrectAnswerEasy = 1;
+const pointsPerCorrectAnswerMedium = 1.5;
+const pointsPerCorrectAnswerHard = 2;
 
 //* Game Progress
-const progressText = document.getElementById('progressText');
-const progressBarFull = document.querySelector('#progressBarFull');
+const progressText = document.getElementById("progressText");
+const progressBarFull = document.querySelector("#progressBarFull");
 
 //*Sound Effects
 this.soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
-this.soundIncorrect = new Audio('assets/sounds/sound-incorrect.mp3');
+this.soundIncorrect = new Audio("assets/sounds/sound-incorrect.mp3");
 // amend volume to .2 volume.  Use this to mute later
-this.soundCorrect.volume = .2;
-this.soundIncorrect.volume = .2;
+this.soundCorrect.volume = 0.7;
+this.soundIncorrect.volume = 0.7;
 
 /** Function to mute the correct and incorrect SFX audio */
 function sfxMuted() {
 	soundCorrect.muted = true;
 	soundIncorrect.muted = true;
-	muteButton.classList.add('hidden');
-	unMuteButton.classList.remove('hidden');
+	muteButton.classList.add("hidden");
+	unMuteButton.classList.remove("hidden");
 }
 
 /** Function to un-mute the correct and incorrect SFX audio */
 function sfxPlay() {
 	soundCorrect.muted = false;
 	soundIncorrect.muted = false;
-	unMuteButton.classList.add('hidden');
-	muteButton.classList.remove('hidden');
+	unMuteButton.classList.add("hidden");
+	muteButton.classList.remove("hidden");
 }
 
-const loadingSpinner = document.querySelector('#loadingSpinner');
+const loadingSpinner = document.querySelector("#loadingSpinner");
 
-const username = document.getElementById('username');
+const username = document.getElementById("username");
 
 
 let currentQuestion = {};
@@ -81,7 +81,7 @@ let questions = [];
 
 /** Function to add the points information to the home screen. */
 function addPointsInformationToTheHomePage() {
-	let pointsInformation = document.getElementById('points-information');
+	let pointsInformation = document.getElementById("points-information");
 	let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per question, Medium - ${pointsPerCorrectAnswerMedium} points per question<br> and Hard - ${pointsPerCorrectAnswerHard} points per question`;
 	pointsInformation.innerHTML = pointsInformationText;
 }
@@ -94,43 +94,43 @@ let quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&categ
 
 //* function to hide the welcome page and show the quiz
 function showQuizContainer() {
-	homeContainer.classList.add('hidden');
-	quizContainer.classList.remove('hidden');
-	muteButton.classList.remove('hidden');
+	homeContainer.classList.add("hidden");
+	quizContainer.classList.remove("hidden");
+	muteButton.classList.remove("hidden");
 
 }
 
 //* function to return to the home screen
 function returnToHomeScreen() {
 	//* just in case some containers are visible this will add the hidden class to them
-	quizContainer.classList.add('hidden');
-	userFinalScoreContainer.classList.add('hidden');
-	highScoresContainer.classList.add('hidden');
-	muteButton.classList.add('hidden');
-	unMuteButton.classList.add('hidden');
-	exitQuizContainer.classList.add('hidden');
+	quizContainer.classList.add("hidden");
+	userFinalScoreContainer.classList.add("hidden");
+	highScoresContainer.classList.add("hidden");
+	muteButton.classList.add("hidden");
+	unMuteButton.classList.add("hidden");
+	exitQuizContainer.classList.add("hidden");
 
 	//* removes the hidden class from the home container
-	homeContainer.classList.remove('hidden');
+	homeContainer.classList.remove("hidden");
 }
 
 //* function to hide the welcome page and show the quiz
 function showExitQuizContainer() {
 	console.log("clicked exit game");
-	exitQuizContainer.classList.remove('hidden');
+	exitQuizContainer.classList.remove("hidden");
 
 }
 
 //* function Exit quiz Yes or No
 function closeExitOverlayScreen() {
-	console.log("chosen to continue playing game")
-	exitQuizContainer.classList.add('hidden');
+	console.log("chosen to continue playing game");
+	exitQuizContainer.classList.add("hidden");
 }
 
 
 /** function tThe statement checks if the one time function has NOT been executed before */
 window.onload = function () {
-	if (localStorage.getItem("hasSampleScoresBeenAddedBefore") === null) {
+	if (localStorage.getItem("hasSampleScoresBeenAddedBefore") == null) {
 
 		/** this is to add some sample high scores to local storage */
 		let letsAddSomeSampleHighScores = [{
@@ -159,23 +159,23 @@ window.onload = function () {
 			}
 		];
 
-		localStorage.setItem('highScores', JSON.stringify(letsAddSomeSampleHighScores));
-		console.log("adding some temp high scores")
-		localStorage.setItem("hasSampleScoresBeenAddedBefore", true);
-		console.log(highScores)
+		localStorage.setItem("highScores", JSON.stringify(letsAddSomeSampleHighScores));
+		console.log("adding some temp high scores"),
+		localStorage.setItem("hasSampleScoresBeenAddedBefore",true);
+		console.log(highScores);
 
 	}
-}
+};
 
 
 //* function to start the game
 const startQuiz = () => {
-	showQuizContainer()
+	showQuizContainer(),
 	questionCounter = 0;
 	score = 0;
 	availableQuestions = [...questions];
 	getNewQuestion();
-	loadingSpinner.classList.add('hidden');
+	loadingSpinner.classList.add("hidden");
 };
 
 /** function to set the correct points per question dependant on the user selected difficulty level
@@ -194,7 +194,7 @@ function pointsPerQuestion() {
 function updateQuizLevel() {
 	level = document.getElementById("selectLevelRef").value;
 	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=9&difficulty=${level}&type=multiple`;
-	pointsPerQuestion()
+	pointsPerQuestion();
 }
 
 /** Function to fetch the questions from an API using the user selected difficulty as the quiz level and map the question to an array */
@@ -216,7 +216,7 @@ fetch(quizUrl)
 			);
 
 			availableAnswers.forEach((answers, index) => {
-				formattedQuestion['answers' + (index + 1)] = answers;
+				formattedQuestion["answers" + (index + 1)] = answers;
 			});
 
 			return formattedQuestion;
@@ -231,17 +231,17 @@ fetch(quizUrl)
 function maxQuestionsReached() {
 	// checking if maximum availableQuestions has been reached and if so go to user final score page
 	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
-		localStorage.setItem('mostRecentScore', score);
-		quizContainer.classList.add('hidden');
-		userFinalScoreContainer.classList.remove('hidden');
-		muteButton.classList.add('hidden');
-		unMuteButton.classList.add('hidden');
+		localStorage.setItem("mostRecentScore", score);
+		quizContainer.classList.add("hidden");
+		userFinalScoreContainer.classList.remove("hidden");
+		muteButton.classList.add("hidden");
+		unMuteButton.classList.add("hidden");
 	}
 }
 
 /**  Function to sort the questions */
 getNewQuestion = () => {
-	maxQuestionsReached()
+	maxQuestionsReached();
 
 	questionCounter++;
 
@@ -250,7 +250,7 @@ getNewQuestion = () => {
 
 	progressBarFull.style.width = `${(questionCounter / SetQtyOfQuestions) * 100}%`;
 	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
-		progressBarFull.classList.add('progress-bar-rounded');
+		progressBarFull.classList.add("progress-bar-rounded");
 	}
 
 	//creates a random number between 1 and the qty of remaining questions and sets the current question to that question number
@@ -262,8 +262,8 @@ getNewQuestion = () => {
 
 	// gets the correct answer information from the set of questions
 	answers.forEach((answers) => {
-		const number = answers.dataset['number'];
-		answers.innerHTML = currentQuestion['answers' + number];
+		const number = answers.dataset.number;
+		answers.innerHTML = currentQuestion["answers" + number];
 	});
 	//removes the current question from the available questions list
 	availableQuestions.splice(questionIndex, 1);
@@ -273,17 +273,17 @@ getNewQuestion = () => {
 
 //*check which answer the user has chosen
 answers.forEach((answers) => {
-	answers.addEventListener('click', (e) => {
+	answers.addEventListener("click", (e) => {
 		if (!acceptingAnswers) return;
 
 		acceptingAnswers = false;
 		const selectedAnswers = e.target;
-		const selectedAnswer = selectedAnswers.dataset['number'];
+		const selectedAnswer = selectedAnswers.dataset.number;
 
 		//check if the user has selected the correct answer 
-		const classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+		const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 		//if  answer correct increase the user score
-		if (classToApply === 'correct') {
+		if (classToApply === "correct") {
 			incrementScore(pointsPerCorrectAnswer);
 			soundCorrect.play();
 		} else {
@@ -310,13 +310,13 @@ incrementScore = (num) => {
 
 
 //*event listener to allow user to click the save button once username entered
-username.addEventListener('keyup', () => {
+username.addEventListener("keyup", () => {
 	saveScoreBtn.disabled = !username.value;
 });
 
 
 //*function to save the high score
-const highScoresList = document.getElementById('high-scores-list');
+const highScoresList = document.getElementById("high-scores-list");
 
 saveHighScore = e => {
 	e.preventDefault();
@@ -334,13 +334,13 @@ saveHighScore = e => {
 
 	highScores.splice(highScoresToShow);
 
-	localStorage.setItem('highScores', JSON.stringify(highScores));
-	window.location.assign('index.html');
+	localStorage.setItem("highScores", JSON.stringify(highScores));
+	window.location.assign("index.html");
 };
 
 
 //*high scores added to the high score list if user saves the score
-let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 highScoresList.innerHTML = highScores
 	.map(score => {
 		return `<tr>
@@ -353,10 +353,10 @@ highScoresList.innerHTML = highScores
 
 //* function to show the high Scores
 function showHighScoresScreen() {
-	homeContainer.classList.add('hidden');
-	highScoresContainer.classList.remove('hidden');
-	const prevHighScoresList = document.getElementById('prev-high-scores-list');
-	highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+	homeContainer.classList.add("hidden");
+	highScoresContainer.classList.remove("hidden");
+	const prevHighScoresList = document.getElementById("prev-high-scores-list");
+	highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 	prevHighScoresList.innerHTML = highScores
 		.map(score => {
@@ -370,21 +370,21 @@ function showHighScoresScreen() {
 
 
 //* event listener to start the quiz game once clicked
-playButton.addEventListener('click', startQuiz);
+playButton.addEventListener("click", startQuiz);
 //* event listener to return to the home screen once clicked
-homeScreenButton.addEventListener('click', returnToHomeScreen);
-returnHomeScreenButton.addEventListener('click', returnToHomeScreen);
+homeScreenButton.addEventListener("click", returnToHomeScreen);
+returnHomeScreenButton.addEventListener("click", returnToHomeScreen);
 //* event listener to display the high scores once clicked
-viewHighScoresButton.addEventListener('click', showHighScoresScreen);
+viewHighScoresButton.addEventListener("click", showHighScoresScreen);
 //* event listener to mute the SFX once clicked
-muteButton.addEventListener('click', sfxMuted);
+muteButton.addEventListener("click", sfxMuted);
 //* event listener to un-mute the SFX once clicked
-unMuteButton.addEventListener('click', sfxPlay);
+unMuteButton.addEventListener("click", sfxPlay);
 //* event listener to un-mute the SFX once clicked
-showExitGameOptions.addEventListener('click', showExitQuizContainer);
+showExitGameOptions.addEventListener("click", showExitQuizContainer);
 
 
 //* event listener to Exit the quiz game and return home once clicked
-exitGame.addEventListener('click', returnToHomeScreen);
+exitGame.addEventListener("click", returnToHomeScreen);
 //* event listener to return to the game once clicked
-continuePlayingButton.addEventListener('click', closeExitOverlayScreen);
+continuePlayingButton.addEventListener("click", closeExitOverlayScreen);
