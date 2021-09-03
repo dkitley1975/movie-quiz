@@ -1,4 +1,3 @@
-localStorage.clear();
 //* grab sites different containers for show/hiding
 const homeContainer = document.querySelector("#home-container");
 const quizContainer = document.querySelector("#quiz-container");
@@ -32,6 +31,7 @@ const playerFinalScore = document.getElementById("playerFinalScore");
 const mostRecentScore = localStorage.getItem("mostRecentScore");
 const highScoresList = document.getElementById("high-scores-list");
 const endGameHighScoresList = document.getElementById("end-game-high-scores-list");
+const username = document.getElementById("username");
 
 
 const highScoresToShow = 8;
@@ -49,13 +49,14 @@ const pointsPerCorrectAnswerHard = 2;
 //* Game Progress
 const progressText = document.getElementById("progressText");
 const progressBarFull = document.querySelector("#progressBarFull");
+const loadingSpinner = document.querySelector("#loadingSpinner");
 
 //*Sound Effects
 this.soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
 this.soundIncorrect = new Audio("assets/sounds/sound-incorrect.mp3");
 // amend volume to .2 volume.  Use this to mute later
-this.soundCorrect.volume = 0.7;
-this.soundIncorrect.volume = 0.7;
+this.soundCorrect.volume = 0.3;
+this.soundIncorrect.volume = 0.3;
 
 //*event listener to allow user to click the save button once username entered
 username.addEventListener("keyup", () => saveScoreBtn.disabled = !username.value);
@@ -96,9 +97,7 @@ function sfxPlay() {
 	muteButton.classList.remove("hidden");
 }
 
-const loadingSpinner = document.querySelector("#loadingSpinner");
 
-const username = document.getElementById("username");
 
 
 let currentQuestion = {};
@@ -161,7 +160,7 @@ function closeExitOverlayScreen() {
 
 /** function tThe statement checks if the one time function has NOT been executed before */
 window.onload = function () {
-	if (localStorage.getItem("hasSampleScoresBeenAddedBefore") == null) {
+	if (localStorage.getItem("hasSampleScoresBeenAddedBefore") === null) {
 
 		/** this is to add some sample high scores to local storage */
 		let letsAddSomeSampleHighScores = [{
@@ -191,25 +190,13 @@ window.onload = function () {
 		];
 		localStorage.setItem("highScores", JSON.stringify(letsAddSomeSampleHighScores));
 		console.log("adding some temp high scores"),
-			localStorage.setItem("hasSampleScoresBeenAddedBefore", true);
+		localStorage.setItem("hasSampleScoresBeenAddedBefore", true),
 		highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 		console.log("these are the are the sample high scores ", highScores);
 
 	}
 };
 
-
-//* function to start the game
-const startQuiz = () => {
-	showQuizContainer(),
-		questionCounter = 0;
-	score = 0;
-	availableQuestions = [...questions];
-	getNewQuestion();
-	loadingSpinner.classList.add("hidden");
-
-	// addPreviousHighScoresToTheEndOfGameHighScoresList();
-};
 
 /** function to set the correct points per question dependant on the user selected difficulty level
  */
@@ -310,7 +297,7 @@ function maxQuestionsReached() {
 }
 
 /**  Function to sort the questions */
-getNewQuestion = () => {
+function getNewQuestion() {
 	maxQuestionsReached();
 
 	questionCounter++;
@@ -339,7 +326,15 @@ getNewQuestion = () => {
 	availableQuestions.splice(questionIndex, 1);
 	console.log("After this question these are the available questions ", availableQuestions);
 	acceptingAnswers = true;
-};
+}
+
+//** Function to update the users score */ 
+function incrementScore(num) {
+	score += num;
+	scoreText.innerText = score;
+	playerFinalScore.innerText = score;
+
+}
 
 //*check which answer the user has chosen
 answers.forEach((answers) => {
@@ -370,14 +365,6 @@ answers.forEach((answers) => {
 });
 
 
-//** Function to update the users score */ 
-incrementScore = (num) => {
-	score += num;
-	scoreText.innerText = score;
-	playerFinalScore.innerText = score;
-
-};
-
 //*function to save the high score
 saveHighScore = e => {
 	e.preventDefault();
@@ -386,7 +373,7 @@ saveHighScore = e => {
 		name: username.value
 	};
 	highScores.push(score);
-	highScoresTableSort();
+	// highScoresTableSort();
 	highScores.splice(highScoresToShow);
 	localStorage.setItem("highScores", JSON.stringify(highScores));
 	window.location.assign("index.html");
@@ -401,4 +388,14 @@ function showHighScoresScreen() {
 	highScoreScoresToList();
 	homeContainer.classList.add("hidden");
 	highScoresContainer.classList.remove("hidden");
+}
+
+//* function to start the game
+function startQuiz() {
+	showQuizContainer(),
+		questionCounter = 0;
+	score = 0;
+	availableQuestions = [...questions];
+	getNewQuestion();
+	loadingSpinner.classList.add("hidden");
 }
