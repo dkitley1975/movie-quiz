@@ -8,6 +8,24 @@ The goal of the site is to provide a fun quiz game with 10 questions, with an op
 
 Thank you for visiting [my project!](https://dkitley1975.github.io/movie-quiz/)
 
+- [Movie Questions](#movie-questions)
+  - [Project Overview](#project-overview)
+  - [Features](#features)
+  - [Typeface](#typeface)
+    - [Colours](#colours)
+    - [Features Left to Implement](#features-left-to-implement)
+  - [Testing](#testing)
+    - [Chrome Lighthouse Report](#chrome-lighthouse-report)
+    - [Silk Tide](#silk-tide)
+    - [Validator Testing](#validator-testing)
+    - [Unfixed Bugs](#unfixed-bugs)
+  - [Deployment](#deployment)
+  - [Credits](#credits)
+    - [Media](#media)
+    - [Special Thanks](#special-thanks)
+
+[Table of contents was generated with markdown-toc](http://ecotrust-canada.github.io/markdown-toc/')
+
 ## Project Overview
 
 This Movie Quiz is a website that aims to provide a fun challenge to the end user with a quiz. This site has been created as part of my Portfolio Project 2 for Code Institute, the site is aimed to show my newly developing knowledge of JavaScript whilst continuing to develop my HTML and CSS.
@@ -108,7 +126,7 @@ I based my color scheme on a pallet devised around the primary red and green col
 - C24444 This color is the Red I chose to indicate an incorrect answer within the quiz.
 - 6EC2B5 is a pale Bue/Green which goes well with the background image.
 - 78A5C2 is a Blue which goes well with the background colour and contrasts well against the Red and Green.
-- BE5B8D is a dark Pink which stands out well aginst the other colours but compliments them all well, this colour is used as the logo colour and progress bar and current score.
+- BE5B8D is a dark Pink which stands out well against the other colours but compliments them all well, this colour is used as the logo colour and progress bar and current score.
 - The main colour of my text is to be black.
 
 I have used to contract checker on Coolors in order to make sure that the contract is sufficient.
