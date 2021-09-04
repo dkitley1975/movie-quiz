@@ -135,27 +135,27 @@ window.onload = function () {
 		localStorage.clear();
 		/** this is to add some sample high scores to local storage */
 		let letsAddSomeSampleHighScores = [{
-				"score": "18",
+				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerHard) + 1)) * pointsPerCorrectAnswerHard),
 				"name": "Ms PacMan"
 			},
 			{
-				"score": "16",
+				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerHard) + 1)) * pointsPerCorrectAnswerHard),
 				"name": "Gandalf"
 			},
 			{
-				"score": "12",
+				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerMedium) + 1)) * pointsPerCorrectAnswerMedium),
 				"name": "ALF"
 			},
 			{
-				"score": "8",
+				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerMedium) + 1)) * pointsPerCorrectAnswerMedium),
 				"name": "Kermit"
 			},
 			{
-				"score": "6", 
+				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerEasy) + 1)) * pointsPerCorrectAnswerEasy),
 				"name": "Miss Piggy"
 			},
 			{
-				"score": "1",
+				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerEasy) + 1)) * pointsPerCorrectAnswerEasy),
 				"name": "Papa Smurf"
 			}
 		];
