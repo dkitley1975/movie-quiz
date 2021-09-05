@@ -1,8 +1,3 @@
-//* temp
-//* const hamburger = document.querySelector(".hamburger");
-//* hamburger.addEventListener("click", runthisfunction);
-
-
 //* grab sites different containers for show/hiding
 const homeContainer = document.querySelector("#home-container");
 const quizContainer = document.querySelector("#quiz-container");
@@ -28,7 +23,7 @@ const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerMedium = 1.5; //* points for medium questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
 let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //default value for easy - 
-const SetQtyOfQuestions = 3; //* amount of questions for the quiz
+const SetQtyOfQuestions = 10; //* amount of questions for the quiz
 const highScoresToShow = 8; //* amount of high scores to shw in high score list
 const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 5); //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API 
 
@@ -277,7 +272,7 @@ getNewQuestion = () => {
 	}
 
 	//creates a random number between 1 and the qty of remaining questions and sets the current question to that question number
-	const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+	const questionIndex = Math.floor(Math.random() * (qtyOfQuestionsToFetch - (questionCounter - 1 )));
 	currentQuestion = availableQuestions[questionIndex];
 
 	// adds current question to the Question section 
