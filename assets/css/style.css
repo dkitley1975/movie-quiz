@@ -53,14 +53,10 @@ body {
   font-family: var(--ff-main);
   font-size: var(--fs-default);
   font-weight: var(--fw-n);
-  width: 100vw;
-  height: 100vh;
   background-color: var(--clr-background);
-  background-image: url(../images/background-img.jpg);
-  background-size: cover;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-position: center;
+
+  /* overflow: hidden; */
+
 }
 
 h1,
@@ -84,7 +80,7 @@ form {
 
 input {
   margin-bottom: 1rem;
-  width: 80vw;
+  width: 60vw;
   max-width: 30rem;
   padding: 1rem;
   margin-top: 0.5rem;
@@ -148,13 +144,10 @@ input::placeholder {
 }
 
 #main-container {
-  height: 90vh;
-  width: 90vw;
-  margin: 5vh 5vw;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 10vh 10vw;
+  position: absolute;
 }
 
 #progress {
@@ -184,6 +177,15 @@ input::placeholder {
   bottom: 1rem;
   right: 1rem;
   z-index: 100;
+}
+
+.add-background-image {
+  background: url(../images/background-img.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  height: 100%;  
+  background-size: cover;
 }
 
 .answers-container {
@@ -230,20 +232,26 @@ input::placeholder {
   font-size: var(--fs-5);
 }
 
+.flex {
+display: -webkit-flex;
+display: flex;
+}
+
 .flex-center {
-  justify-content: center;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 
 .flex-column {
-  display: flex;
   flex-direction: column;
 }
 
 .glass {
   z-index: 99;
-  height: 90vh;
-  width: 90vw;
+  height: 80vh;
+  width: 80vw;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.2);
   -webkit-backdrop-filter: blur(15px);
@@ -347,7 +355,7 @@ input::placeholder {
   -webkit-appearance: none;
   font-size: 1.8rem;
   padding: 1rem 0;
-  width: 80vw;
+  width: 60vw;
   max-width: 30rem;
   text-align: center;
   border: 0.1rem solid var(--clr-primary-300);
@@ -374,7 +382,7 @@ input::placeholder {
 
 .btn-exit-quiz {
   font-size: var(--fs-5);
-  width: 10rem;
+  width: 15rem;
   height: auto;
   color: var(--clr-primary-200);
 }
@@ -417,7 +425,6 @@ input::placeholder {
   transform: none;
 }
 
-/* FORMS and list*/
 
 /* Media Queries */
 
