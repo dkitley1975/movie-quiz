@@ -140,32 +140,32 @@ function closeExitOverlayScreen() {
 }
 
 
-/** function tThe statement checks if the one time function has NOT been executed before */
+/** function to add sample points to the session storage, The first statement checks if the one time function has NOT been executed before */
 window.onload = function () {
 	if (sessionStorage.getItem("hasSampleScoresBeenAddedBefore") == null) {
 		/** this is to add some sample high scores to local storage */
 		let letsAddSomeSampleHighScores = [{
-				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerHard) + 1)) * pointsPerCorrectAnswerHard),
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerHard,
 				"name": "Ms PacMan"
 			},
 			{
-				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerHard) + 1)) * pointsPerCorrectAnswerHard),
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerHard,
 				"name": "Gandalf"
 			},
 			{
-				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerMedium) + 1)) * pointsPerCorrectAnswerMedium),
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerMedium,
 				"name": "ALF"
 			},
 			{
-				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerMedium) + 1)) * pointsPerCorrectAnswerMedium),
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerMedium,
 				"name": "Kermit"
 			},
 			{
-				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerEasy) + 1)) * pointsPerCorrectAnswerEasy),
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerEasy,
 				"name": "Miss Piggy"
 			},
 			{
-				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerEasy) + 1)) * pointsPerCorrectAnswerEasy),
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerEasy,
 				"name": "Papa Smurf"
 			}
 		];
@@ -174,6 +174,8 @@ window.onload = function () {
 		sessionStorage.setItem("hasSampleScoresBeenAddedBefore", true);
 		highScoresRetrieveAndSort();
 	}
+
+
 };
 
 //* function to start the game
@@ -212,6 +214,7 @@ function updateQuizLevel() {
 	level = document.getElementById("selectLevelRef").value;
 	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=9&difficulty=${level}&type=multiple`;
 	pointsPerQuestion();
+	sessionStorage.setItem("API-URL", quizUrl);
 }
 
 /** Function to fetch the questions from an API using the user selected difficulty as the quiz level and map the question to an array */
@@ -273,7 +276,6 @@ getNewQuestion = () => {
 
 	//creates a random number between 1 and the qty of remaining questions and sets the current question to that question number
 	const questionIndex = Math.floor(Math.random() * (qtyOfQuestionsToFetch - (questionCounter - 1 )));
-	console.log("fetching question ",questionIndex, "of ",availableQuestions.length), " available in current question list";
 	currentQuestion = availableQuestions[questionIndex];
 
 	// adds current question to the Question section 
