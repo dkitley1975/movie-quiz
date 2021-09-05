@@ -273,6 +273,7 @@ getNewQuestion = () => {
 
 	//creates a random number between 1 and the qty of remaining questions and sets the current question to that question number
 	const questionIndex = Math.floor(Math.random() * (qtyOfQuestionsToFetch - (questionCounter - 1 )));
+	console.log("fetching question ",questionIndex, "of ",availableQuestions.length), " available in current question list";
 	currentQuestion = availableQuestions[questionIndex];
 
 	// adds current question to the Question section 
