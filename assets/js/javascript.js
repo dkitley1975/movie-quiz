@@ -1,3 +1,8 @@
+//* temp
+//* const hamburger = document.querySelector(".hamburger");
+//* hamburger.addEventListener("click", runthisfunction);
+
+
 //* grab sites different containers for show/hiding
 const homeContainer = document.querySelector("#home-container");
 const quizContainer = document.querySelector("#quiz-container");
@@ -18,34 +23,36 @@ const muteButton = document.getElementById("btn-mute");
 const unMuteButton = document.getElementById("btn-unmute");
 const showExitGameOptions = document.getElementById("exit-quiz-options");
 
+//* Alter this set of variables for Quiz game play
+const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
+const pointsPerCorrectAnswerMedium = 1.5; //* points for medium questions
+const pointsPerCorrectAnswerHard = 2; //* points for hard questions
+let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //default value for easy - 
+const SetQtyOfQuestions = 3; //* amount of questions for the quiz
+const highScoresToShow = 8; //* amount of high scores to shw in high score list
+const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 5); //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API 
+
+
+
+
 //* Question and Answers
 const question = document.getElementById("question");
 const answers = Array.from(document.getElementsByClassName("answers-text"));
-const SetQtyOfQuestions = 10;
 
-//* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API 
-const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 5);
+
 
 //* Scoring and scores
 const scoreText = document.querySelector("#score");
 const playerFinalScore = document.getElementById("playerFinalScore");
-const mostRecentScore = localStorage.getItem("mostRecentScore");
+const mostRecentScore = sessionStorage.getItem("mostRecentScore");
 const username = document.getElementById("username");
 
 
-const highScoresToShow = 8;
 let highScores = [];
 const highScoresList = document.querySelector(".highScoresList");
 const endGameHighScoresList = document.querySelector(".endGameHighScoresList");
 
-
 const loadingSpinner = document.querySelector("#loadingSpinner");
-
-//* Points for question difficulties - Remember to update home container points information if altering
-const pointsPerCorrectAnswerEasy = 1;
-const pointsPerCorrectAnswerMedium = 1.5;
-const pointsPerCorrectAnswerHard = 2;
-let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //default value for easy - 
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -58,13 +65,22 @@ let questions = [];
 const progressText = document.getElementById("progressText");
 const progressBarFull = document.querySelector("#progressBarFull");
 
-
 //*Sound Effects
 this.soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
 this.soundIncorrect = new Audio("assets/sounds/sound-incorrect.mp3");
-// amend volume to .2 volume.  Use this to mute later
-this.soundCorrect.volume = 0.7;
-this.soundIncorrect.volume = 0.7;
+this.soundCorrect.volume = 0.5;
+this.soundIncorrect.volume = 0.5;
+
+//* event listeners
+homeScreenButton.addEventListener("click", returnToHomeScreen);
+returnHomeScreenButton.addEventListener("click", returnToHomeScreen);
+viewHighScoresButton.addEventListener("click", showHighScoresScreen);
+muteButton.addEventListener("click", sfxMuted);
+unMuteButton.addEventListener("click", sfxPlay);
+showExitGameOptions.addEventListener("click", showExitQuizContainer);
+exitGame.addEventListener("click", returnToHomeScreen);
+continuePlayingButton.addEventListener("click", closeExitOverlayScreen);
+playButton.addEventListener("click", startQuiz);
 
 /** Function to mute the correct and incorrect SFX audio */
 function sfxMuted() {
@@ -131,8 +147,7 @@ function closeExitOverlayScreen() {
 
 /** function tThe statement checks if the one time function has NOT been executed before */
 window.onload = function () {
-	if (localStorage.getItem("hasSampleScoresBeenAddedBefore") == null) {
-		localStorage.clear();
+	if (sessionStorage.getItem("hasSampleScoresBeenAddedBefore") == null) {
 		/** this is to add some sample high scores to local storage */
 		let letsAddSomeSampleHighScores = [{
 				"score": Math.floor(Math.random() * (((SetQtyOfQuestions * pointsPerCorrectAnswerHard) + 1)) * pointsPerCorrectAnswerHard),
@@ -160,22 +175,22 @@ window.onload = function () {
 			}
 		];
 
-		localStorage.setItem("highScores", JSON.stringify(letsAddSomeSampleHighScores));
-		localStorage.setItem("hasSampleScoresBeenAddedBefore", true);
+		sessionStorage.setItem("highScores", JSON.stringify(letsAddSomeSampleHighScores));
+		sessionStorage.setItem("hasSampleScoresBeenAddedBefore", true);
 		highScoresRetrieveAndSort();
 	}
 };
 
-
 //* function to start the game
-const startQuiz = () => {
-	showQuizContainer(),
-		questionCounter = 0;
+ function startQuiz(){
+	showQuizContainer();
+	questionCounter = 0;
 	score = 0;
 	availableQuestions = [...questions];
 	getNewQuestion();
 	loadingSpinner.classList.add("hidden");
-};
+}
+
 
 /** function to set the correct points per question dependant on the user selected difficulty level
  */
@@ -191,7 +206,7 @@ function pointsPerQuestion() {
 
 /** function to sort the high scores numerically */
 function highScoresRetrieveAndSort() {
-	highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+	highScores = JSON.parse(sessionStorage.getItem("highScores")) || [];
 	highScores.sort((a, b) => {
 		return b.score - a.score;
 	});
@@ -238,7 +253,7 @@ fetch(quizUrl)
 function maxQuestionsReached() {
 	// checking if maximum availableQuestions has been reached and if so go to user final score page
 	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
-		localStorage.setItem("mostRecentScore", score);
+		sessionStorage.setItem("mostRecentScore", score);
 		endGameHighScores();
 		quizContainer.classList.add("hidden");
 		userFinalScoreContainer.classList.remove("hidden");
@@ -308,8 +323,8 @@ answers.forEach((answers) => {
 
 
 //** Function to update the users score */ 
-incrementScore = (num) => {
-	score += num;
+incrementScore = (questionPointsValue) => {
+	score += questionPointsValue;
 	scoreText.innerText = score;
 	playerFinalScore.innerText = score;
 
@@ -321,11 +336,12 @@ username.addEventListener("keyup", () => {
 	saveScoreBtn.disabled = !username.value;
 });
 
-
+const saveHighScore = document.querySelector("#btn-save-score");
+saveHighScore.addEventListener("click", saveTheHighScore);
 //*function to save the high score
-
-saveHighScore = (e) => {
-	e.preventDefault();
+function saveTheHighScore(submit) {
+	
+	submit.preventDefault();
 
 	const score = {
 		score: playerFinalScore.innerText,
@@ -335,9 +351,9 @@ saveHighScore = (e) => {
 	highScores.sort((a, b) => b.score - a.score);
 	highScores.splice(highScoresToShow);
 
-	localStorage.setItem("highScores", JSON.stringify(highScores));
+	sessionStorage.setItem("highScores", JSON.stringify(highScores));
 	window.location.assign("index.html");
-};
+}
 
 
 //*high scores added to the high score list if user saves the score
@@ -365,13 +381,3 @@ function showHighScoresScreen() {
 		.join("");
 }
 
-//* event listeners
-playButton.addEventListener("click", startQuiz);
-homeScreenButton.addEventListener("click", returnToHomeScreen);
-returnHomeScreenButton.addEventListener("click", returnToHomeScreen);
-viewHighScoresButton.addEventListener("click", showHighScoresScreen);
-muteButton.addEventListener("click", sfxMuted);
-unMuteButton.addEventListener("click", sfxPlay);
-showExitGameOptions.addEventListener("click", showExitQuizContainer);
-exitGame.addEventListener("click", returnToHomeScreen);
-continuePlayingButton.addEventListener("click", closeExitOverlayScreen);
