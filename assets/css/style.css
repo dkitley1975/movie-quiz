@@ -438,6 +438,10 @@ display: flex;
 /* On screens that are 768px or more */
 
 @media screen and (min-width: 768px) {
+  .add-background-image {
+  background: url(../images/background-img-768.jpg) no-repeat center center fixed; 
+}
+
   .fa-volume-mute,
   .fa-volume-up {
     font-size: 3rem;
@@ -456,6 +460,9 @@ display: flex;
 /* On screens that are 1024px or more */
 
 @media screen and (min-width: 1024px) {
+  .add-background-image {
+  background: url(../images/background-img-1024.jpg) no-repeat center center fixed; 
+}
   .glass {
     height: 80%;
     width: 75%;
@@ -470,6 +477,9 @@ display: flex;
 /* On screens that are 1400px or more */
 
 @media screen and (min-width: 1400px) {
+  .add-background-image {
+  background: url(../images/background-img-1400.jpg) no-repeat center center fixed; 
+}
   .glass {
     height: 80%;
     width: 75%;
