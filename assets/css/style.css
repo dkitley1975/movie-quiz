@@ -144,6 +144,9 @@ input::placeholder {
 	line-height: 3rem;
 }
 
+#high-score-container h1 {
+	margin:1rem 0;
+}
 #home-container h1 {
 	font-size: 400%;
 	margin-bottom: 1rem;
