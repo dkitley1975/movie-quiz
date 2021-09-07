@@ -139,7 +139,6 @@ function returnToHomeScreen() {
 	muteButton.classList.add("hidden");
 	unMuteButton.classList.add("hidden");
 	exitQuizContainer.classList.add("hidden");
-	
 
 
 	//* removes the hidden class from the home container
@@ -195,7 +194,6 @@ window.onload = function () {
 
 
 };
-
 
 
 //* function to start the game and any previous scores 
@@ -370,7 +368,7 @@ function saveTheHighScore(submit) {
 
 	sessionStorage.setItem("highScores", JSON.stringify(highScores));
 	window.location.assign("index.html");
-	
+
 }
 
 //*high scores added to the high score list if user saves the score
