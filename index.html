@@ -36,8 +36,8 @@
        
       <div id="quiz-container" class="justify-space-around flex flex-column glass hidden">
          <div id="sfx-control">
-               <div id="btn-mute" class="hidden"><i class="fas fa-volume-mute"> <span class="mute-text"> SFX</span> </i></div>
-               <div id="btn-unmute" class="hidden"><i class="fas fa-volume-up"> <span class="mute-text"> SFX</span></i></div>
+               <div id="btn-mute" class="hidden"><i class="fas fa-volume-up"></i></div>
+               <div id="btn-unmute" class="hidden"><i class="fas fa-volume-mute"></i></div>
             </div>
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <div id="loadingSpinner"></div>
@@ -71,9 +71,7 @@
                <p class="progress-prefix">
                   Score
                </p>
-               <h2 class="progress-main-text" id="score">
-                  0
-               </h2>
+               <h2 class="progress-main-text" id="score"></h2>
             </div>
          </div>
             
@@ -86,23 +84,20 @@
          </div>
       
 
-
-
       <div id="user-final-score-container" class="flex-center flex flex-column glass hidden">
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <h1>High Scores</h1>
          <div id="high-scores-lists">
             <ul class="endGameHighScoresList high-scores-lists"></ul>
          </div>
-         <h3>You Scored</h3>
-         <h3 id="playerFinalScore">0</h3>
+         <h3 id="playerFinalScore"></h3>
          <form>
             <input type="text" name="username" id="username" placeholder="username" />
             <button type="submit" class="btn" id="btn-save-score" disabled>
             Save & Play Again
             </button>
          </form>
-         <button id="btn-view-home-screen" class="btn">Don't Save & Play Again</button>
+         <button id="btn-view-home-screen" class="exit-reset-game-btn btn">Don't Save & Play Again</button>
       </div>
       <div id="high-score-container" class="flex-center flex flex-column glass hidden">
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
