@@ -23,7 +23,7 @@ const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerMedium = 1.5; //* points for medium questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
 let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //default value for easy - 
-const SetQtyOfQuestions = 3; //* amount of questions for the quiz
+const SetQtyOfQuestions = 10; //* amount of questions for the quiz
 const highScoresToShow = 8; //* amount of high scores to shw in high score list
 const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 5); //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API 
 
