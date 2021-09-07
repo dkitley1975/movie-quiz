@@ -12,12 +12,12 @@
       <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
       <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
       <link rel="manifest" href="assets/favicon/site.webmanifest">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" >
       <link rel="stylesheet" href="assets/css/style.css">
       <meta name="theme-color" content="#6ec2b5"/>
    </head>
    <body id="main-container" class="add-background-image">
-      <div id="height-to-small-to-play" class="justify-center flex flex-column glass text-center">
+            <div id="height-to-small-to-play" class="justify-center flex flex-column glass text-center">
          <h1>This Quiz is best played in portrait mode on smaller devices.</h1>
          <h2>Please rotate your device to <br>continue with the quiz</h2>
       </div>
@@ -33,7 +33,12 @@
          <button id="btn-play-game" class="btn">Play</button>
          <button id="btn-view-high-scores" class="btn">High Scores</button>
       </div>
-      <div id="quiz-container" class="justify-center flex flex-column glass hidden">
+       
+      <div id="quiz-container" class="justify-space-around flex flex-column glass hidden">
+         <div id="sfx-control">
+               <div id="btn-mute" class="hidden"><i class="fas fa-volume-mute"> <span class="mute-text"> SFX</span> </i></div>
+               <div id="btn-unmute" class="hidden"><i class="fas fa-volume-up"> <span class="mute-text"> SFX</span></i></div>
+            </div>
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <div id="loadingSpinner"></div>
          <h2 id="question" class="question-text"></h2>
@@ -70,15 +75,19 @@
                   0
                </h2>
             </div>
-            <div id="sfx-control">
-               <div id="btn-mute" class="hidden"><i class="fas fa-volume-mute"> <span class="mute-text"> SFX</span> </i></div>
-               <div id="btn-unmute" class="hidden"><i class="fas fa-volume-up"> <span class="mute-text"> SFX</span></i></div>
-            </div>
          </div>
-         <div id="exit-quiz-options" class="flex flex-column flex-center">
+            
+        <div id="exit-quiz-options" class="flex flex-column flex-center">
             <button class="btn btn-exit-quiz" type="button">Exit Quiz</button>
+             
          </div>
       </div>
+   
+         </div>
+      
+
+
+
       <div id="user-final-score-container" class="flex-center flex flex-column glass hidden">
          <h1>High Scores</h1>
          <div id="high-scores-lists">
