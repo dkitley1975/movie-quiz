@@ -23,17 +23,14 @@ const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerMedium = 1.5; //* points for medium questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
 let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //default value for easy - 
-const SetQtyOfQuestions = 10; //* amount of questions for the quiz
+const SetQtyOfQuestions = 3; //* amount of questions for the quiz
 const highScoresToShow = 8; //* amount of high scores to shw in high score list
 const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 5); //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API 
-
-
 
 
 //* Question and Answers
 const question = document.getElementById("question");
 const answers = Array.from(document.getElementsByClassName("answers-text"));
-
 
 
 //* Scoring and scores
@@ -70,27 +67,46 @@ soundIncorrect.volume = 0.4;
 homeScreenButton.addEventListener("click", returnToHomeScreen);
 returnHomeScreenButton.addEventListener("click", returnToHomeScreen);
 viewHighScoresButton.addEventListener("click", showHighScoresScreen);
-muteButton.addEventListener("click", sfxMuted);
-unMuteButton.addEventListener("click", sfxPlay);
+muteButton.addEventListener("click", sounds);
+unMuteButton.addEventListener("click", sounds);
 showExitGameOptions.addEventListener("click", showExitQuizContainer);
 exitGame.addEventListener("click", returnToHomeScreen);
 continuePlayingButton.addEventListener("click", closeExitOverlayScreen);
+
 playButton.addEventListener("click", startQuiz);
 
-/** Function to mute the correct and incorrect SFX audio */
-function sfxMuted() {
-	soundCorrect.muted = true;
-	soundIncorrect.muted = true;
-	muteButton.classList.add("hidden");
-	unMuteButton.classList.remove("hidden");
+//* This function removes the items from the session storage on refresh
+window.location.reload = function () {
+	sessionStorage.removeItem('hasSampleScoresBeenAddedBefore');
+	sessionStorage.removeItem('highScores');
+	sessionStorage.removeItem('sounds');
+};
+
+//* gets and add the session storage altering the key(sounds) from mute to play
+function sounds() {
+	if (sessionStorage.getItem("sounds") == undefined) {
+		sessionStorage.setItem("sounds", "mute");
+	} else if (sessionStorage.getItem("sounds") == "mute") {
+		sessionStorage.setItem("sounds", "play");
+	} else {
+		sessionStorage.setItem("sounds", "mute");
+	}
+	sfxMuteOrPlay();
 }
 
-/** Function to un-mute the correct and incorrect SFX audio */
-function sfxPlay() {
-	soundCorrect.muted = false;
-	soundIncorrect.muted = false;
-	unMuteButton.classList.add("hidden");
-	muteButton.classList.remove("hidden");
+//* alternates the SFX button and mutes/plays the SFX accordingly
+function sfxMuteOrPlay() {
+	if (sessionStorage.getItem("sounds") == "mute") {
+		soundCorrect.muted = true;
+		soundIncorrect.muted = true;
+		muteButton.classList.add("hidden");
+		unMuteButton.classList.remove("hidden");
+	} else {
+		soundCorrect.muted = false;
+		soundIncorrect.muted = false;
+		unMuteButton.classList.add("hidden");
+		muteButton.classList.remove("hidden");
+	}
 }
 
 /** Function to add the points information to the home screen. */
@@ -123,6 +139,8 @@ function returnToHomeScreen() {
 	muteButton.classList.add("hidden");
 	unMuteButton.classList.add("hidden");
 	exitQuizContainer.classList.add("hidden");
+	
+
 
 	//* removes the hidden class from the home container
 	homeContainer.classList.remove("hidden");
@@ -145,27 +163,27 @@ window.onload = function () {
 	if (sessionStorage.getItem("hasSampleScoresBeenAddedBefore") == null) {
 		/** this is to add some sample high scores to local storage */
 		let letsAddSomeSampleHighScores = [{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerHard,
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerHard,
 				"name": "Ms PacMan"
 			},
 			{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerHard,
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerHard,
 				"name": "Gandalf"
 			},
 			{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerMedium,
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerMedium,
 				"name": "ALF"
 			},
 			{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerMedium,
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerMedium,
 				"name": "Kermit"
 			},
 			{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerEasy,
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerEasy,
 				"name": "Miss Piggy"
 			},
 			{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions+1))*pointsPerCorrectAnswerEasy,
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerEasy,
 				"name": "Papa Smurf"
 			}
 		];
@@ -178,11 +196,17 @@ window.onload = function () {
 
 };
 
-//* function to start the game
- function startQuiz(){
-	showQuizContainer();
-	questionCounter = 0;
+
+
+//* function to start the game and any previous scores 
+function startQuiz() {
+	scoreText.innerText = 0;
 	score = 0;
+	playerFinalScore.innerText = `You scored ${score}`;
+	progressBarFull.classList.remove("progress-bar-rounded");
+	questionCounter = 0;
+	showQuizContainer();
+	sfxMuteOrPlay();
 	availableQuestions = [...questions];
 	getNewQuestion();
 	loadingSpinner.classList.add("hidden");
@@ -272,7 +296,7 @@ getNewQuestion = () => {
 	}
 
 	//creates a random number between 1 and the qty of remaining questions and sets the current question to that question number
-	const questionIndex = Math.floor(Math.random() * (qtyOfQuestionsToFetch - (questionCounter - 1 )));
+	const questionIndex = Math.floor(Math.random() * (qtyOfQuestionsToFetch - (questionCounter - 1)));
 	currentQuestion = availableQuestions[questionIndex];
 
 	// adds current question to the Question section 
@@ -321,10 +345,8 @@ answers.forEach((answers) => {
 incrementScore = (questionPointsValue) => {
 	score += questionPointsValue;
 	scoreText.innerText = score;
-	playerFinalScore.innerText = score;
-
+	playerFinalScore.innerText = `You scored ${score}`;
 };
-
 
 //*event listener to allow user to click the save button once username entered
 username.addEventListener("keyup", () => {
@@ -335,11 +357,11 @@ const saveHighScore = document.querySelector("#btn-save-score");
 saveHighScore.addEventListener("click", saveTheHighScore);
 //*function to save the high score
 function saveTheHighScore(submit) {
-	
+
 	submit.preventDefault();
 
-	const score = {
-		score: playerFinalScore.innerText,
+	score = {
+		score: score,
 		name: username.value
 	};
 	highScores.push(score);
@@ -348,8 +370,8 @@ function saveTheHighScore(submit) {
 
 	sessionStorage.setItem("highScores", JSON.stringify(highScores));
 	window.location.assign("index.html");
+	
 }
-
 
 //*high scores added to the high score list if user saves the score
 function endGameHighScores() {
@@ -375,4 +397,3 @@ function showHighScoresScreen() {
 		})
 		.join("");
 }
-
