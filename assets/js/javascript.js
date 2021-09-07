@@ -61,10 +61,10 @@ const progressText = document.getElementById("progressText");
 const progressBarFull = document.querySelector("#progressBarFull");
 
 //*Sound Effects
-this.soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
-this.soundIncorrect = new Audio("assets/sounds/sound-incorrect.mp3");
-this.soundCorrect.volume = 0.5;
-this.soundIncorrect.volume = 0.5;
+const soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
+const soundIncorrect = new Audio("assets/sounds/sound-incorrect.mp3");
+soundCorrect.volume = 0.4;
+soundIncorrect.volume = 0.4;
 
 //* event listeners
 homeScreenButton.addEventListener("click", returnToHomeScreen);
@@ -242,9 +242,6 @@ fetch(quizUrl)
 			return formattedQuestion;
 		});
 
-	})
-	.catch((err) => {
-		console.error(err);
 	});
 
 /**Function checks if the maximum amount of questions per quiz has been reached */
