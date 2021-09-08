@@ -192,9 +192,8 @@ input::placeholder {
 }
 
 #main-container {
-	min-height: -webkit-fill-available;
-	min-height: 100vh;
-	width: 100vw;
+	height: 90vh;
+	width: 80vw;
 	margin: 5vh 10vw;
 	position: absolute;
 }
@@ -544,9 +543,6 @@ input::placeholder {
 	.fa-volume-up {
 		font-size: 2rem;
 	}
-	#main-container {
-	margin: 10vh 10vw;
-}
 	.glass {
 		height: 80%;
 		width: 80%;
