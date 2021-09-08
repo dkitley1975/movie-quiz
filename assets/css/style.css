@@ -190,7 +190,8 @@ input::placeholder {
 }
 
 #main-container {
-	height: 100vh;
+	min-height: -webkit-fill-available;
+	min-height: 100vh;
 	width: 100vw;
 	margin: 5vh 10vw;
 	position: absolute;
