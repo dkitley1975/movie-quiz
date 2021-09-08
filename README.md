@@ -1,4 +1,6 @@
-NOTE to Self Testing section  NEEDS to be completed
+NOTE to Self 
+Testing section  NEEDS to be completed.
+SilkTide and Aria labels need adding.
 
 # Movie Questions
 
@@ -13,6 +15,7 @@ Thank you for visiting [my project!](https://dkitley1975.github.io/movie-quiz/)
   - [Features](#features)
   - [Typeface](#typeface)
     - [Colours](#colours)
+    - [Sounds](#sounds)
     - [Features Left to Implement](#features-left-to-implement)
   - [Testing](#testing)
     - [Chrome Lighthouse Report](#chrome-lighthouse-report)
@@ -82,8 +85,10 @@ The points values are input within the Javascript file which updates the text on
   ![Level Selection](./docs/screenshots/level-difficulty-selection-mobile.png)
 
 -__High Scores Section__
-This section has a table created from the users local storage, when first opening the local storage is populated with some example names and scores from the Javascript file, this ensures that the high scores page isn't blank when opening.
+This section has a table created from the users session storage, when first opening the session storage is populated with some example names and scores from the Javascript file, this ensures that the high scores page isn't blank when opening.
 There is also included a button to return to the home screen.
+There are 6 sample high scores added to the storage the points values are created randomly using the point values and the total amount of questions to be asked within the quiz. This is calculated twice for the Hard, Medium and Easy values
+    `Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerHard`
   
   ![High Scores](./docs/screenshots/high-scores-page-mobile.png)
   
@@ -104,7 +109,7 @@ There is also included a button to return to the home screen.
 - __Submitting High Scores__
 
   - After completing the quiz, the user has an option to save their score and play again or not to save and play again.
-  - The score is submitted and only the top 8 scores retained. This retention value is easily amended with the top section of the Javascript file.
+  - The score is submitted and only the top 8 scores retained. This retention value is easily amended within the top section of the Javascript file.
   
   ![Submitting the high score](./docs/screenshots/submit-high-scores-page-ipad.png)
   ![Submitted high score](./docs/screenshots/submitted-high-scores-page-ipad.png)
@@ -133,6 +138,11 @@ I have used to contract checker on Coolors in order to make sure that the contra
 This way my content will be easily readable.
 ![Color Scheme](./docs/screenshots/colour-swatch.png)
 
+### Sounds
+
+I have implemented a sound to indicate a correct and an incorrect answer, I have added a mute icon to the quiz container to allow the user to select if they wish to hear the confirmation sounds.
+The user selection is also added into the session storage, this way at the end of the game and the user plays again, the mute/play sound status is recalled from the storage and is continued to implemented within the game play.
+
 ### Features Left to Implement
 
 - To check if the user score is higher than the lowest of the high scores and if not to hide the enter a username and submit high score button, replacing them with a try again message.
@@ -153,12 +163,14 @@ This way my content will be easily readable.
 
 ### Validator Testing
 
-- HTML - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdkitley1975.github.io%2Fyoga-centric%2F)
-- CSS -  No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fdkitley1975.github.io%2Fyoga-centric%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+- HTML - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdkitley1975.github.io%2Fmovie-quiz%2Findex.html)
+  - Three warnings are given regarding empty headings, these sections are filled from within the JavaScript file during game play.
+- CSS -  No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fdkitley1975.github.io%252Fmovie-quiz%252Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+- Javascript - One warning showing an unused variable (updateQuizLevel), however this is the function used to update the quiz level. [(JSHint.com) validator](https://jshint.com/)
 
 ### Unfixed Bugs
 
-No Known bugs at present.
+Whilst testing within the developer tools within the web browsers no issues were identified visually, but whilst testing on an iphone the address bar and navigation bar on Safari and Chrome interfered with the margins and the centralisation of the container. This didn't replicate in Edge or Firefox. I out reached for Tutor support to help resolve this issue and unfortunately the issue was unable to be fixed, at this time. I did increase the margin and padding to help reduce the problem, whilst ensuring the content fitted within the screen.
 
 ## Deployment
 
