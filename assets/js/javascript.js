@@ -36,7 +36,6 @@ const answers = Array.from(document.getElementsByClassName("answers-text"));
 //* Scoring and scores
 const scoreText = document.querySelector("#score");
 const playerFinalScore = document.getElementById("playerFinalScore");
-const mostRecentScore = sessionStorage.getItem("mostRecentScore");
 const username = document.getElementById("username");
 
 
@@ -46,6 +45,8 @@ const endGameHighScoresList = document.querySelector(".endGameHighScoresList");
 
 const loadingSpinner = document.querySelector("#loadingSpinner");
 
+let getNewQuestion;
+let incrementScore;
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
