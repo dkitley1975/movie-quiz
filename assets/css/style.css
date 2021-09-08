@@ -285,7 +285,7 @@ input::placeholder {
 
 .fa-volume-mute,
 .fa-volume-up {
-	color: white;
+	color: var(--primary-color-400);
 	font-size: var(--fs-5);
 }
 
@@ -552,6 +552,10 @@ input::placeholder {
 		width: 25vw;
 
 	}
+	.fa-volume-mute,
+	.fa-volume-up {
+	color: white;
+	}
 }
 
 
@@ -567,7 +571,6 @@ input::placeholder {
 		width: 80%;
 		padding: 15rem 20rem;
 	}
-	
 }
 
 
