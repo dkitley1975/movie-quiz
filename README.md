@@ -122,11 +122,11 @@ This font is visually appealing and pairs well with the typeface Montserrat.
 
 I based my color scheme on a pallet devised around the primary red and green colours for the correct and incorrect indicators on the quiz answers, these primary colours matched well with the background image chosen to display throughout the app.
 
-- 33C261 This color is the Green I chose to indicate a correct answer within the quiz.
-- C24444 This color is the Red I chose to indicate an incorrect answer within the quiz.
-- 6EC2B5 is a pale Bue/Green which goes well with the background image.
-- 78A5C2 is a Blue which goes well with the background colour and contrasts well against the Red and Green.
-- BE5B8D is a dark Pink which stands out well against the other colours but compliments them all well, this colour is used as the logo colour and progress bar and current score.
+- #33C261 This color is the Green I chose to indicate a correct answer within the quiz.
+- #C24444 This color is the Red I chose to indicate an incorrect answer within the quiz.
+- #6EC2B5 is a pale Bue/Green which goes well with the background image.
+- #78A5C2 is a Blue which goes well with the background colour and contrasts well against the Red and Green.
+- #BE5B8D is a dark Pink which stands out well against the other colours but compliments them all well, this colour is used as the logo colour and progress bar and current score.
 - The main colour of my text is to be black.
 
 I have used to contract checker on Coolors in order to make sure that the contract is sufficient.
@@ -152,7 +152,6 @@ The user selection is also added into the session storage, this way at the end o
   ![Lighthouse Report](./docs/screenshots/lighthouse-report.png)
   [See Report](https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2Fdkitley1975.github.io%2Fmovie-quiz%2F&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext#pwa)
 
-
 ### Validator Testing
 
 - HTML - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdkitley1975.github.io%2Fmovie-quiz%2Findex.html)
@@ -163,6 +162,7 @@ The user selection is also added into the session storage, this way at the end o
 ### Unfixed Bugs
 
 Whilst testing within the developer tools within the web browsers no issues were identified visually, but whilst testing on an iphone the address bar and navigation bar on Safari and Chrome interfered with the margins and the centralisation of the container. This didn't replicate in Edge or Firefox. I out reached for Tutor support to help resolve this issue and unfortunately the issue was unable to be fixed, at this time. I did increase the margin and padding to help reduce the problem, whilst ensuring the content fitted within the screen.
+It is noticed that if the user adds the bookmark to the home screen, when the web page is opened the tool bars are hidden by request and the page is centralized and has no issues.
 
 ## Deployment
 
