@@ -43,7 +43,7 @@ let highScores = [];
 const highScoresList = document.querySelector(".highScoresList");
 const endGameHighScoresList = document.querySelector(".endGameHighScoresList");
 
-const loadingSpinner = document.querySelector("#loadingSpinner");
+const loadingSpinner = document.querySelector(".loadingSpinner");
 
 let getNewQuestion;
 let incrementScore;
