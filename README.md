@@ -1,7 +1,3 @@
-NOTE to Self 
-Testing section  NEEDS to be completed.
-SilkTide and Aria labels need adding.
-
 # Movie Questions
 
 ![Responsive mock up](./docs/screenshots/screen-view-mockup-image.png)
@@ -19,7 +15,6 @@ Thank you for visiting [my project!](https://dkitley1975.github.io/movie-quiz/)
     - [Features Left to Implement](#features-left-to-implement)
   - [Testing](#testing)
     - [Chrome Lighthouse Report](#chrome-lighthouse-report)
-    - [Silk Tide](#silk-tide)
     - [Validator Testing](#validator-testing)
     - [Unfixed Bugs](#unfixed-bugs)
   - [Deployment](#deployment)
@@ -157,9 +152,6 @@ The user selection is also added into the session storage, this way at the end o
   ![Lighthouse Report](./docs/screenshots/lighthouse-report.png)
   [See Report](https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2Fdkitley1975.github.io%2Fmovie-quiz%2F&strategy=desktop&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext#pwa)
 
-### Silk Tide
-
-  I used this to give a test of a simulated screen reader on the site. I made some alterations to the ARIA attributes and tested the site again until it read the required sections in a explanatory way.
 
 ### Validator Testing
 

@@ -14,6 +14,7 @@
       <link rel="manifest" href="assets/favicon/site.webmanifest">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" >
       <link rel="stylesheet" href="assets/css/style.css">
+      <meta name="apple-mobile-web-app-capable" content="yes">
       <meta name="theme-color" content="#6ec2b5"/>
    </head>
    <body id="main-container" class="add-background-image flex-center flex flex-column">
@@ -25,7 +26,7 @@
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <p class="points-info text-center">Please select a difficulty level before proceeding</p>
          <div id="points-information" class="text-center points-information-scores"></div>
-         <select id="selectLevelRef" class="btn-difficulty btn" onchange="updateQuizLevel()">
+         <select name="difficulty level" id="selectLevelRef" class="btn-difficulty btn" onchange="updateQuizLevel()">
             <option value="easy" selected="selected">Difficulty - Easy</option>
             <option value="medium">Difficulty - Medium</option>
             <option value="hard">Difficulty - Hard</option>
