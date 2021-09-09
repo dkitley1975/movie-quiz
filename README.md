@@ -140,7 +140,7 @@ The user selection is also added into the session storage, this way at the end o
 
 ### Features Left to Implement
 
-- To check if the user score is higher than the lowest of the high scores and if not to hide the enter a username and submit high score button, replacing them with a try again message.
+- If the amount of high scores are at the maximum allowed, then check if the user score is higher than the lowest of the high scores and if not to hide the enter a username and submit high score button, replacing them with a try again message.
 
 ## Testing
 
