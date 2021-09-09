@@ -163,6 +163,24 @@ input::placeholder {
 	margin: 5vh 10vw;
 	position: absolute;
 }
+#no-internet {
+	z-index: 300;
+	padding: 3rem;
+	padding-top: 25vh;
+	padding-bottom: 25vh;
+}
+
+#no-internet h1 {
+	font-size: var(--fs-2)
+}
+
+#no-internet h2 {
+	font-family: var(--ff-main);
+	color: var(--clr-primary-400);
+	font-size: var(--fs-3);
+	margin-top: 2rem;
+	line-height: 3rem;
+}
 
 #progress {
 	display: -webkit-box;
