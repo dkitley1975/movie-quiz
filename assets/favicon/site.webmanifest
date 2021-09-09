@@ -3,7 +3,7 @@
     "background_color": "#a9e2da",
     "display": "standalone",
     "scope": "../",
-    "start_url": "../",
+    "start_url": "../index.html",
     "description": "A Movie Quiz App created by David Kitley-McNamara for his Milestone 2 project for the Code Institute",
     "name": "Movie Quiz",
     "short_name": "Movie Quiz",
@@ -37,6 +37,12 @@
             "src": "/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
-        }
+        },
+        {
+      "src": "/maskable_icon.png",
+      "sizes": "300x300",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
     ]
 }
