@@ -195,7 +195,7 @@ To run the project locally:
 
 ## Credits
 
-  I watched multiple YouTube videos on creating quizzes, after watching a few, most of these all followed the same approach, down to the order of creation and colours used within the site. I had previously followed [Build a Quiz App by James Q Quick](https://www.youtube.com/watch?v=u98ROZjBWy8&list=PLDlWc9AfQBfZIkdVaOQXi1tizJeNJipEx) and this was used as the initial inspiration and valued practice for this project. The ideas practised whilst watching this tutorial have been heavily built on and added to
+  I watched multiple YouTube videos on creating quizzes, after watching a few, most of these all followed the same approach, down to the order of creation and colours used within the site. I had previously followed [Build a Quiz App by James Q Quick](https://www.youtube.com/watch?v=u98ROZjBWy8&list=PLDlWc9AfQBfZIkdVaOQXi1tizJeNJipEx) and this was used as the initial inspiration and valued practice for this project. The ideas practised whilst watching this tutorial have been heavily built on and added to.
 
 ### Media
 
@@ -206,6 +206,6 @@ To run the project locally:
 
 ### Special Thanks
 
-Special thanks to my mentor Simen Daehlin. Without his encouragement I wouldn't of considered to attempt to try this as as my second project, and for the help and pointers he provided along along the way.
+Special thanks to my mentor Simen Daehlin. Without his persuasion/encouragement or blatant telling me I should, I would never have considered to attempt this as as my second project, and for the patience, help and pointers he provided along along the way.
 
 Well thanks for reading all the way to the bottom, and for visiting this [my second project](https://dkitley1975.github.io/movie-quiz/)
