@@ -1,81 +1,69 @@
-//* grab sites different containers for show/hiding
-const homeContainer = document.querySelector("#home-container");
-const quizContainer = document.querySelector("#quiz-container");
-const userFinalScoreContainer = document.querySelector("#user-final-score-container");
-const highScoresContainer = document.querySelector("#high-score-container");
-const exitQuizContainer = document.querySelector("#exit-quiz-container");
-
-//* grab the button elements for the event listeners
-const playButton = document.querySelector("#btn-play-game");
-const homeScreenButton = document.querySelector("#btn-view-home-screen");
-const returnHomeScreenButton = document.querySelector("#btn-return-to-home-screen");
-const viewHighScoresButton = document.querySelector("#btn-view-high-scores");
-const saveScoreBtn = document.getElementById("btn-save-score");
-const continuePlayingButton = document.querySelector("#btn-continue-playing");
-const exitGame = document.getElementById("btn-exit-game");
-const muteButton = document.getElementById("btn-mute");
-const unMuteButton = document.getElementById("btn-unmute");
-const showExitGameOptions = document.getElementById("exit-quiz-options");
-
 //* Alter this set of variables for Quiz game play
-const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
-const pointsPerCorrectAnswerMedium = 1.5; //* points for medium questions
-const pointsPerCorrectAnswerHard = 2; //* points for hard questions
-let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //default value for easy - 
 const SetQtyOfQuestions = 10; //* amount of questions for the quiz
 const highScoresToShow = 8; //* amount of high scores to shw in high score list
-const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 5); //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API 
+const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
+const pointsPerCorrectAnswerHard = 2; //* points for hard questions
+const pointsPerCorrectAnswerMedium = 1.5; //* points for medium questions
+const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 5); //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API
 
 
-//* Question and Answers
-const question = document.getElementById("question");
 const answers = Array.from(document.getElementsByClassName("answers-text"));
-
-
-//* Scoring and scores
-const scoreText = document.querySelector("#score");
-const playerFinalScore = document.getElementById("playerFinalScore");
-const username = document.getElementById("username");
-
-
-let highScores = [];
-const highScoresList = document.querySelector(".highScoresList");
+const continuePlayingButton = document.querySelector("#btn-continue-playing");
 const endGameHighScoresList = document.querySelector(".endGameHighScoresList");
+const exitGame = document.getElementById("btn-exit-game");
+const exitQuizContainer = document.querySelector("#exit-quiz-container");
+const highScoresContainer = document.querySelector("#high-score-container");
+const highScoresList = document.querySelector(".highScoresList");
+const homeContainer = document.querySelector("#home-container");
+const homeScreenButton = document.querySelector("#btn-view-home-screen");
 const loadingSpinner = document.querySelector(".loadingSpinner");
-const saveHighScore = document.querySelector("#btn-save-score");
-
-let getNewQuestion;
-let incrementScore;
-let currentQuestion = {};
-let acceptingAnswers = false;
-let score = 0;
-let questionCounter = 0;
-let availableQuestions = [];
-let questions = [];
-
-//* Game Progress
-const progressText = document.getElementById("progressText");
+const muteButton = document.getElementById("btn-mute");
+const playButton = document.querySelector("#btn-play-game");
+const playerFinalScore = document.getElementById("playerFinalScore");
 const progressBarFull = document.querySelector("#progressBarFull");
-
-//*Sound Effects
+const progressText = document.getElementById("progressText");
+const question = document.getElementById("question");
+const quizContainer = document.querySelector("#quiz-container");
+const returnHomeScreenButton = document.querySelector("#btn-return-to-home-screen");
+const saveHighScore = document.querySelector("#btn-save-score");
+const saveScoreBtn = document.getElementById("btn-save-score");
+const scoreText = document.querySelector("#score");
+const showExitGameOptions = document.getElementById("exit-quiz-options");
 const soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
 const soundIncorrect = new Audio("assets/sounds/sound-incorrect.mp3");
+const unMuteButton = document.getElementById("btn-unmute");
+const userFinalScoreContainer = document.querySelector("#user-final-score-container");
+const username = document.getElementById("username");
+const viewHighScoresButton = document.querySelector("#btn-view-high-scores");
+let acceptingAnswers = false;
+let availableQuestions = [];
+let currentQuestion = {};
+let getNewQuestion;
+let highScores = [];
+let incrementScore;
+let level = document.getElementById("selectLevelRef").value;
+let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //* default value for easy -
+let questionCounter = 0;
+let questions = [];
+let score = 0;
 soundCorrect.volume = 0.4;
 soundIncorrect.volume = 0.4;
+let quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${level}&type=multiple`;
 
 //* event listeners
-homeScreenButton.addEventListener("click", returnToHomeScreen);
-returnHomeScreenButton.addEventListener("click", returnToHomeScreen);
-viewHighScoresButton.addEventListener("click", showHighScoresScreen);
-muteButton.addEventListener("click", sounds);
-unMuteButton.addEventListener("click", sounds);
-showExitGameOptions.addEventListener("click", showExitQuizContainer);
-exitGame.addEventListener("click", returnToHomeScreen);
 continuePlayingButton.addEventListener("click", closeExitOverlayScreen);
+exitGame.addEventListener("click", returnToHomeScreen);
+homeScreenButton.addEventListener("click", returnToHomeScreen);
+muteButton.addEventListener("click", sounds);
 playButton.addEventListener("click", startQuiz);
+returnHomeScreenButton.addEventListener("click", returnToHomeScreen);
 saveHighScore.addEventListener("click", saveTheHighScore);
+showExitGameOptions.addEventListener("click", showExitQuizContainer);
+unMuteButton.addEventListener("click", sounds);
+viewHighScoresButton.addEventListener("click", showHighScoresScreen);
 
-//* This function removes the items from the session storage on refresh
+
+//* This function removes the items from the session storage on reload
 window.location.reload = function ()
 {
 	sessionStorage.removeItem('hasSampleScoresBeenAddedBefore');
@@ -83,7 +71,7 @@ window.location.reload = function ()
 	sessionStorage.removeItem('sounds');
 };
 
-//* gets and add the session storage altering the key(sounds) from mute to play
+/** retrieves and updates the session storage altering the key(sounds) from mute to play */
 function sounds()
 {
 	if (sessionStorage.getItem("sounds") == undefined)
@@ -101,7 +89,7 @@ function sounds()
 	sfxMuteOrPlay();
 }
 
-//* alternates the SFX button and mutes/plays the SFX accordingly
+/** alternates the SFX button and mutes/plays the SFX accordingly */
 function sfxMuteOrPlay()
 {
 	if (sessionStorage.getItem("sounds") == "mute")
@@ -121,61 +109,52 @@ function sfxMuteOrPlay()
 }
 
 
-/** Function to add the points information to the home screen. */
+/** Adds the points information to the home screen. */
 function addPointsInformationToTheHomePage()
 {
 	let pointsInformation = document.getElementById("points-information");
-	let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per question, Medium - ${pointsPerCorrectAnswerMedium} points per question<br> and Hard - ${pointsPerCorrectAnswerHard} points per question`;
+	let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per question,<br>
+								Medium - ${pointsPerCorrectAnswerMedium} points per question &<br>
+								Hard - ${pointsPerCorrectAnswerHard} points per question`;
 	pointsInformation.innerHTML = pointsInformationText;
 }
 addPointsInformationToTheHomePage();
 
 
-//* Quiz difficulty and API information
-let level = document.getElementById("selectLevelRef").value;
-let quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=easy&type=multiple`;
-
-
-//* function to hide the welcome page and show the quiz
+/**  Hides the welcome page and shows the quiz */
 function showQuizContainer()
 {
 	homeContainer.classList.add("hidden");
 	quizContainer.classList.remove("hidden");
 	muteButton.classList.remove("hidden");
-
 }
 
-//* function to return to the home screen
+/** Returns to the home screen hiding all containers */
 function returnToHomeScreen()
 {
-	//* just in case some containers are visible this will add the hidden class to them
 	quizContainer.classList.add("hidden");
 	userFinalScoreContainer.classList.add("hidden");
 	highScoresContainer.classList.add("hidden");
 	muteButton.classList.add("hidden");
 	unMuteButton.classList.add("hidden");
 	exitQuizContainer.classList.add("hidden");
-
-
-	//* removes the hidden class from the home container
 	homeContainer.classList.remove("hidden");
 }
 
-//* function to hide the welcome page and show the quiz
+/**  Hides the welcome page and shows the quiz */
 function showExitQuizContainer()
 {
 	exitQuizContainer.classList.remove("hidden");
-
 }
 
-//* function Exit quiz Yes or No
+/** Hide the Exit quiz message container */
 function closeExitOverlayScreen()
 {
 	exitQuizContainer.classList.add("hidden");
 }
 
 
-/** function to add sample points to the session storage, The first statement checks if the one time function has NOT been executed before */
+/** Adds sample high Score to the session storage, The first statement checks if the one time function has NOT been executed before */
 window.onload = function ()
 {
 	if (sessionStorage.getItem("hasSampleScoresBeenAddedBefore") == null)
@@ -216,7 +195,7 @@ window.onload = function ()
 };
 
 
-//* function to start the game and any previous scores 
+/** function to start the game and any previous scores */
 function startQuiz()
 {
 	scoreText.innerText = 0;
@@ -232,8 +211,7 @@ function startQuiz()
 }
 
 
-/** function to set the correct points per question dependant on the user selected difficulty level
- */
+/** Set the correct points per question dependant on the user selected difficulty level */
 function pointsPerQuestion()
 {
 	if (level == "hard")
@@ -250,7 +228,7 @@ function pointsPerQuestion()
 	}
 }
 
-/** function to sort the high scores numerically */
+/** Retrieve and sort the high scores numerically */
 function highScoresRetrieveAndSort()
 {
 	highScores = JSON.parse(sessionStorage.getItem("highScores")) || [];
@@ -260,19 +238,18 @@ function highScoresRetrieveAndSort()
 	});
 }
 
-/** function to allow the user to select a difficulty level for the quiz */
+/** Allows the user to select a difficulty level for the quiz */
 function updateQuizLevel()
 {
 	level = document.getElementById("selectLevelRef").value;
-	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=9&difficulty=${level}&type=multiple`;
+	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${level}&type=multiple`;
 	pointsPerQuestion();
 	sessionStorage.setItem("API-URL", quizUrl);
 }
 
-/**Function checks if the maximum amount of questions per quiz has been reached */
+/** Checks if the maximum amount of questions per quiz has been reached and if so go to user final score page */
 function maxQuestionsReached()
 {
-	// checking if maximum availableQuestions has been reached and if so go to user final score page
 	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions)
 	{
 		sessionStorage.setItem("mostRecentScore", score);
@@ -284,7 +261,7 @@ function maxQuestionsReached()
 	}
 }
 
-//*function to save the high score
+/** Saves the high score to session storage */
 function saveTheHighScore(submit)
 {
 
@@ -303,7 +280,7 @@ function saveTheHighScore(submit)
 
 }
 
-//*high scores added to the high score list if user saves the score
+/** retrieves and creates a string to display High Scores in the end game page */
 function endGameHighScores()
 {
 	highScoresRetrieveAndSort();
@@ -316,7 +293,7 @@ function endGameHighScores()
 }
 
 
-//* function to show the high Scores
+/** retrieves and creates a string to display High Scores in the High Scores page */
 function showHighScoresScreen()
 {
 	highScoresRetrieveAndSort();
@@ -332,13 +309,12 @@ function showHighScoresScreen()
 		.join("");
 }
 
-//* check if connected to the internet
+/** checks to see if the user is connected to the internet */
 let ifConnected = window.navigator.onLine;
 const noInternetAlert = document.getElementById("no-internet");
 if (ifConnected)
 {
-	/** Function to fetch the questions from an API using the user selected difficulty as the quiz level and map the question to an array */
-
+	/** Fetch the questions from an API using the user selected difficulty as the quiz level and map the question to an array */
 	fetch(quizUrl)
 		.then((res) =>
 		{
@@ -370,7 +346,7 @@ if (ifConnected)
 		});
 
 
-	/**  Function to sort the questions */
+	/**  Retrieve questions from the array */
 	getNewQuestion = () =>
 	{
 		maxQuestionsReached();
@@ -402,9 +378,14 @@ if (ifConnected)
 		//removes the current question from the available questions list
 		availableQuestions.splice(questionIndex, 1);
 		acceptingAnswers = true;
+		
+sessionStorage.setItem("Available Questions", JSON.stringify(availableQuestions));
+sessionStorage.setItem("Question index", JSON.stringify(questionIndex));
+sessionStorage.setItem("Current Question", JSON.stringify(currentQuestion));
+
 	};
 
-	//*check which answer the user has chosen
+	/** check which answer the user has chosen, indicate if correct and add points to score if appropriate*/
 	answers.forEach((answers) =>
 	{
 		answers.addEventListener("click", (e) =>
@@ -439,7 +420,7 @@ if (ifConnected)
 	});
 
 
-	//** Function to update the users score */ 
+/** Update the users score */ 
 	incrementScore = (questionPointsValue) =>
 	{
 		score += questionPointsValue;
