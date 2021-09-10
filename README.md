@@ -33,7 +33,7 @@ __Site User Goals:__
 - I want to be able to select a difficulty level for the quiz.
 - I want to see my progress whilst playing the quiz game.
 - I want to track my score during the quiz game, with a visualisation of how many points I have accrued.
- - I want to see how many questions I have answered and how many are left.
+- I want to see how many questions I have answered and how many are left.
 - I want to view my final score after the quiz game has ended and to be able to save my score if I wish.
 - I want to be able to replay the quiz game without repeating the same questions each time.
 - I want to be able to view the high scores table of my previously saved scores.
