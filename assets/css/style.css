@@ -57,7 +57,6 @@ body {
 	font-size: var(--fs-default);
 	font-weight: var(--fw-n);
 	background-color: var(--clr-background);
-	/* overflow: hidden; */
 }
 
 h1,
@@ -485,7 +484,6 @@ input::placeholder {
 
 
 /* BUTTONS */
-
 .btn {
 	-webkit-appearance: none;
 	font-size: 1.8rem;
@@ -512,8 +510,6 @@ input::placeholder {
 	-webkit-appearance: none;
 	text-align: center;
 	text-align-last: center;
-	
-	
 	margin-top: 4rem;
 }
 
@@ -522,8 +518,6 @@ input::placeholder {
 	width: 15rem;
 	height: auto;
 	color: var(--clr-primary-200);
-	/* position: absolute;
-	bottom: 1rem; */
 }
 
 .exit-game-button {
@@ -576,7 +570,6 @@ input::placeholder {
 
 
 /* Media Queries */
-
 @media screen and (max-height: 450px) {
 	#height-to-small-to-play {
 		display: unset !important;
@@ -595,7 +588,6 @@ input::placeholder {
 
 
 /* On screens that are 768px or more */
-
 @media screen and (min-width: 768px) {
 	.add-background-image {
 		background: url(../images/background-img-1024.jpg) no-repeat center center fixed;
@@ -621,7 +613,6 @@ input::placeholder {
 
 
 /* On screens that are 1024px or more */
-
 @media screen and (min-width: 1024px) {
 	.add-background-image {
 		background: url(../images/background-img-1400.jpg) no-repeat center center fixed;
@@ -636,7 +627,6 @@ input::placeholder {
 
 
 /* On screens that are 1400px or more */
-
 @media screen and (min-width: 1400px) {
 	.add-background-image {
 		background: url(../images/background-img-1400.jpg) no-repeat center center fixed;
