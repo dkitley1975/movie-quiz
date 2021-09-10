@@ -172,6 +172,8 @@ The user selection is also added into the session storage, this way at the end o
 Whilst testing within the developer tools within the web browsers no issues were identified visually, but whilst testing on an iphone the address bar and navigation bar on Safari and Chrome interfered with the margins and the centralisation of the container. This didn't replicate in Edge or Firefox. I reached out for Tutor support to help resolve this issue and unfortunately the issue was unable to be fixed, at this time. I did increase the margin and padding to help reduce the problem, whilst ensuring the content fit within the screen.
 It is noticed that if the user adds the bookmark to the home screen when the web page is opened the toolbars are hidden by request and the page is centralized and has no issues.
 
+An additional issue is the ios button styling, which I haven't as yet been able to style in the way I would like.
+
 ## Deployment
 
 This project was deployed via GitHub by executing the following steps.
