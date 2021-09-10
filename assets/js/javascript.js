@@ -1,13 +1,5 @@
-//* This function removes the items from the session storage on reload
-function clearSession ()
-	{
-		sessionStorage.clear();
-	}
-	clearSession();
-
-
 //* Alter this set of variables for Quiz game play
-const SetQtyOfQuestions = 3; //* amount of questions for the quiz
+const SetQtyOfQuestions = 10; //* amount of questions for the quiz
 const highScoresToShow = 8; //* amount of high scores to shw in high score list
 const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
@@ -71,37 +63,26 @@ unMuteButton.addEventListener("click", sounds);
 viewHighScoresButton.addEventListener("click", showHighScoresScreen);
 
 
-
 /** retrieves and updates the session storage altering the key(sounds) from mute to play */
-function sounds()
-{
-	if (sessionStorage.getItem("sounds") == undefined)
-	{
+function sounds() {
+	if (sessionStorage.getItem("sounds") == undefined) {
 		sessionStorage.setItem("sounds", "mute");
-	}
-	else if (sessionStorage.getItem("sounds") == "mute")
-	{
+	} else if (sessionStorage.getItem("sounds") == "mute") {
 		sessionStorage.setItem("sounds", "play");
-	}
-	else
-	{
+	} else {
 		sessionStorage.setItem("sounds", "mute");
 	}
 	sfxMuteOrPlay();
 }
 
 /** alternates the SFX button and mutes/plays the SFX accordingly */
-function sfxMuteOrPlay()
-{
-	if (sessionStorage.getItem("sounds") == "mute")
-	{
+function sfxMuteOrPlay() {
+	if (sessionStorage.getItem("sounds") == "mute") {
 		soundCorrect.muted = true;
 		soundIncorrect.muted = true;
 		muteButton.classList.add("hidden");
 		unMuteButton.classList.remove("hidden");
-	}
-	else
-	{
+	} else {
 		soundCorrect.muted = false;
 		soundIncorrect.muted = false;
 		unMuteButton.classList.add("hidden");
@@ -111,8 +92,7 @@ function sfxMuteOrPlay()
 
 
 /** Adds the points information to the home screen. */
-function addPointsInformationToTheHomePage()
-{
+function addPointsInformationToTheHomePage() {
 	let pointsInformation = document.getElementById("points-information");
 	let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per question,<br>
 								Medium - ${pointsPerCorrectAnswerMedium} points per question &<br>
@@ -123,16 +103,14 @@ addPointsInformationToTheHomePage();
 
 
 /**  Hides the welcome page and shows the quiz */
-function showQuizContainer()
-{
+function showQuizContainer() {
 	homeContainer.classList.add("hidden");
 	quizContainer.classList.remove("hidden");
 	muteButton.classList.remove("hidden");
 }
 
 /** Returns to the home screen hiding all containers */
-function returnToHomeScreen()
-{
+function returnToHomeScreen() {
 	quizContainer.classList.add("hidden");
 	userFinalScoreContainer.classList.add("hidden");
 	highScoresContainer.classList.add("hidden");
@@ -143,49 +121,45 @@ function returnToHomeScreen()
 }
 
 /**  Hides the welcome page and shows the quiz */
-function showExitQuizContainer()
-{
+function showExitQuizContainer() {
 	exitQuizContainer.classList.remove("hidden");
 }
 
 /** Hide the Exit quiz message container */
-function closeExitOverlayScreen()
-{
+function closeExitOverlayScreen() {
 	exitQuizContainer.classList.add("hidden");
 }
 
 
 /** Adds sample high Score to the session storage, The first statement checks if the one time function has NOT been executed before */
-window.onload = function ()
-{
-	if (sessionStorage.getItem("hasSampleScoresBeenAddedBefore") == null)
-	{
+window.onload = function () {
+	if (sessionStorage.getItem("hasSampleScoresBeenAddedBefore") == null) {
 		/** this is to add some sample high scores to local storage */
-		let letsAddSomeSampleHighScores = [
-		{
-			"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerHard,
-			"name": "Ms PacMan"
-		},
-		{
-			"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerHard,
-			"name": "Gandalf"
-		},
-		{
-			"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerMedium,
-			"name": "ALF"
-		},
-		{
-			"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerMedium,
-			"name": "Kermit"
-		},
-		{
-			"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerEasy,
-			"name": "Miss Piggy"
-		},
-		{
-			"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerEasy,
-			"name": "Papa Smurf"
-		}];
+		let letsAddSomeSampleHighScores = [{
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerHard,
+				"name": "Ms PacMan"
+			},
+			{
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerHard,
+				"name": "Gandalf"
+			},
+			{
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerMedium,
+				"name": "ALF"
+			},
+			{
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerMedium,
+				"name": "Kermit"
+			},
+			{
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerEasy,
+				"name": "Miss Piggy"
+			},
+			{
+				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerEasy,
+				"name": "Papa Smurf"
+			}
+		];
 
 		sessionStorage.setItem("highScores", JSON.stringify(letsAddSomeSampleHighScores));
 		sessionStorage.setItem("hasSampleScoresBeenAddedBefore", true);
@@ -197,8 +171,7 @@ window.onload = function ()
 
 
 /** function to start the game and any previous scores */
-function startQuiz()
-{
+function startQuiz() {
 	scoreText.innerText = 0;
 	score = 0;
 	playerFinalScore.innerText = `You scored ${score}`;
@@ -213,46 +186,67 @@ function startQuiz()
 
 
 /** Set the correct points per question dependant on the user selected difficulty level */
-function pointsPerQuestion()
-{
-	if (level == "hard")
-	{
+function pointsPerQuestion() {
+	if (level == "hard") {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerHard;
-	}
-	else if (level == "medium")
-	{
+	} else if (level == "medium") {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerMedium;
-	}
-	else
-	{
+	} else {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy;
 	}
 }
 
 /** Retrieve and sort the high scores numerically */
-function highScoresRetrieveAndSort()
-{
+function highScoresRetrieveAndSort() {
 	highScores = JSON.parse(sessionStorage.getItem("highScores")) || [];
-	highScores.sort((a, b) =>
-	{
+	highScores.sort((a, b) => {
 		return b.score - a.score;
 	});
 }
 
-/** Allows the user to select a difficulty level for the quiz */
-function updateQuizLevel()
-{
+function fetchTheQuestions() {
+	/** Fetch the questions from an API using the user selected difficulty as the quiz level and map the question to an array */
+	fetch(quizUrl)
+		.then((res) => {
+			return res.json();
+		})
+		.then((loadedQuestions) => {
+			questions = loadedQuestions.results.map((loadedQuestion) => {
+				const formattedQuestion = {
+					question: loadedQuestion.question,
+				};
+				const availableAnswers = [...loadedQuestion.incorrect_answers];
+				formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
+				availableAnswers.splice(
+					formattedQuestion.answer - 1,
+					0,
+					loadedQuestion.correct_answer
+				);
+
+				availableAnswers.forEach((answers, index) => {
+					formattedQuestion["answers" + (index + 1)] = answers;
+				});
+
+				return formattedQuestion;
+			});
+
+		});
+}
+
+/** Allows the user to select a difficulty level for the quiz  then fetches the questions*/
+function updateQuizLevel() {
 	level = document.getElementById("selectLevelRef").value;
 	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${level}&type=multiple`;
 	pointsPerQuestion();
 	sessionStorage.setItem("API-URL", quizUrl);
+	fetchTheQuestions();
 }
+updateQuizLevel();
+
 
 /** Checks if the maximum amount of questions per quiz has been reached and if so go to user final score page */
-function maxQuestionsReached()
-{
-	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions)
-	{
+function maxQuestionsReached() {
+	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
 		sessionStorage.setItem("mostRecentScore", score);
 		endGameHighScores();
 		quizContainer.classList.add("hidden");
@@ -263,8 +257,7 @@ function maxQuestionsReached()
 }
 
 /** Saves the high score to session storage */
-function saveTheHighScore(submit)
-{
+function saveTheHighScore(submit) {
 
 	submit.preventDefault();
 
@@ -282,12 +275,10 @@ function saveTheHighScore(submit)
 }
 
 /** retrieves and creates a string to display High Scores in the end game page */
-function endGameHighScores()
-{
+function endGameHighScores() {
 	highScoresRetrieveAndSort();
 	endGameHighScoresList.innerHTML = highScores
-		.map(score =>
-		{
+		.map(score => {
 			return `<li class="high-score"><span>${score.score}</span>\t<span>${score.name}</span</li>`;
 		})
 		.join("");
@@ -295,16 +286,14 @@ function endGameHighScores()
 
 
 /** retrieves and creates a string to display High Scores in the High Scores page */
-function showHighScoresScreen()
-{
+function showHighScoresScreen() {
 	highScoresRetrieveAndSort();
 
 	homeContainer.classList.add("hidden");
 	highScoresContainer.classList.remove("hidden");
 
 	highScoresList.innerHTML = highScores
-		.map(score =>
-		{
+		.map(score => {
 			return `<li class="high-score"><span>${score.score}</span>\t<span>${score.name}</span</li>`;
 		})
 		.join("");
@@ -313,43 +302,11 @@ function showHighScoresScreen()
 /** checks to see if the user is connected to the internet */
 let ifConnected = window.navigator.onLine;
 const noInternetAlert = document.getElementById("no-internet");
-if (ifConnected)
-{
-	/** Fetch the questions from an API using the user selected difficulty as the quiz level and map the question to an array */
-	fetch(quizUrl)
-		.then((res) =>
-		{
-			return res.json();
-		})
-		.then((loadedQuestions) =>
-		{
-			questions = loadedQuestions.results.map((loadedQuestion) =>
-			{
-				const formattedQuestion = {
-					question: loadedQuestion.question,
-				};
-				const availableAnswers = [...loadedQuestion.incorrect_answers];
-				formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
-				availableAnswers.splice(
-					formattedQuestion.answer - 1,
-					0,
-					loadedQuestion.correct_answer
-				);
-
-				availableAnswers.forEach((answers, index) =>
-				{
-					formattedQuestion["answers" + (index + 1)] = answers;
-				});
-
-				return formattedQuestion;
-			});
-
-		});
+if (ifConnected) {
 
 
 	/**  Retrieve questions from the array */
-	getNewQuestion = () =>
-	{
+	getNewQuestion = () => {
 		maxQuestionsReached();
 
 		questionCounter++;
@@ -358,8 +315,7 @@ if (ifConnected)
 		progressText.innerText = `Question ${questionCounter}/${SetQtyOfQuestions}`;
 
 		progressBarFull.style.width = `${(questionCounter / SetQtyOfQuestions) * 100}%`;
-		if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions)
-		{
+		if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
 			progressBarFull.classList.add("progress-bar-rounded");
 		}
 
@@ -371,26 +327,18 @@ if (ifConnected)
 		question.innerHTML = currentQuestion.question;
 
 		// gets the correct answer information from the set of questions
-		answers.forEach((answers) =>
-		{
+		answers.forEach((answers) => {
 			const number = answers.dataset.number;
 			answers.innerHTML = currentQuestion["answers" + number];
 		});
 		//removes the current question from the available questions list
 		availableQuestions.splice(questionIndex, 1);
 		acceptingAnswers = true;
-		
-sessionStorage.setItem("Available Questions", JSON.stringify(availableQuestions));
-sessionStorage.setItem("Question index", JSON.stringify(questionIndex));
-sessionStorage.setItem("Current Question", JSON.stringify(currentQuestion));
-
 	};
 
 	/** check which answer the user has chosen, indicate if correct and add points to score if appropriate*/
-	answers.forEach((answers) =>
-	{
-		answers.addEventListener("click", (e) =>
-		{
+	answers.forEach((answers) => {
+		answers.addEventListener("click", (e) => {
 			if (!acceptingAnswers) return;
 
 			acceptingAnswers = false;
@@ -400,20 +348,16 @@ sessionStorage.setItem("Current Question", JSON.stringify(currentQuestion));
 			//check if the user has selected the correct answer 
 			const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 			//if  answer correct increase the user score
-			if (classToApply === "correct")
-			{
+			if (classToApply === "correct") {
 				incrementScore(pointsPerCorrectAnswer);
 				soundCorrect.play();
-			}
-			else
-			{
+			} else {
 				soundIncorrect.play();
 			}
 
 			selectedAnswers.parentElement.classList.add(classToApply);
 
-			setTimeout(() =>
-			{
+			setTimeout(() => {
 				selectedAnswers.parentElement.classList.remove(classToApply);
 				getNewQuestion();
 			}, 1500);
@@ -421,23 +365,19 @@ sessionStorage.setItem("Current Question", JSON.stringify(currentQuestion));
 	});
 
 
-/** Update the users score */ 
-	incrementScore = (questionPointsValue) =>
-	{
+	/** Update the users score */
+	incrementScore = (questionPointsValue) => {
 		score += questionPointsValue;
 		scoreText.innerText = score;
 		playerFinalScore.innerText = `You scored ${score}`;
 	};
 
 	//*event listener to allow user to click the save button once username entered
-	username.addEventListener("keyup", () =>
-	{
+	username.addEventListener("keyup", () => {
 		saveScoreBtn.disabled = !username.value;
 	});
 
-}
-else
-{
+} else {
 	noInternetAlert.classList.remove("hidden");
 
 }
