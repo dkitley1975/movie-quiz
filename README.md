@@ -165,7 +165,7 @@ The user selection is also added into the session storage, this way at the end o
 
 - **HTML** - No errors or warnings were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdkitley1975.github.io%2Fmovie-quiz%2Findex.html)
 - **CSS** -  Two errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fdkitley1975.github.io%2Fmovie-quiz&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en), these both retain to the backdrop-filter property.
-- **Javascript** - One warning showing an unused variable (updateQuizLevel), however this is the function used to update the quiz level. [(JSHint.com) validator](https://jshint.com/)
+- **Javascript** - No errors or warnings are shown when adding the code to this site. [(JSHint.com) validator](https://jshint.com/)
 
 ### Unfixed Bugs
 
