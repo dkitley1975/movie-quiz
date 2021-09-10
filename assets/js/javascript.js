@@ -1,5 +1,13 @@
+//* This function removes the items from the session storage on reload
+function clearSession ()
+	{
+		sessionStorage.clear();
+	}
+	clearSession();
+
+
 //* Alter this set of variables for Quiz game play
-const SetQtyOfQuestions = 10; //* amount of questions for the quiz
+const SetQtyOfQuestions = 3; //* amount of questions for the quiz
 const highScoresToShow = 8; //* amount of high scores to shw in high score list
 const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
@@ -63,13 +71,6 @@ unMuteButton.addEventListener("click", sounds);
 viewHighScoresButton.addEventListener("click", showHighScoresScreen);
 
 
-//* This function removes the items from the session storage on reload
-window.location.reload = function ()
-{
-	sessionStorage.removeItem('hasSampleScoresBeenAddedBefore');
-	sessionStorage.removeItem('highScores');
-	sessionStorage.removeItem('sounds');
-};
 
 /** retrieves and updates the session storage altering the key(sounds) from mute to play */
 function sounds()
