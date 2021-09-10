@@ -310,7 +310,7 @@ function endGameHighScores()
 	endGameHighScoresList.innerHTML = highScores
 		.map(score =>
 		{
-			return `<li class="high-score"><span>${score.score}</span><span>${score.name}</span</li>`;
+			return `<li class="high-score"><span>${score.score}</span>\t<span>${score.name}</span</li>`;
 		})
 		.join("");
 }
@@ -327,7 +327,7 @@ function showHighScoresScreen()
 	highScoresList.innerHTML = highScores
 		.map(score =>
 		{
-			return `<li class="high-score"><span>${score.score}</span><span>${score.name}</span</li>`;
+			return `<li class="high-score"><span>${score.score}</span>\t<span>${score.name}</span</li>`;
 		})
 		.join("");
 }

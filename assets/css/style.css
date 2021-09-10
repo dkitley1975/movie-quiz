@@ -319,6 +319,7 @@ input::placeholder {
 	margin-bottom: 0.5rem;
 	list-style: none;
 	line-height: 3.5rem;
+	white-space: pre;
 }
 
 .high-scores-lists div {
