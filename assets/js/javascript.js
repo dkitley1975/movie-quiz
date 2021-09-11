@@ -4,7 +4,7 @@ const highScoresToShow = 8; //* amount of high scores to shw in high score list
 const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
 const pointsPerCorrectAnswerMedium = 1.5; //* points for medium questions
-const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 5); //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API
+const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 3); //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API
 
 
 const answers = Array.from(document.getElementsByClassName("answers-text"));
