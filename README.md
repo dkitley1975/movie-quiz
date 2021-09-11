@@ -12,7 +12,7 @@ Thank you for visiting [my project!](https://dkitley1975.github.io/movie-quiz/)
     - [Typeface](#typeface)
     - [Colours](#colours)
     - [Sounds](#sounds)
-    - [Offline & insufficient Height messages](#offline--insufficient-height-messages)
+    - [Insufficient Height message](#insufficient-height-message)
     - [Features Left to Implement](#features-left-to-implement)
   - [Testing](#testing)
     - [Chrome Lighthouse Report](#chrome-lighthouse-report)
@@ -113,7 +113,7 @@ There are 6 sample high scores added to the storage initially, the score values 
 
 In order to find appropriate typefaces for my website, I have visited [Google Fonts](https://fonts.google.com/ "Google Fonts") to explore the various options.
 For the main body text, I have chosen the google typeface Montserrat. This is a visually appealing and easy to read typeface.
-For the headings, I wanted a slightly different typeface. I explored for headings and choose the google font Limelight.
+For the Logo, I wanted a slightly different typeface. I and choose the google font Limelight.
 This font is visually appealing and pairs well with the typeface Montserrat.
 
   ![Typefaces](./docs/screenshots/font-pairings.png)
@@ -138,12 +138,9 @@ This way my content will be easily readable.
 I have implemented a sound to indicate a correct and an incorrect answer, I have added a mute icon to the quiz container to allow the user to select if they wish to hear the confirmation sounds.
 The user selection is also added into the session storage, this way at the end of the game and the user plays again, the mute/play sound status is recalled from the storage and is continued to implemented within the gameplay.
 
-### Offline & insufficient Height messages
+### Insufficient Height message
 
 - I have added a message that covers over the welcome page if:
-  - **Offline** - Initially if the user appears to be offline. This function checks if the user appears to be offline and displays a message asking for the user to refresh once they are connected. This Function envelopes the fetch API elements and the Quiz start sections within the javascript.
-  ![Offline Message](./docs/screenshots/offline-message.png)
-
   - **Height of the screen** - if the height of the screen is of insufficient size to display the quiz. The site displays a message asking the user to rotate their screen to continue playing the quiz.
   ![Insufficient Height Message](./docs/screenshots/height-insufficient.png)
 
