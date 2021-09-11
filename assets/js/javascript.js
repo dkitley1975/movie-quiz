@@ -299,12 +299,6 @@ function showHighScoresScreen() {
 		.join("");
 }
 
-/** checks to see if the user is connected to the internet */
-let ifConnected = window.navigator.onLine;
-const noInternetAlert = document.getElementById("no-internet");
-if (ifConnected) {
-
-
 	/**  Retrieve questions from the array */
 	getNewQuestion = () => {
 		maxQuestionsReached();
@@ -376,8 +370,3 @@ if (ifConnected) {
 	username.addEventListener("keyup", () => {
 		saveScoreBtn.disabled = !username.value;
 	});
-
-} else {
-	noInternetAlert.classList.remove("hidden");
-
-}
