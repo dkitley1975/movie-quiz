@@ -40,7 +40,7 @@
 	--clr-primary-400: rgb(190, 91, 141);
 	--clr-primary-Green: rgb(51, 194, 97);
 	--clr-primary-Red: rgb(194, 68, 68);
-	--clr-hover: rgb(105, 201, 172);
+	--clr-hover: rgb(146, 156, 153);
 	--clr-box-shadow: rgba(110, 194, 181, 0.7);
 	--clr-button-background: rgb(255, 255, 255);
 }
@@ -235,16 +235,17 @@ input::placeholder {
 
 .answers-container:hover {
 	cursor: pointer;
-	-webkit-box-shadow: 0 0.4rem 1.4rem 0 var(--clr-box-shadow);
-	box-shadow: 0 0.4rem 1.4rem 0 var(--clr-box-shadow);
-	-webkit-transform: translateY(-0.1rem);
-	-ms-transform: translateY(-0.1rem);
-	transform: translateY(-0.1rem);
+	-webkit-box-shadow: 0 0.6rem 1.6rem 0 var(--clr-box-shadow);
+	box-shadow: 0 0.6rem 1.6rem 0 var(--clr-box-shadow);
+	-webkit-transform: translateY(-0.5rem);
+	-ms-transform: translateY(-0.5rem);
+	transform: translateY(-0.5rem);
 	-webkit-transition: -webkit-transform 150ms;
 	transition: -webkit-transform 150ms;
 	-o-transition: transform 150ms;
-	transition: transform 150ms;
 	transition: transform 150ms, -webkit-transform 150ms;
+	-moz-transform: translateY(-0.5rem);
+	-o-transform: translateY(-0.5rem);
 }
 
 .answers-prefix {
@@ -552,11 +553,12 @@ input::placeholder {
 	-webkit-transform: translateY(-0.1rem);
 	-ms-transform: translateY(-0.1rem);
 	transform: translateY(-0.1rem);
-	-webkit-transition: -webkit-transform 150ms;
+	-webkit-transition: transform 150ms;
 	transition: -webkit-transform 150ms;
 	-o-transition: transform 150ms;
-	transition: transform 150ms;
 	transition: transform 150ms, -webkit-transform 150ms;
+	-moz-transition: transform 150ms;
+	-ms-transition: transform 150ms;
 }
 
 .btn[disabled]:hover {
@@ -596,18 +598,15 @@ input::placeholder {
 	.fa-volume-mute,
 	.fa-volume-up {
 		font-size: 2rem;
+		color: white;
 	}
 	.glass {
 		height: 80%;
 		width: 80%;
-		padding: 10rem 10rem;
+		padding: 10rem;
 	}
 	.logo {
 		width: 25vw;
-	}
-	.fa-volume-mute,
-	.fa-volume-up {
-		color: white;
 	}
 }
 
