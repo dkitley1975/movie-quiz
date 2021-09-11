@@ -65,7 +65,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--ff-headline);
+	font-family: var(--ff-main);
 	font-weight: var(--fw-b);
 	color: var(--clr-primary-000);
 }
@@ -588,6 +588,14 @@ input::placeholder {
 	}
 }
 
+@media screen and (max-height: 812px) {
+	#main-container {
+	height: 80vh;
+	width: 80vw;
+	margin: 10vh 10vw;
+	position: absolute;
+	}
+}
 
 /* On screens that are 768px or more */
 @media screen and (min-width: 768px) {
