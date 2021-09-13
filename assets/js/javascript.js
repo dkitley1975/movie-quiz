@@ -37,7 +37,7 @@ const username = document.getElementById("username");
 const viewHighScoresButton = document.querySelector("#btn-view-high-scores");
 let acceptingAnswers = false;
 let availableQuestions = [];
-let currentQuestion = {};
+let newQuestion = {};
 let getNewQuestion;
 let highScores = [];
 let incrementScore;
@@ -177,11 +177,13 @@ function startQuiz() {
 	playerFinalScore.innerText = `You scored ${score}`;
 	progressBarFull.classList.remove("progress-bar-rounded");
 	questionCounter = 0;
-	showQuizContainer();
-	sfxMuteOrPlay();
-	availableQuestions = [...questions];
-	getNewQuestion();
-	loadingSpinner.classList.add("hidden");
+	setTimeout(() => {
+		showQuizContainer();
+		sfxMuteOrPlay();
+		availableQuestions = [...questions];
+		getNewQuestion();
+		loadingSpinner.classList.add("hidden");
+	}, 500);
 }
 
 
@@ -216,9 +218,9 @@ function fetchTheQuestions() {
 					question: loadedQuestion.question,
 				};
 				const availableAnswers = [...loadedQuestion.incorrect_answers];
-				formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
+				formattedQuestion.CorrectAnswer = Math.floor(Math.random() * 4) + 1;
 				availableAnswers.splice(
-					formattedQuestion.answer - 1,
+					formattedQuestion.CorrectAnswer - 1,
 					0,
 					loadedQuestion.correct_answer
 				);
@@ -315,15 +317,15 @@ function showHighScoresScreen() {
 
 		//creates a random number between 1 and the qty of remaining questions and sets the current question to that question number
 		const questionIndex = Math.floor(Math.random() * (qtyOfQuestionsToFetch - (questionCounter - 1)));
-		currentQuestion = availableQuestions[questionIndex];
+		newQuestion = availableQuestions[questionIndex];
 
 		// adds current question to the Question section 
-		question.innerHTML = currentQuestion.question;
+		question.innerHTML = newQuestion.question;
 
 		// gets the correct answer information from the set of questions
 		answers.forEach((answers) => {
 			const number = answers.dataset.number;
-			answers.innerHTML = currentQuestion["answers" + number];
+			answers.innerHTML = newQuestion["answers" + number];
 		});
 		//removes the current question from the available questions list
 		availableQuestions.splice(questionIndex, 1);
@@ -336,23 +338,25 @@ function showHighScoresScreen() {
 			if (!acceptingAnswers) return;
 
 			acceptingAnswers = false;
-			const selectedAnswers = e.target;
-			const selectedAnswer = selectedAnswers.dataset.number;
+			const answersSet = e.target;
+			const userSelectedAnswer = answersSet.dataset.number;
+			let correctAnswer = newQuestion.CorrectAnswer;
+		// console.log("The Correct Answer was ",correctAnswer);
 
 			//check if the user has selected the correct answer 
-			const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+			const classToApply = userSelectedAnswer == correctAnswer ? "answered-correct" : "answered-incorrect";
 			//if  answer correct increase the user score
-			if (classToApply === "correct") {
+			if (classToApply === "answered-correct") {
 				incrementScore(pointsPerCorrectAnswer);
 				soundCorrect.play();
 			} else {
 				soundIncorrect.play();
 			}
 
-			selectedAnswers.parentElement.classList.add(classToApply);
+			answersSet.parentElement.classList.add(classToApply);
 
 			setTimeout(() => {
-				selectedAnswers.parentElement.classList.remove(classToApply);
+				answersSet.parentElement.classList.remove(classToApply);
 				getNewQuestion();
 			}, 1500);
 		});
