@@ -40,7 +40,8 @@
 	--clr-primary-400: rgb(190, 91, 141);
 	--clr-primary-Green: rgb(51, 194, 97);
 	--clr-primary-Red: rgb(194, 68, 68);
-	--clr-hover: rgb(146, 156, 153);
+	--clr-primary-answer-hover: rgb(255, 199, 227);
+	--clr-hover: rgb(190, 91, 140);
 	--clr-box-shadow: rgba(110, 194, 181, 0.7);
 	--clr-button-background: rgb(255, 255, 255);
 }
@@ -48,8 +49,8 @@
 html {
 	scroll-behavior: smooth;
 	font-size: 62.5%;
-	min-height: -webkit-fill-available;
-	min-height: 100vh;
+	height: -webkit-fill-available;
+	height: 100vh;
 }
 
 body {
@@ -245,8 +246,12 @@ input::placeholder {
 	font-size: var(--fs-default);
 }
 
-.correct {
+.answered-correct {
 	background-color: var(--clr-primary-Green);
+}
+
+.answered-incorrect {
+	background-color: var(--clr-primary-Red);
 }
 
 .fa-volume-mute,
@@ -327,9 +332,6 @@ input::placeholder {
 	padding-right: 3rem;
 }
 
-.incorrect {
-	background-color: var(--clr-primary-Red);
-}
 
 .justify-center {
 	-webkit-box-pack: center;
@@ -541,6 +543,7 @@ input::placeholder {
 	transition: transform 150ms, -webkit-transform 150ms;
 	-moz-transition: transform 150ms;
 	-ms-transition: transform 150ms;
+	color:white;
 }
 
 .btn[disabled]:hover {
@@ -581,6 +584,10 @@ input::placeholder {
 
 /* On screens that are 768px or more */
 @media screen and (min-width: 768px) {
+	#main-container {
+		height: 95vh;
+		margin: 2.5vh 10vw;
+	}
 	.add-background-image {
 		background: url(../images/background-img-1024.jpg) no-repeat center center fixed;
 		background-size: cover;
@@ -591,7 +598,7 @@ input::placeholder {
 		color: white;
 	}
 	.glass {
-		height: 80%;
+		height: 90%;
 		width: 80%;
 		padding: 10rem;
 	}
@@ -603,12 +610,13 @@ input::placeholder {
 
 /* On screens that are 1024px or more */
 @media screen and (min-width: 1024px) {
+
 	.add-background-image {
 		background: url(../images/background-img-1400.jpg) no-repeat center center fixed;
 		background-size: cover;
 	}
 	.glass {
-		height: 90%;
+		height: 95%;
 		width: 80%;
 		padding: 15rem 20rem;
 	}
