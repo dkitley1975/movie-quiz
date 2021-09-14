@@ -412,6 +412,15 @@ input::placeholder {
 	margin-top: 1rem;
 	text-decoration: none;
 	border-radius: 2rem;
+	
+	// disable default appearance
+		outline: none;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+		&::-ms-expand {
+			display: none;
+		}
 }
 
 .continue-game-button {
