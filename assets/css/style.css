@@ -107,6 +107,16 @@ input::placeholder {
 	color: #aaa;
 }
 
+select {
+  padding-left: 3rem !important;
+  padding-right: 3rem !important;
+  /* disable default appearance */
+		outline: none;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+}
+
 #exit-quiz-container-jsRef {
 	z-index: 101;
 }
@@ -412,15 +422,11 @@ input::placeholder {
 	margin-top: 1rem;
 	text-decoration: none;
 	border-radius: 2rem;
-	
-	// disable default appearance
+	/* disable default appearance */
 		outline: none;
 		-moz-appearance: none;
 		-webkit-appearance: none;
 		appearance: none;
-		&::-ms-expand {
-			display: none;
-		}
 }
 
 .continue-game-button {
@@ -430,8 +436,6 @@ input::placeholder {
 
 .btn-difficulty {
 	font-size: var(--fs-4);
-	text-align: center;
-	text-align-last: center;
 	margin-top: 4rem;
 }
 
