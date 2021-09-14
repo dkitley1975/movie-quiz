@@ -49,7 +49,6 @@
 html {
 	scroll-behavior: smooth;
 	font-size: 62.5%;
-	height: -webkit-fill-available;
 	height: 100vh;
 }
 
@@ -66,7 +65,6 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--ff-main);
 	font-weight: var(--fw-b);
 	color: var(--clr-primary-000);
 }
@@ -74,13 +72,6 @@ h6 {
 form {
 	height: 90vh;
 	width: 90vw;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -92,9 +83,7 @@ input {
 	max-width: 30rem;
 	padding: 1rem;
 	margin-top: 0.5rem;
-	font-size: var(--fs-normal);
 	border: none;
-	-webkit-box-shadow: 0 0.1rem 1.4rem 0 var(--clr-box-shadow);
 	box-shadow: 0 0.1rem 1.4rem 0 var(--clr-box-shadow);
 }
 
@@ -136,11 +125,10 @@ input::placeholder {
 }
 
 #height-to-small-to-play h1 {
-	font-size: var(--fs-2)
+	font-size: var(--fs-2);
 }
 
 #height-to-small-to-play h2 {
-	font-family: var(--ff-main);
 	color: var(--clr-primary-400);
 	font-size: var(--fs-3);
 	margin-top: 2rem;
@@ -165,11 +153,7 @@ input::placeholder {
 }
 
 #progress {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
 	justify-content: space-between;
 	margin-top: 1rem;
 }
@@ -177,7 +161,7 @@ input::placeholder {
 #progressBar {
 	width: 15rem;
 	height: 2.4rem;
-	border: 0.1rem solid var(--clr-primary-400);
+	border: var(--clr-primary-400) solid 0.1rem;
 	border-radius: 2rem;
 	margin-top: 1rem;
 }
@@ -198,19 +182,17 @@ input::placeholder {
 }
 
 .add-background-image {
-	background: url(../images/background-img-768.jpg) no-repeat center right fixed;
+	background: url(../images/background-img-768.jpg) center right no-repeat fixed;
 	background-size: cover;
 }
 
 .answers-container {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
 	margin-top: 1rem;
 	margin-bottom: 0.5rem;
 	width: 90%;
 	font-size: var(--fs-default);
-	border: 0.1rem solid rgb(86, 165, 235, 0.25);
+	border: rgb(86, 165, 235, 0.25) solid 0.1rem;
 	background-color: white;
 	border-top-left-radius: 1.8rem;
 	border-bottom-left-radius: 1.8rem;
@@ -218,16 +200,7 @@ input::placeholder {
 
 .answers-container:hover {
 	cursor: pointer;
-	-webkit-box-shadow: 0 0.6rem 1.6rem 0 var(--clr-box-shadow);
 	box-shadow: 0 0.6rem 1.6rem 0 var(--clr-box-shadow);
-	-webkit-transform: translateY(-0.5rem);
-	-ms-transform: translateY(-0.5rem);
-	-webkit-transition: -webkit-transform 150ms;
-	-o-transition: transform 150ms;
-	transition: -webkit-transform 150ms;
-	transition: transform 150ms, -webkit-transform 150ms;
-	-moz-transform: translateY(-0.5rem);
-	-o-transform: translateY(-0.5rem);
 	transform: translateY(-0.5rem);
 }
 
@@ -247,7 +220,7 @@ input::placeholder {
 }
 
 .answer-was-actual-correct {
-	box-shadow: 0 0 8px 3px rgb(51, 194, 97);
+	box-shadow: 0 0 8px 3px rgb(44, 224, 101);
 }
 
 .answered-correct {
@@ -260,29 +233,20 @@ input::placeholder {
 
 .fa-volume-mute,
 .fa-volume-up {
-	color: var(--primary-color-400);
 	font-size: var(--fs-5);
+	color: var(--primary-color-400);
 }
 
 .flex {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
 }
 
 .flex-center {
-	-webkit-box-align: center;
-	-ms-flex-align: center;
 	align-items: center;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
 	justify-content: center;
 }
 
 .flex-column {
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
 	flex-direction: column;
 }
 
@@ -314,14 +278,10 @@ input::placeholder {
 }
 
 .high-scores-lists div {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
 }
 
 .high-scores-lists div span {
-	-webkit-box-flex: 1;
-	-ms-flex: 1;
 	flex: 1;
 }
 
@@ -337,13 +297,10 @@ input::placeholder {
 }
 
 .justify-center {
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
 	justify-content: center;
 }
 
 .justify-space-around {
-	-ms-flex-pack: distribute;
 	justify-content: space-around;
 }
 
@@ -353,20 +310,11 @@ input::placeholder {
 	margin: 5rem auto 2rem;
 }
 
-
-/* loadingSpinner */
-
 .loadingSpinner {
 	width: 40vw;
 	height: 40vw;
 	z-index: 200;
-	background-color: rgba(255, 255, 255, 0.8);
-	-webkit-backdrop-filter: blur(15px);
-	-webkit-box-shadow: 20px 20px 22px var(--clr-box-shadow);
-	-webkit-border-radius: 20%;
-	-moz-border-radius: 20%;
-	-ms-border-radius: 20%;
-	-o-border-radius: 20%;
+	background-color: rgb(255, 255, 255, 0.8);
 	backdrop-filter: blur(15px);
 	position: absolute;
 	margin: 0 -5vw;
@@ -396,35 +344,17 @@ input::placeholder {
 	width: 100px;
 	height: 100px;
 	margin: 0 auto;
-	-webkit-animation: loadingSpinner 1.2s linear infinite;
 	animation: loadingSpinner 1.2s linear infinite;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-ms-border-radius: 50%;
-	-o-border-radius: 50%;
 	border-radius: 50%;
-	border: 6px solid var(--clr-primary-400);
+	border: var(--clr-primary-400) solid 6px;
 	border-color: var(--clr-primary-400) transparent var(--clr-primary-400) transparent;
-}
-
-@-webkit-keyframes loadingSpinner {
-	0% {
-		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
-	}
 }
 
 @keyframes loadingSpinner {
 	0% {
-		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
 	}
 	100% {
-		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
 }
@@ -470,11 +400,7 @@ input::placeholder {
 	font-weight: var(--fw-b);
 }
 
-
-/* BUTTONS */
-
 .btn {
-	-webkit-appearance: none;
 	font-size: 1.8rem;
 	padding: 1rem 0;
 	width: 60vw;
@@ -495,8 +421,6 @@ input::placeholder {
 
 .btn-difficulty {
 	font-size: var(--fs-4);
-	-moz-text-align-last: center;
-	-webkit-appearance: none;
 	text-align: center;
 	text-align-last: center;
 	margin-top: 4rem;
@@ -536,32 +460,16 @@ input::placeholder {
 .btn:hover {
 	cursor: pointer;
 	background-color: var(--clr-hover);
-	-webkit-box-shadow: 0 0.4rem 1.4rem 0 var(--clr-primary-200);
 	box-shadow: 0 0.4rem 1.4rem 0 var(--clr-primary-200);
-	-webkit-transform: translateY(-0.1rem);
-	-ms-transform: translateY(-0.1rem);
 	transform: translateY(-0.1rem);
-	-webkit-transition: transform 150ms, -webkit-transform 150ms;
-	transition: -webkit-transform 150ms;
-	-o-transition: transform 150ms, -webkit-transform 150ms;
-	-moz-transition: transform 150ms, -webkit-transform 150ms;
-	-ms-transition: transform 150ms, -webkit-transform 150ms;
-	transition: transform 150ms, -webkit-transform 150ms;
-
 	color: white;
 }
 
 .btn[disabled]:hover {
 	cursor: not-allowed;
-	-webkit-box-shadow: none;
 	box-shadow: none;
-	-webkit-transform: none;
-	-ms-transform: none;
 	transform: none;
 }
-
-
-/* Media Queries */
 
 @media screen and (max-height: 450px) {
 	#height-to-small-to-play {
@@ -569,7 +477,7 @@ input::placeholder {
 		z-index: 110;
 	}
 	.glass {
-		background-color: rgba(255, 255, 255, 0.3);
+		background-color: rgb(255, 255, 255, 0.3);
 	}
 }
 
@@ -588,16 +496,13 @@ input::placeholder {
 	}
 }
 
-
-/* On screens that are 768px or more */
-
 @media screen and (min-width: 768px) {
 	#main-container {
 		height: 95vh;
 		margin: 2.5vh 10vw;
 	}
 	.add-background-image {
-		background: url(../images/background-img-1024.jpg) no-repeat center center fixed;
+		background: url(../images/background-img-1024.jpg) center center no-repeat fixed;
 		background-size: cover;
 	}
 	.fa-volume-mute,
@@ -615,12 +520,9 @@ input::placeholder {
 	}
 }
 
-
-/* On screens that are 1024px or more */
-
 @media screen and (min-width: 1024px) {
 	.add-background-image {
-		background: url(../images/background-img-1400.jpg) no-repeat center center fixed;
+		background: url(../images/background-img-1400.jpg) center center no-repeat fixed;
 		background-size: cover;
 	}
 	.glass {
@@ -630,12 +532,9 @@ input::placeholder {
 	}
 }
 
-
-/* On screens that are 1400px or more */
-
 @media screen and (min-width: 1400px) {
 	.add-background-image {
-		background: url(../images/background-img-1400.jpg) no-repeat center center fixed;
+		background: url(../images/background-img-1400.jpg) center center no-repeat fixed;
 		background-size: cover;
 	}
 }
