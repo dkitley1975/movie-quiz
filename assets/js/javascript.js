@@ -8,6 +8,10 @@ const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 3); //* increase this value t
 
 
 const answers = Array.from(document.getElementsByClassName("answers-text"));
+const answerContainer1 = document.getElementById("answer-container-1");
+const answerContainer2 = document.getElementById("answer-container-2");
+const answerContainer3 = document.getElementById("answer-container-3");
+const answerContainer4 = document.getElementById("answer-container-4");
 const continuePlayingButton = document.querySelector("#btn-continue-playing");
 const endGameHighScoresList = document.querySelector(".endGameHighScoresList");
 const exitGame = document.getElementById("btn-exit-game");
@@ -36,6 +40,7 @@ const userFinalScoreContainer = document.querySelector("#user-final-score-contai
 const username = document.getElementById("username");
 const viewHighScoresButton = document.querySelector("#btn-view-high-scores");
 let acceptingAnswers = false;
+let actualAnswer;
 let availableQuestions = [];
 let newQuestion = {};
 let getNewQuestion;
@@ -67,9 +72,11 @@ viewHighScoresButton.addEventListener("click", showHighScoresScreen);
 function sounds() {
 	if (sessionStorage.getItem("sounds") == undefined) {
 		sessionStorage.setItem("sounds", "mute");
-	} else if (sessionStorage.getItem("sounds") == "mute") {
+	}
+	else if (sessionStorage.getItem("sounds") == "mute") {
 		sessionStorage.setItem("sounds", "play");
-	} else {
+	}
+	else {
 		sessionStorage.setItem("sounds", "mute");
 	}
 	sfxMuteOrPlay();
@@ -82,7 +89,8 @@ function sfxMuteOrPlay() {
 		soundIncorrect.muted = true;
 		muteButton.classList.add("hidden");
 		unMuteButton.classList.remove("hidden");
-	} else {
+	}
+	else {
 		soundCorrect.muted = false;
 		soundIncorrect.muted = false;
 		unMuteButton.classList.add("hidden");
@@ -191,9 +199,11 @@ function startQuiz() {
 function pointsPerQuestion() {
 	if (level == "hard") {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerHard;
-	} else if (level == "medium") {
+	}
+	else if (level == "medium") {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerMedium;
-	} else {
+	}
+	else {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy;
 	}
 }
@@ -301,76 +311,91 @@ function showHighScoresScreen() {
 		.join("");
 }
 
-	/**  Retrieve questions from the array */
-	getNewQuestion = () => {
-		maxQuestionsReached();
+/**  Retrieve questions from the array */
+getNewQuestion = () => {
+	maxQuestionsReached();
 
-		questionCounter++;
+	questionCounter++;
 
-		//Updates the progress bar
-		progressText.innerText = `Question ${questionCounter}/${SetQtyOfQuestions}`;
+	//Updates the progress bar
+	progressText.innerText = `Question ${questionCounter}/${SetQtyOfQuestions}`;
 
-		progressBarFull.style.width = `${(questionCounter / SetQtyOfQuestions) * 100}%`;
-		if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
-			progressBarFull.classList.add("progress-bar-rounded");
-		}
+	progressBarFull.style.width = `${(questionCounter / SetQtyOfQuestions) * 100}%`;
+	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
+		progressBarFull.classList.add("progress-bar-rounded");
+	}
 
-		//creates a random number between 1 and the qty of remaining questions and sets the current question to that question number
-		const questionIndex = Math.floor(Math.random() * (qtyOfQuestionsToFetch - (questionCounter - 1)));
-		newQuestion = availableQuestions[questionIndex];
+	//creates a random number between 1 and the qty of remaining questions and sets the current question to that question number
+	const questionIndex = Math.floor(Math.random() * (qtyOfQuestionsToFetch - (questionCounter - 1)));
+	newQuestion = availableQuestions[questionIndex];
 
-		// adds current question to the Question section 
-		question.innerHTML = newQuestion.question;
+	// adds current question to the Question section 
+	question.innerHTML = newQuestion.question;
 
-		// gets the correct answer information from the set of questions
-		answers.forEach((answers) => {
-			const number = answers.dataset.number;
-			answers.innerHTML = newQuestion["answers" + number];
-		});
-		//removes the current question from the available questions list
-		availableQuestions.splice(questionIndex, 1);
-		acceptingAnswers = true;
-	};
-
-	/** check which answer the user has chosen, indicate if correct and add points to score if appropriate*/
+	// gets the correct answer information from the set of questions
 	answers.forEach((answers) => {
-		answers.addEventListener("click", (e) => {
-			if (!acceptingAnswers) return;
+		const number = answers.dataset.number;
+		answers.innerHTML = newQuestion["answers" + number];
+	});
+	//removes the current question from the available questions list
+	availableQuestions.splice(questionIndex, 1);
+	acceptingAnswers = true;
+};
 
-			acceptingAnswers = false;
-			const answersSet = e.target;
-			const userSelectedAnswer = answersSet.dataset.number;
-			let correctAnswer = newQuestion.CorrectAnswer;
+/** check which answer the user has chosen, indicate if correct and add points to score if appropriate*/
+answers.forEach((answers) => {
+	answers.addEventListener("click", (e) => {
+		if (!acceptingAnswers) return;
+
+		acceptingAnswers = false;
+		const answersSet = e.target;
+		const userSelectedAnswer = answersSet.dataset.number;
+		let correctAnswer = newQuestion.CorrectAnswer;
 		// console.log("The Correct Answer was ",correctAnswer);
 
-			//check if the user has selected the correct answer 
-			const classToApply = userSelectedAnswer == correctAnswer ? "answered-correct" : "answered-incorrect";
-			//if  answer correct increase the user score
-			if (classToApply === "answered-correct") {
-				incrementScore(pointsPerCorrectAnswer);
-				soundCorrect.play();
-			} else {
-				soundIncorrect.play();
+		//check if the user has selected the correct answer 
+		const classToApply = userSelectedAnswer == correctAnswer ? "answered-correct" : "answered-incorrect";
+		//if  answer correct increase the user score
+		if (classToApply === "answered-correct") {
+			incrementScore(pointsPerCorrectAnswer);
+			soundCorrect.play();
+		}
+		else {
+			soundIncorrect.play();
+			if (correctAnswer == 1) {
+				actualAnswer = answerContainer1;
 			}
+			else if (correctAnswer == 2) {
+				actualAnswer = answerContainer2;
+			}
+			else if (correctAnswer == 3) {
+				actualAnswer = answerContainer3;
+			}
+			else {
+				actualAnswer = answerContainer4;
+			}
+			actualAnswer.classList.add("answer-was-actual-correct");
+		}
 
-			answersSet.parentElement.classList.add(classToApply);
+		answersSet.parentElement.classList.add(classToApply);
 
-			setTimeout(() => {
-				answersSet.parentElement.classList.remove(classToApply);
-				getNewQuestion();
-			}, 1500);
-		});
+		setTimeout(() => {
+			answersSet.parentElement.classList.remove(classToApply);
+			actualAnswer.classList.remove("answer-was-actual-correct");
+			getNewQuestion();
+		}, 1500);
 	});
+});
 
 
-	/** Update the users score */
-	incrementScore = (questionPointsValue) => {
-		score += questionPointsValue;
-		scoreText.innerText = score;
-		playerFinalScore.innerText = `You scored ${score}`;
-	};
+/** Update the users score */
+incrementScore = (questionPointsValue) => {
+	score += questionPointsValue;
+	scoreText.innerText = score;
+	playerFinalScore.innerText = `You scored ${score}`;
+};
 
-	//*event listener to allow user to click the save button once username entered
-	username.addEventListener("keyup", () => {
-		saveScoreBtn.disabled = !username.value;
-	});
+//*event listener to allow user to click the save button once username entered
+username.addEventListener("keyup", () => {
+	saveScoreBtn.disabled = !username.value;
+});

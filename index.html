@@ -18,7 +18,7 @@
       <meta name="theme-color" content="#6ec2b5"/>
    </head>
    <body id="main-container" class="add-background-image flex-center flex flex-column">
-            <div id="height-to-small-to-play" class="justify-center flex flex-column glass text-center hidden">
+      <div id="height-to-small-to-play" class="justify-center flex flex-column glass text-center hidden">
          <h1>This Quiz is best played in portrait mode on smaller devices.</h1>
          <h2>Please rotate your device to <br>continue with the quiz</h2>
       </div>
@@ -34,29 +34,30 @@
          <button id="btn-play-game" class="btn">Play</button>
          <button id="btn-view-high-scores" class="btn">High Scores</button>
       </div>
-       
       <div id="quiz-container" class="justify-space-around flex flex-column glass hidden">
-                  <div class="loadingSpinner justify-center flex flex-column"> <h1>Loading</h1><p>Quiz questions</p></div>
-
+         <div class="loadingSpinner justify-center flex flex-column">
+            <h1>Loading</h1>
+            <p>Quiz questions</p>
+         </div>
          <div id="sfx-control">
-               <div id="btn-mute" class="hidden"><i class="fas fa-volume-up"></i></div>
-               <div id="btn-unmute" class="hidden"><i class="fas fa-volume-mute"></i></div>
-            </div>
+            <div id="btn-mute" class="hidden"><i class="fas fa-volume-up"></i></div>
+            <div id="btn-unmute" class="hidden"><i class="fas fa-volume-mute"></i></div>
+         </div>
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <h2 id="question" class="question-text">What have I got in my pocket?</h2>
-         <div class="answers-container">
+         <div id="answer-container-1" class="answers-container">
             <p class="answers-prefix">A</p>
             <p class="answers-text" data-number="1">handses</p>
          </div>
-         <div class="answers-container">
+         <div id="answer-container-2"  class="answers-container">
             <p class="answers-prefix">B</p>
             <p class="answers-text" data-number="2">knife</p>
          </div>
-         <div class="answers-container">
+         <div id="answer-container-3"  class="answers-container">
             <p class="answers-prefix">C</p>
             <p class="answers-text" data-number="3">String, or nothing!</p>
          </div>
-         <div class="answers-container">
+         <div id="answer-container-4" class="answers-container">
             <p class="answers-prefix">D</p>
             <p class="answers-text" data-number="4">A ring</p>
          </div>
@@ -76,13 +77,10 @@
                <h2 class="progress-main-text" id="score">0</h2>
             </div>
          </div>
-            
-        <div id="exit-quiz-options" class="flex flex-column flex-center">
+         <div id="exit-quiz-options" class="flex flex-column flex-center">
             <button class="btn btn-exit-quiz" type="button">Exit Quiz</button>
-             
          </div>
       </div>
-         
       <div id="user-final-score-container" class="flex-center flex flex-column glass hidden">
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <h1>High Scores</h1>
@@ -96,7 +94,6 @@
             Save & Play Again
             </button>
             <button type="submit" id="btn-view-home-screen" class="exit-reset-game-btn btn">Don't Save & Play Again</button>
-
          </form>
       </div>
       <div id="high-score-container" class="flex-center flex flex-column glass hidden">
