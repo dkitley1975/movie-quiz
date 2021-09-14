@@ -107,7 +107,7 @@ input::placeholder {
 	color: #aaa;
 }
 
-#exit-quiz-container {
+#exit-quiz-container-jsRef {
 	z-index: 101;
 }
 
@@ -135,11 +135,11 @@ input::placeholder {
 	line-height: 3rem;
 }
 
-#high-score-container h1 {
+#high-score-container-jsRef h1 {
 	margin: 1rem 0;
 }
 
-#home-container h1 {
+#home-container-jsRef h1 {
 	font-size: 400%;
 	margin-bottom: 1rem;
 	color: var(--clr-primary-400);
@@ -166,7 +166,7 @@ input::placeholder {
 	margin-top: 1rem;
 }
 
-#progressBarFull {
+#progressBarFull-jsRef {
 	height: 2.2rem;
 	background-color: var(--clr-primary-400);
 	width: 0%;
@@ -213,7 +213,7 @@ input::placeholder {
 	color: white;
 }
 
-.answers-text {
+.answers-text-jsRef {
 	padding: 1rem;
 	width: 100%;
 	font-size: var(--fs-default);
@@ -310,7 +310,7 @@ input::placeholder {
 	margin: 5rem auto 2rem;
 }
 
-.loadingSpinner {
+.loadingSpinner-jsRef {
 	width: 40vw;
 	height: 40vw;
 	z-index: 200;
@@ -324,33 +324,33 @@ input::placeholder {
 	text-align: center;
 }
 
-.loadingSpinner h1 {
+.loadingSpinner-jsRef h1 {
 	font-size: var(--fs-1);
 	margin-bottom: 1rem;
 	font-weight: var(--fw-b);
 	font-family: var(--ff-main);
 }
 
-.loadingSpinner p {
+.loadingSpinner-jsRef p {
 	font-size: var(--fs-4);
 	margin-bottom: 1rem;
 	font-weight: var(--fw-b);
 	font-family: var(--ff-main);
 }
 
-.loadingSpinner:after {
+.loadingSpinner-jsRef:after {
 	content: " ";
 	display: block;
 	width: 100px;
 	height: 100px;
 	margin: 0 auto;
-	animation: loadingSpinner 1.2s linear infinite;
+	animation: loadingSpinner-jsRef 1.2s linear infinite;
 	border-radius: 50%;
 	border: var(--clr-primary-400) solid 6px;
 	border-color: var(--clr-primary-400) transparent var(--clr-primary-400) transparent;
 }
 
-@keyframes loadingSpinner {
+@keyframes loadingSpinner-jsRef {
 	0% {
 		transform: rotate(0deg);
 	}
@@ -439,7 +439,7 @@ input::placeholder {
 	color: white;
 }
 
-.btn-play-game {
+.btn-play-game-jsRef {
 	color: var(--clr-primary-000);
 }
 

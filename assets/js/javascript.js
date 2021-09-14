@@ -1,46 +1,47 @@
-//* Alter this set of variables for Quiz game play
+//* Alter this set of variables for the Quiz game play
 const SetQtyOfQuestions = 10; //* amount of questions for the quiz
-const highScoresToShow = 8; //* amount of high scores to shw in high score list
+const highScoresToShow = 6; //* amount of high scores to shw in high score list
 const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
 const pointsPerCorrectAnswerMedium = 1.5; //* points for medium questions
-const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 3); //* increase this value to increase the randomness of the questions, only fetching SetQtyOfQuestions value only pulls from the first section of the API
+const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 3); //* increase this value to increase the randomness of the questions, 
+		//* only fetching SetQtyOfQuestions value only pulls from the first section of the API, 
+		//* Check the actual amount of questions that are available though from the API.
 
-
-const answers = Array.from(document.getElementsByClassName("answers-text"));
-const answerContainer1 = document.getElementById("answer-container-1");
-const answerContainer2 = document.getElementById("answer-container-2");
-const answerContainer3 = document.getElementById("answer-container-3");
-const answerContainer4 = document.getElementById("answer-container-4");
-const continuePlayingButton = document.querySelector("#btn-continue-playing");
-const endGameHighScoresList = document.querySelector(".endGameHighScoresList");
-const exitGame = document.getElementById("btn-exit-game");
-const exitQuizContainer = document.querySelector("#exit-quiz-container");
-const highScoresContainer = document.querySelector("#high-score-container");
-const highScoresList = document.querySelector(".highScoresList");
-const homeContainer = document.querySelector("#home-container");
-const homeScreenButton = document.querySelector("#btn-view-home-screen");
-const loadingSpinner = document.querySelector(".loadingSpinner");
-const muteButton = document.getElementById("btn-mute");
-const playButton = document.querySelector("#btn-play-game");
-const playerFinalScore = document.getElementById("playerFinalScore");
-const progressBarFull = document.querySelector("#progressBarFull");
-const progressText = document.getElementById("progressText");
-const question = document.getElementById("question");
-const quizContainer = document.querySelector("#quiz-container");
-const returnHomeScreenButton = document.querySelector("#btn-return-to-home-screen");
-const saveHighScore = document.querySelector("#btn-save-score");
-const saveScoreBtn = document.getElementById("btn-save-score");
-const scoreText = document.querySelector("#score");
-const showExitGameOptions = document.getElementById("exit-quiz-options");
+const answers = Array.from(document.getElementsByClassName("answers-text-jsRef"));
+const answerContainer1 = document.getElementById("answer-container-1-jsRef");
+const answerContainer2 = document.getElementById("answer-container-2-jsRef");
+const answerContainer3 = document.getElementById("answer-container-3-jsRef");
+const answerContainer4 = document.getElementById("answer-container-4-jsRef");
+const continuePlayingButton = document.querySelector("#btn-continue-playing-jsRef");
+const endGameHighScoresList = document.querySelector(".endGameHighScoresList-jsRef");
+const exitGame = document.getElementById("btn-exit-game-jsRef");
+const exitQuizContainer = document.querySelector("#exit-quiz-container-jsRef");
+const highScoresContainer = document.querySelector("#high-score-container-jsRef");
+const highScoresList = document.querySelector(".highScoresList-jsRef");
+const homeContainer = document.querySelector("#home-container-jsRef");
+const homeScreenButton = document.querySelector("#btn-view-home-screen-jsRef");
+const loadingSpinner = document.querySelector(".loadingSpinner-jsRef");
+const muteButton = document.getElementById("btn-mute-jsRef");
+const playButton = document.querySelector("#btn-play-game-jsRef");
+const playerFinalScore = document.getElementById("playerFinalScore-jsRef");
+const progressBarFull = document.querySelector("#progressBarFull-jsRef");
+const progressText = document.getElementById("progressText-jsRef");
+const question = document.getElementById("question-jsRef");
+const quizContainer = document.querySelector("#quiz-container-jsRef");
+const returnHomeScreenButton = document.querySelector("#btn-return-to-home-screen-jsRef");
+const saveHighScore = document.querySelector("#btn-save-score-jsRef");
+const saveScoreBtn = document.getElementById("btn-save-score-jsRef");
+const scoreText = document.querySelector("#score-jsRef");
+const showExitGameOptions = document.getElementById("exit-quiz-options-jsRef");
 const soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
 const soundIncorrect = new Audio("assets/sounds/sound-incorrect.mp3");
-const unMuteButton = document.getElementById("btn-unmute");
-const userFinalScoreContainer = document.querySelector("#user-final-score-container");
-const username = document.getElementById("username");
-const viewHighScoresButton = document.querySelector("#btn-view-high-scores");
+const unMuteButton = document.getElementById("btn-unmute-jsRef");
+const userFinalScoreContainer = document.querySelector("#user-final-score-container-jsRef");
+const username = document.getElementById("username-jsRef");
+const viewHighScoresButton = document.querySelector("#btn-view-high-scores-jsRef");
 let acceptingAnswers = false;
-let actualAnswer;
+let actualAnswer = answerContainer1;
 let availableQuestions = [];
 let newQuestion = {};
 let getNewQuestion;
@@ -51,9 +52,10 @@ let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //* default value for e
 let questionCounter = 0;
 let questions = [];
 let score = 0;
+let quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${level}&type=multiple`;
 soundCorrect.volume = 0.4;
 soundIncorrect.volume = 0.4;
-let quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${level}&type=multiple`;
+
 
 //* event listeners
 continuePlayingButton.addEventListener("click", closeExitOverlayScreen);
@@ -81,6 +83,7 @@ function sounds() {
 	}
 	sfxMuteOrPlay();
 }
+
 
 /** alternates the SFX button and mutes/plays the SFX accordingly */
 function sfxMuteOrPlay() {
@@ -128,10 +131,12 @@ function returnToHomeScreen() {
 	homeContainer.classList.remove("hidden");
 }
 
+
 /**  Hides the welcome page and shows the quiz */
 function showExitQuizContainer() {
 	exitQuizContainer.classList.remove("hidden");
 }
+
 
 /** Hide the Exit quiz message container */
 function closeExitOverlayScreen() {
@@ -173,8 +178,6 @@ window.onload = function () {
 		sessionStorage.setItem("hasSampleScoresBeenAddedBefore", true);
 		highScoresRetrieveAndSort();
 	}
-
-
 };
 
 
@@ -208,6 +211,7 @@ function pointsPerQuestion() {
 	}
 }
 
+
 /** Retrieve and sort the high scores numerically */
 function highScoresRetrieveAndSort() {
 	highScores = JSON.parse(sessionStorage.getItem("highScores")) || [];
@@ -215,6 +219,7 @@ function highScoresRetrieveAndSort() {
 		return b.score - a.score;
 	});
 }
+
 
 function fetchTheQuestions() {
 	/** Fetch the questions from an API using the user selected difficulty as the quiz level and map the question to an array */
@@ -245,6 +250,7 @@ function fetchTheQuestions() {
 		});
 }
 
+
 /** Allows the user to select a difficulty level for the quiz  then fetches the questions*/
 function updateQuizLevel() {
 	level = document.getElementById("selectLevelRef").value;
@@ -268,6 +274,7 @@ function maxQuestionsReached() {
 	}
 }
 
+
 /** Saves the high score to session storage */
 function saveTheHighScore(submit) {
 
@@ -283,8 +290,8 @@ function saveTheHighScore(submit) {
 
 	sessionStorage.setItem("highScores", JSON.stringify(highScores));
 	window.location.assign("index.html");
-
 }
+
 
 /** retrieves and creates a string to display High Scores in the end game page */
 function endGameHighScores() {
@@ -310,6 +317,7 @@ function showHighScoresScreen() {
 		})
 		.join("");
 }
+
 
 /**  Retrieve questions from the array */
 getNewQuestion = () => {
@@ -341,6 +349,7 @@ getNewQuestion = () => {
 	availableQuestions.splice(questionIndex, 1);
 	acceptingAnswers = true;
 };
+
 
 /** check which answer the user has chosen, indicate if correct and add points to score if appropriate*/
 answers.forEach((answers) => {
