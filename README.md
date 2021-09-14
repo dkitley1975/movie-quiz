@@ -105,7 +105,7 @@ There are 6 sample high scores added to the storage initially, the score values 
 - __Submitting High Scores__
 
   - After completing the quiz, the user has an option to save their score and play again or not to save and play again.
-  - The score is submitted and only the top 8 scores are retained. This retention value is easily amended within the top section of the Javascript file.
+  - The score is submitted and only the top 6 scores are retained. This retention value is easily amended within the top section of the Javascript file.
   
   ![Submitting the high score](./docs/screenshots/submit-high-scores-page-ipad.png)
   ![Submitted high score](./docs/screenshots/submitted-high-scores-page-ipad.png)
