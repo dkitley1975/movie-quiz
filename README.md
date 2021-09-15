@@ -82,7 +82,7 @@ The points values are input within the Javascript file which updates the text on
 - __High Scores Section__
 This section has a table created from the user's session storage, when first opening the session storage is populated with some example names and scores from the Javascript file, this ensures that the high scores page isn't blank when first opening.
 There is also included on this page a button to return to the home screen.
-There are 6 sample high scores added to the storage initially, the score values are created randomly using the point values and the total amount of questions to be asked within the quiz. This is calculated twice for the Hard, Medium and Easy values
+There are 8 sample high scores added to the storage initially, the score values are created randomly using the point values and the total amount of questions to be asked within the quiz. This is calculated twice for the Hard, Medium and Easy values
     `Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerHard`
   
   ![High Scores](./docs/screenshots/high-scores-page-mobile.png)
@@ -147,7 +147,6 @@ The user selection is also added into the session storage, this way at the end o
 
 ### Features Left to Implement
 
-- If the number of high scores reaches the maximum allowed, then check the user score against the lowest of the high scores. If the score is lower then only show the user score and previous high scores. Hiding the 'enter a username' and 'submit high score button', replacing them with a try again message.
 - Styling the 'Select' button for the level difficulty. Although I have removed the default IOS styling, I hoped to also center the text within the button. The button looks perfect on all the browsers tested apart from Safari on the desktop and IOS mobile devices, where the text is left aligned with some left padding. This is acceptable but not in keeping with the buttons below.
 
 ## Testing
