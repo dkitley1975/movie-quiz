@@ -478,10 +478,18 @@ select {
 	color: white;
 }
 
+.btn[disabled] {
+	cursor: not-allowed;
+	box-shadow: none;
+	transform: none;
+	background-color: rgb(194, 190, 190);
+}
+
 .btn[disabled]:hover {
 	cursor: not-allowed;
 	box-shadow: none;
 	transform: none;
+	background-color: #aaa;
 }
 
 @media screen and (max-height: 450px) {
