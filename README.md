@@ -148,6 +148,7 @@ The user selection is also added into the session storage, this way at the end o
 ### Features Left to Implement
 
 - If the number of high scores reaches the maximum allowed, then check the user score against the lowest of the high scores. If the score is lower then only show the user score and previous high scores. Hiding the 'enter a username' and 'submit high score button', replacing them with a try again message.
+- Styling the 'Select' button for the level difficulty. Although I have removed the default IOS styling, I hoped to also center the text within the button. The button looks perfect on all the browsers tested apart from Safari on the desktop and IOS mobile devices, where the text is left aligned with some left padding. This is acceptable but not in keeping with the buttons below.
 
 ## Testing
 
