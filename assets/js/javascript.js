@@ -1,12 +1,12 @@
 //* Alter this set of variables for the Quiz game play
 const SetQtyOfQuestions = 10; //* amount of questions for the quiz
-const highScoresToShow = 6; //* amount of high scores to shw in high score list
+const highScoresToShow = 8; //* amount of high scores to shw in high score list
 const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
 const pointsPerCorrectAnswerMedium = 1.5; //* points for medium questions
 const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 3); //* increase this value to increase the randomness of the questions, 
-		//* only fetching SetQtyOfQuestions value only pulls from the first section of the API, 
-		//* Check the actual amount of questions that are available though from the API.
+//* only fetching SetQtyOfQuestions value only pulls from the first section of the API, 
+//* Check the actual amount of questions that are available though from the API.
 
 const answers = Array.from(document.getElementsByClassName("answers-text-jsRef"));
 const answerContainer1 = document.getElementById("answer-container-1-jsRef");
@@ -67,6 +67,9 @@ returnHomeScreenButton.addEventListener("click", returnToHomeScreen);
 saveHighScore.addEventListener("click", saveTheHighScore);
 showExitGameOptions.addEventListener("click", showExitQuizContainer);
 unMuteButton.addEventListener("click", sounds);
+username.addEventListener("keyup", () => {
+	saveScoreBtn.disabled = !username.value;
+});
 viewHighScoresButton.addEventListener("click", showHighScoresScreen);
 
 
@@ -180,6 +183,25 @@ window.onload = function () {
 	}
 };
 
+/** retrieves lowest High Score, 
+ * checks it against the user score and 
+ * if the score is less than or equal to the lowest score 
+ * it hides the username input and submit buttons  */
+function hideSubmitButtonIfLowestScore() {
+	let highScoresNumbers = 0;
+	let lowestHighScoresNumber = 0;
+	highScoresNumbers = JSON.parse(sessionStorage.getItem("highScores")).map(function (i) {
+		return i.score;
+	});
+	highScoresNumbers.sort((a, b) => a - b);
+	highScoresNumbers.splice(1);
+	lowestHighScoresNumber = highScoresNumbers.toString();
+	if (score < lowestHighScoresNumber) {
+		saveHighScore.classList.add("hidden");
+		username.classList.add("hidden");
+	}
+}
+
 
 /** function to start the game and any previous scores */
 function startQuiz() {
@@ -269,6 +291,7 @@ function maxQuestionsReached() {
 		endGameHighScores();
 		quizContainer.classList.add("hidden");
 		userFinalScoreContainer.classList.remove("hidden");
+		hideSubmitButtonIfLowestScore();
 		muteButton.classList.add("hidden");
 		unMuteButton.classList.add("hidden");
 	}
@@ -292,7 +315,6 @@ function saveTheHighScore(submit) {
 	window.location.assign("index.html");
 }
 
-
 /** retrieves and creates a string to display High Scores in the end game page */
 function endGameHighScores() {
 	highScoresRetrieveAndSort();
@@ -302,22 +324,6 @@ function endGameHighScores() {
 		})
 		.join("");
 }
-
-
-/** retrieves and creates a string to display High Scores in the High Scores page */
-function showHighScoresScreen() {
-	highScoresRetrieveAndSort();
-
-	homeContainer.classList.add("hidden");
-	highScoresContainer.classList.remove("hidden");
-
-	highScoresList.innerHTML = highScores
-		.map(score => {
-			return `<li class="high-score"><span>${score.score}</span>\t<span>${score.name}</span</li>`;
-		})
-		.join("");
-}
-
 
 /**  Retrieve questions from the array */
 getNewQuestion = () => {
@@ -402,9 +408,21 @@ incrementScore = (questionPointsValue) => {
 	score += questionPointsValue;
 	scoreText.innerText = score;
 	playerFinalScore.innerText = `You scored ${score}`;
+
+
 };
 
-//*event listener to allow user to click the save button once username entered
-username.addEventListener("keyup", () => {
-	saveScoreBtn.disabled = !username.value;
-});
+
+/** retrieves and creates a string to display High Scores in the High Scores page */
+function showHighScoresScreen() {
+	highScoresRetrieveAndSort();
+
+	homeContainer.classList.add("hidden");
+	highScoresContainer.classList.remove("hidden");
+
+	highScoresList.innerHTML = highScores
+		.map(score => {
+			return `<li class="high-score"><span>${score.score}</span>\t<span>${score.name}</span</li>`;
+		})
+		.join("");
+}
