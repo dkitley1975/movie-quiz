@@ -6,7 +6,7 @@ The goal of the site is to provide a fun quiz game with 10 questions, with an op
 
 Thank you for visiting [my project!](https://dkitley1975.github.io/movie-quiz/)
 
-- [Movie Questions](#movie-questions)
+- [Movie Quiz](#movie-quiz)
   - [Project Overview](#project-overview)
   - [Features](#features)
     - [Typeface](#typeface)
