@@ -1,4 +1,4 @@
-# Movie Questions
+# Movie Quiz
 
 ![Responsive mock up](./docs/screenshots/screen-view-mockup-image.png)
 Welcome, this is my movie question site.
