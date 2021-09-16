@@ -4,7 +4,8 @@ const highScoresToShow = 8; //* amount of high scores to shw in high score list
 const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
 const pointsPerCorrectAnswerMedium = 1.5; //* points for medium questions
-const qtyOfQuestionsToFetch = (SetQtyOfQuestions * 3); //* increase this value to increase the randomness of the questions, 
+const questionsToFetchMultiplier = 3; //* Multiplies the amount of questions fetched (used within qtyOfQuestionsToFetch)
+const qtyOfQuestionsToFetch = (SetQtyOfQuestions * questionsToFetchMultiplier); //* increase this value to increase the randomness of the questions, 
 //* only fetching SetQtyOfQuestions value only pulls from the first section of the API, 
 //* Check the actual amount of questions that are available though from the API.
 
@@ -25,6 +26,7 @@ const loadingSpinner = document.querySelector(".loadingSpinner-jsRef");
 const muteButton = document.getElementById("btn-mute-jsRef");
 const playButton = document.querySelector("#btn-play-game-jsRef");
 const playerFinalScore = document.getElementById("playerFinalScore-jsRef");
+const playername = document.getElementById("playername-jsRef");
 const progressBarFull = document.querySelector("#progressBarFull-jsRef");
 const progressText = document.getElementById("progressText-jsRef");
 const question = document.getElementById("question-jsRef");
@@ -38,7 +40,6 @@ const soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
 const soundIncorrect = new Audio("assets/sounds/sound-incorrect.mp3");
 const unMuteButton = document.getElementById("btn-unmute-jsRef");
 const userFinalScoreContainer = document.querySelector("#user-final-score-container-jsRef");
-const username = document.getElementById("username-jsRef");
 const viewHighScoresButton = document.querySelector("#btn-view-high-scores-jsRef");
 let acceptingAnswers = false;
 let actualAnswer = answerContainer1;
@@ -67,8 +68,8 @@ returnHomeScreenButton.addEventListener("click", returnToHomeScreen);
 saveHighScore.addEventListener("click", saveTheHighScore);
 showExitGameOptions.addEventListener("click", showExitQuizContainer);
 unMuteButton.addEventListener("click", sounds);
-username.addEventListener("keyup", () => {
-	saveScoreBtn.disabled = !username.value;
+playername.addEventListener("keyup", () => {
+	saveScoreBtn.disabled = !playername.value;
 });
 viewHighScoresButton.addEventListener("click", showHighScoresScreen);
 
@@ -152,31 +153,53 @@ window.onload = function () {
 	if (sessionStorage.getItem("hasSampleScoresBeenAddedBefore") == null) {
 		/** this is to add some sample high scores to local storage */
 		let letsAddSomeSampleHighScores = [{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerHard,
-				"name": "Ms PacMan"
+				"score": (Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswerHard,
+				"name": "Arthur"
 			},
 			{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerHard,
-				"name": "Gandalf"
+				"score": (Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswerHard,
+				"name": "Ford"
+			},
+
+			{
+				"score": (Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswerHard,
+				"name": "Zaphod"
 			},
 			{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerMedium,
-				"name": "ALF"
+				"score": (Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswerMedium,
+				"name": "Marvin"
 			},
 			{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerMedium,
-				"name": "Kermit"
+				"score": (Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswerMedium,
+				"name": "Trillian"
 			},
 			{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerEasy,
-				"name": "Miss Piggy"
+				"score": (Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswerMedium,
+				"name": "Fenchurch"
 			},
 			{
-				"score": Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerEasy,
-				"name": "Papa Smurf"
+				"score": (Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswerMedium,
+				"name": "Bowerick"
+			},
+			{
+				"score": (Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswerMedium,
+				"name": "Slartibartfast"
+			},
+			{
+				"score": (Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswerEasy,
+				"name": "Colin"
+			},
+			{
+				"score": (Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswerEasy,
+				"name": "Eddie"
+			},
+			{
+				"score": (Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswerEasy,
+				"name": "Frankie & Benjy"
 			}
 		];
-
+		letsAddSomeSampleHighScores.sort((a, b) => b.score - a.score);
+		letsAddSomeSampleHighScores.splice(highScoresToShow);
 		sessionStorage.setItem("highScores", JSON.stringify(letsAddSomeSampleHighScores));
 		sessionStorage.setItem("hasSampleScoresBeenAddedBefore", true);
 		highScoresRetrieveAndSort();
@@ -198,7 +221,7 @@ function hideSubmitButtonIfLowestScore() {
 	lowestHighScoresNumber = highScoresNumbers.toString();
 	if (score < lowestHighScoresNumber) {
 		saveHighScore.classList.add("hidden");
-		username.classList.add("hidden");
+		playername.classList.add("hidden");
 	}
 }
 
@@ -268,10 +291,8 @@ function fetchTheQuestions() {
 
 				return formattedQuestion;
 			});
-
 		});
 }
-
 
 /** Allows the user to select a difficulty level for the quiz  then fetches the questions*/
 function updateQuizLevel() {
@@ -305,7 +326,7 @@ function saveTheHighScore(submit) {
 
 	score = {
 		score: score,
-		name: username.value
+		name: playername.value
 	};
 	highScores.push(score);
 	highScores.sort((a, b) => b.score - a.score);
