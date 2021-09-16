@@ -65,7 +65,7 @@ __Site User Goals:__
   - A button to play the game, and a button, and
   - A button to view the high scores.
 
-The points values are input within the Javascript file which updates the text on the welcome page. This ensures that if the scores are updated, from within the javascript file, the welcome page points section does not require updating manually.
+The points values are input within the Javascript file `const pointsPerCorrectAnswerEasy = 1` which updates the text on the welcome page. This ensures that if the scores are updated, from within the javascript file, the welcome page points section does not require updating manually.
   
   ![Welcome Page](./docs/screenshots/home-page-mobile.png)
 
@@ -82,15 +82,17 @@ The points values are input within the Javascript file which updates the text on
 - __High Scores Section__
 This section has a table created from the user's session storage, when first opening the session storage is populated with some example names and scores from the Javascript file, this ensures that the high scores page isn't blank when first opening.
 There is also included on this page a button to return to the home screen.
-There are 8 sample high scores added to the storage initially, the score values are created randomly using the point values and the total amount of questions to be asked within the quiz. This is calculated twice for the Hard, Medium and Easy values
-    `Math.floor(Math.random() * (SetQtyOfQuestions + 1)) * pointsPerCorrectAnswerHard`
+There are 11 sample high scores created initially, before being sorted and only the top ones indicated by the const `highScoresToShow = value` are kept.
+The score values are created randomly using the point values and the total amount of questions to be asked within the quiz. This is calculated for the Hard, Medium and Easy values
+    `(Math.floor(Math.random() * SetQtyOfQuestions) + 1) * pointsPerCorrectAnswer`
+This has been done to help have a randomness of high scores and names populating the high scores table, but mainly because I could and I thought it would be fun.  I don't expect the user to ever realise this is happening.
   
   ![High Scores](./docs/screenshots/high-scores-page-mobile.png)
   
 - __The Quiz Section__
 
   - The quiz page included the logo at the top.
-  - The questions are populated randomly from the questions fetched from [Open Trivia (API) Database](https://opentdb.com/api_config.php). These questions are obtained according to the difficulty level selected by the user. Instead of just 10 questions fetched from the API there is a factor of 3 (again determined within the Javascript file, this was reduced from 5 as there wasn't 50 questions within the hard questions selection in the API) to help the randomness to the questions. on testing if only 10 questions are fetched from the API it was the same 10 questions fetched each time, spoiling the quiz gameplay on any repeat attempts.
+  - The questions are populated randomly from the questions fetched from [Open Trivia (API) Database](https://opentdb.com/api_config.php). The quiz is set to return 10 questions, but is easily amended through `const SetQtyOfQuestions = 10`. These questions are obtained according to the difficulty level selected by the user. Instead of just 10 questions fetched from the API there is a multiplication factor used  to return more questions from the API `const questionsToFetchMultiplier = 3;`, this was reduced from 5 as there wasn't 50 questions within the hard questions selection in the API. this helps with the randomness of the questions. on testing if only 10 questions are fetched from the API it was the same 10 questions fetched each time, spoiling the quiz gameplay on any repeat attempts.
   - When an answer is selected the question either lights up Red for incorrect or green for correct.
   - When an answer is selected there is a sound, either a buzz or a ding to indicate if the answer was incorrect or correct, this feature is able to be turned off or on by the mute/play button at the bottom right of the play screen.
   - When an incorrect answer is selected there is an indication around the correct answer, to let the user know which answer was correct.
@@ -104,11 +106,11 @@ There are 8 sample high scores added to the storage initially, the score values 
   ![The Exit Quiz](./docs/screenshots/exit-quiz-ipad.png)
 - __Submitting High Scores__
 
-  - After completing the quiz, the user has an option to save their score and play again or not to save and play again.
-  - The score is submitted and only the top 6 scores are retained. This retention value is easily amended within the top section of the Javascript file.
-  
-  ![Submitting the high score](./docs/screenshots/submit-high-scores-page-ipad.png)
-  ![Submitted high score](./docs/screenshots/submitted-high-scores-page-ipad.png)
+  - After completing the quiz, The user's final score is displayed with the current high scores and, if the user has scored higher than the lowest score on in the high scores list the option to save their score is displayed, ![Submitting the high score](./docs/screenshots/end-game-submit-high-scores-page-ipad.png)
+  otherwise just the play again button is displayed.
+  ![Score not higher than the lowest score](./docs/screenshots/end-game-score-not-high-enough.png)
+  - The score is submitted and only the top scores are retained. This retention value is easily amended within `const highScoresToShow = 8` at the top section of the Javascript file.
+ ![Submitted high score](./docs/screenshots/submitted-high-scores-page-ipad.png)
   
 ### Typeface
 
@@ -137,12 +139,12 @@ This way my content will be easily readable.
 ### Sounds
 
 I have implemented a sound to indicate a correct and an incorrect answer, I have added a mute icon to the quiz container to allow the user to select if they wish to hear the confirmation sounds.
-The user selection is also added into the session storage, this way at the end of the game and the user plays again, the mute/play sound status is recalled from the storage and is continued to implemented within the gameplay.
+The user selection is also added into the session storage, this way at the end of the game and the user plays again, the mute/play sound status is recalled from the storage and is continued to be implemented within the gameplay.
 
 ### Insufficient Height message
 
-- I have added a message that covers over the welcome page if:
-  - **Height of the screen** - if the height of the screen is of insufficient size to display the quiz. The site displays a message asking the user to rotate their screen to continue playing the quiz.
+- I have added a message that covers over the welcome page if
+  the **Height of the screen** is of insufficient size to display the quiz. The site displays a message asking the user to rotate their screen to continue playing the quiz.
   ![Insufficient Height Message](./docs/screenshots/height-insufficient.png)
 
 ### Features Left to Implement
@@ -164,13 +166,20 @@ The user selection is also added into the session storage, this way at the end o
 - **HTML** - No errors or warnings were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdkitley1975.github.io%2Fmovie-quiz%2Findex.html)
 - **CSS** -  No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fdkitley1975.github.io%2Fmovie-quiz&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
 - **Javascript** - No errors or warnings are shown when adding the code to this site. [(JSHint.com) validator](https://jshint.com/)
-
+  
 ### Unfixed Bugs
 
-Whilst testing within the developer tools within the web browsers no issues were identified visually, but whilst testing on an iphone the address bar and navigation bar on Safari and Chrome interfered with the margins and the centralisation of the container. This didn't replicate in Edge or Firefox. I reached out for Tutor support to help resolve this issue and unfortunately the issue was unable to be fixed, at this time. I did increase the margin and padding to help reduce the problem, whilst ensuring the content fit within the screen.
-It is noticed that if the user adds the bookmark to the home screen when the web page is opened the toolbars are hidden by request and the page is centralized and has no issues.
+- Iphone display.
+  Whilst testing within the developer tools within the web browsers no issues were identified visually, but whilst testing on an iphone the address bar and navigation bar on Safari and Chrome interfered with the margins and the centralisation of the container. This didn't replicate in Edge or Firefox. I reached out for Tutor support to help resolve this issue and unfortunately the issue was unable to be fixed, at this time.
+  
+  It was noted if the user scrolls the page both these bars are removed by the device.
 
-An additional issue is the ios button styling, which I haven't as yet been able to style in the way I would like.
+  I did increase the margin and padding to help reduce the overlap, whilst ensuring the content fit within the screen.
+
+  It is also noticed that if the user adds the bookmark to the home screen when the web page is opened the toolbars are hidden by request of the webmanifest and the page is centralized and has no issues.
+
+- ios button styling.
+  An additional issue is the ios button styling for the select button, which I haven't as yet been able to style in the way I would like, this is noted within the [Features Left to Implement](#features-left-to-implement).
 
 ## Deployment
 
@@ -204,6 +213,6 @@ To run the project locally:
 
 ### Special Thanks
 
-Special thanks to my mentor Simen Daehlin. Without his persuasion/encouragement or blatant telling me I should, I would never have considered to attempt this as as my second project, and for the patience, help and pointers he provided along along the way.
+Special thanks to my mentor Simen Daehlin. Without his persuasion/encouragement or blatant telling me I should, I would never have considered to attempt this as as my second project, and for the patience, help and pointers he provided along the way.
 
-Well thanks for reading all the way to the bottom, and for visiting this [my second project](https://dkitley1975.github.io/movie-quiz/)
+Well thanks for reading all the way to the bottom, and for visiting this [my second project](https://dkitley1975.github.io/movie-quiz/) for my [Code Institute](https://codeinstitute.net/) Diploma in Software Development (E-commerce Applications).
