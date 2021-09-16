@@ -74,30 +74,33 @@ playername.addEventListener("keyup", () => {
 viewHighScoresButton.addEventListener("click", showHighScoresScreen);
 
 
-/** retrieves and updates the session storage altering the key(sounds) from mute to play */
+/** 
+ * retrieves and updates the session storage 
+ * altering the key(sounds)from mute to play
+ */
 function sounds() {
 	if (sessionStorage.getItem("sounds") == undefined) {
 		sessionStorage.setItem("sounds", "mute");
-	}
-	else if (sessionStorage.getItem("sounds") == "mute") {
+	} else if (sessionStorage.getItem("sounds") == "mute") {
 		sessionStorage.setItem("sounds", "play");
-	}
-	else {
+	} else {
 		sessionStorage.setItem("sounds", "mute");
 	}
 	sfxMuteOrPlay();
 }
 
 
-/** alternates the SFX button and mutes/plays the SFX accordingly */
+/** 
+ * alternates the SFX button 
+ * and mutes/plays the SFX accordingly
+ */
 function sfxMuteOrPlay() {
 	if (sessionStorage.getItem("sounds") == "mute") {
 		soundCorrect.muted = true;
 		soundIncorrect.muted = true;
 		muteButton.classList.add("hidden");
 		unMuteButton.classList.remove("hidden");
-	}
-	else {
+	} else {
 		soundCorrect.muted = false;
 		soundIncorrect.muted = false;
 		unMuteButton.classList.add("hidden");
@@ -106,7 +109,9 @@ function sfxMuteOrPlay() {
 }
 
 
-/** Adds the points information to the home screen. */
+/**
+ * Adds the points information to the home screen. 
+ */
 function addPointsInformationToTheHomePage() {
 	let pointsInformation = document.getElementById("points-information");
 	let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per question,<br>
@@ -117,14 +122,21 @@ function addPointsInformationToTheHomePage() {
 addPointsInformationToTheHomePage();
 
 
-/**  Hides the welcome page and shows the quiz */
+/**  
+ * Hides the welcome page and 
+ * shows the quiz 
+ */
 function showQuizContainer() {
 	homeContainer.classList.add("hidden");
 	quizContainer.classList.remove("hidden");
 	muteButton.classList.remove("hidden");
 }
 
-/** Returns to the home screen hiding all containers */
+
+/** 
+ * Returns to the home screen 
+ * hiding all containers 
+ */
 function returnToHomeScreen() {
 	quizContainer.classList.add("hidden");
 	userFinalScoreContainer.classList.add("hidden");
@@ -136,19 +148,27 @@ function returnToHomeScreen() {
 }
 
 
-/**  Hides the welcome page and shows the quiz */
+/**  
+ * Hides the welcome page and 
+ * shows the quiz 
+ */
 function showExitQuizContainer() {
 	exitQuizContainer.classList.remove("hidden");
 }
 
 
-/** Hide the Exit quiz message container */
+/** 
+ * Hide the Exit quiz message container  
+ */
 function closeExitOverlayScreen() {
 	exitQuizContainer.classList.add("hidden");
 }
 
 
-/** Adds sample high Score to the session storage, The first statement checks if the one time function has NOT been executed before */
+/** Adds sample high Score to the session storage, 
+ * The first statement checks if the one time 
+ * function has NOT been executed before
+ */
 window.onload = function () {
 	if (sessionStorage.getItem("hasSampleScoresBeenAddedBefore") == null) {
 		/** this is to add some sample high scores to local storage */
@@ -206,10 +226,13 @@ window.onload = function () {
 	}
 };
 
-/** retrieves lowest High Score, 
+
+/** 
+ * retrieves lowest High Score, 
  * checks it against the user score and 
  * if the score is less than or equal to the lowest score 
- * it hides the username input and submit buttons  */
+ * it hides the username input and submit buttons
+ */
 function hideSubmitButtonIfLowestScore() {
 	let highScoresNumbers = 0;
 	let lowestHighScoresNumber = 0;
@@ -226,7 +249,10 @@ function hideSubmitButtonIfLowestScore() {
 }
 
 
-/** function to start the game and any previous scores */
+/** 
+ * function to start the game and 
+ * any previous scores
+ */
 function startQuiz() {
 	scoreText.innerText = 0;
 	score = 0;
@@ -243,21 +269,24 @@ function startQuiz() {
 }
 
 
-/** Set the correct points per question dependant on the user selected difficulty level */
+/**
+ * Set the correct points per question dependant 
+ * on the user selected difficulty level 
+ */
 function pointsPerQuestion() {
 	if (level == "hard") {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerHard;
-	}
-	else if (level == "medium") {
+	} else if (level == "medium") {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerMedium;
-	}
-	else {
+	} else {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy;
 	}
 }
 
 
-/** Retrieve and sort the high scores numerically */
+/** Retrieve and sort the 
+ * high scores numerically
+ */
 function highScoresRetrieveAndSort() {
 	highScores = JSON.parse(sessionStorage.getItem("highScores")) || [];
 	highScores.sort((a, b) => {
@@ -266,8 +295,13 @@ function highScoresRetrieveAndSort() {
 }
 
 
+/**
+ * Fetch the questions from an API 
+ * using the user selected difficulty as the quiz level 
+ * and map the question to an array 
+ */
 function fetchTheQuestions() {
-	/** Fetch the questions from an API using the user selected difficulty as the quiz level and map the question to an array */
+
 	fetch(quizUrl)
 		.then((res) => {
 			return res.json();
@@ -294,7 +328,11 @@ function fetchTheQuestions() {
 		});
 }
 
-/** Allows the user to select a difficulty level for the quiz  then fetches the questions*/
+
+/** 
+ * Allows the user to select a difficulty level
+ * for the quiz  then fetches the questions
+ */
 function updateQuizLevel() {
 	level = document.getElementById("selectLevelRef").value;
 	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${level}&type=multiple`;
@@ -305,7 +343,11 @@ function updateQuizLevel() {
 updateQuizLevel();
 
 
-/** Checks if the maximum amount of questions per quiz has been reached and if so go to user final score page */
+/** 
+ * Checks if the maximum amount of questions 
+ * per quiz has been reached and if so 
+ * go to user final score page 
+ */
 function maxQuestionsReached() {
 	if (availableQuestions.length === 0 || questionCounter >= SetQtyOfQuestions) {
 		sessionStorage.setItem("mostRecentScore", score);
@@ -319,7 +361,10 @@ function maxQuestionsReached() {
 }
 
 
-/** Saves the high score to session storage */
+/** 
+ * Saves the high score 
+ * to session storage 
+ */
 function saveTheHighScore(submit) {
 
 	submit.preventDefault();
@@ -336,7 +381,12 @@ function saveTheHighScore(submit) {
 	window.location.assign("index.html");
 }
 
-/** retrieves and creates a string to display High Scores in the end game page */
+
+/** 
+ * retrieves and creates a string 
+ * to display High Scores in the 
+ * end game page 
+ */
 function endGameHighScores() {
 	highScoresRetrieveAndSort();
 	endGameHighScoresList.innerHTML = highScores
@@ -346,7 +396,11 @@ function endGameHighScores() {
 		.join("");
 }
 
-/**  Retrieve questions from the array */
+
+/**  
+ * Retrieve questions 
+ * from the array 
+ */
 getNewQuestion = () => {
 	maxQuestionsReached();
 
@@ -378,7 +432,11 @@ getNewQuestion = () => {
 };
 
 
-/** check which answer the user has chosen, indicate if correct and add points to score if appropriate*/
+/** 
+ * check which answer the user has chosen, 
+ * indicate if correct and add points 
+ * to score if appropriate
+ */
 answers.forEach((answers) => {
 	answers.addEventListener("click", (e) => {
 		if (!acceptingAnswers) return;
@@ -395,19 +453,15 @@ answers.forEach((answers) => {
 		if (classToApply === "answered-correct") {
 			incrementScore(pointsPerCorrectAnswer);
 			soundCorrect.play();
-		}
-		else {
+		} else {
 			soundIncorrect.play();
 			if (correctAnswer == 1) {
 				actualAnswer = answerContainer1;
-			}
-			else if (correctAnswer == 2) {
+			} else if (correctAnswer == 2) {
 				actualAnswer = answerContainer2;
-			}
-			else if (correctAnswer == 3) {
+			} else if (correctAnswer == 3) {
 				actualAnswer = answerContainer3;
-			}
-			else {
+			} else {
 				actualAnswer = answerContainer4;
 			}
 			actualAnswer.classList.add("answer-was-actual-correct");
@@ -424,7 +478,9 @@ answers.forEach((answers) => {
 });
 
 
-/** Update the users score */
+/** 
+ * Update the users score
+ */
 incrementScore = (questionPointsValue) => {
 	score += questionPointsValue;
 	scoreText.innerText = score;
@@ -434,7 +490,11 @@ incrementScore = (questionPointsValue) => {
 };
 
 
-/** retrieves and creates a string to display High Scores in the High Scores page */
+/** 
+ * retrieves and creates a string 
+ * to display High Scores in the 
+ * High Scores page 
+ */
 function showHighScoresScreen() {
 	highScoresRetrieveAndSort();
 
