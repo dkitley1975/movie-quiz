@@ -14,6 +14,7 @@ Thank you for visiting [my project!](https://dkitley1975.github.io/movie-quiz/)
     - [Sounds](#sounds)
     - [Insufficient Height message](#insufficient-height-message)
     - [Features Left to Implement](#features-left-to-implement)
+  - [User feedback](#user-feedback)
   - [Testing](#testing)
     - [Chrome Lighthouse Report](#chrome-lighthouse-report)
     - [Validator Testing](#validator-testing)
@@ -150,6 +151,12 @@ The user selection is also added into the session storage, this way at the end o
 ### Features Left to Implement
 
 - Styling the 'Select' button for the level difficulty. Although I have removed the default IOS styling, I hoped to also center the text within the button. The button looks perfect on all the browsers tested apart from Safari on the desktop and IOS mobile devices, where the text is left aligned with some left padding. This is acceptable but not in keeping with the buttons below.
+
+## User feedback
+
+- During testing by friends, it was noted that they would like the correct answer to be revealed, this was a feature I had thought this may spoil the game play for repeat play if they had been told the answer previously, but following the feedback I added this feature.
+- I was also asked about increasing the total amount of questions asked per gameplay, I have opted to keep this as 10 questions. 
+As I believe increasing the questions would increase the probability of the game being abandoned partway through.
 
 ## Testing
 
