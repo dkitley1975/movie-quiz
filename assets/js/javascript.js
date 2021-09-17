@@ -169,7 +169,7 @@ function closeExitOverlayScreen() {
  * The first statement checks if the one time 
  * function has NOT been executed before
  */
-window.onload = function () {
+window.onload = () => {
 	if (sessionStorage.getItem("hasSampleScoresBeenAddedBefore") == null) {
 		/** this is to add some sample high scores to local storage */
 		let letsAddSomeSampleHighScores = [{
