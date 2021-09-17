@@ -455,17 +455,19 @@ answers.forEach((answers) => {
 			soundCorrect.play();
 		} else {
 			soundIncorrect.play();
-			if (correctAnswer == 1) {
-				actualAnswer = answerContainer1;
-			} else if (correctAnswer == 2) {
-				actualAnswer = answerContainer2;
-			} else if (correctAnswer == 3) {
-				actualAnswer = answerContainer3;
-			} else {
-				actualAnswer = answerContainer4;
+			switch(correctAnswer){
+				case 1:
+					actualAnswer = answerContainer1;
+					break;
+				case 2:
+					actualAnswer = answerContainer2;
+					break;
+				case 3:
+					actualAnswer = answerContainer3;
+					break;
+				default:
+					actualAnswer = answerContainer4;
 			}
-			actualAnswer.classList.add("answer-was-actual-correct");
-		}
 
 		answersSet.parentElement.classList.add(classToApply);
 
