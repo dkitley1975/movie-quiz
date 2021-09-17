@@ -468,6 +468,8 @@ answers.forEach((answers) => {
 				default:
 					actualAnswer = answerContainer4;
 			}
+			actualAnswer.classList.add("answer-was-actual-correct");
+		}
 
 		answersSet.parentElement.classList.add(classToApply);
 
@@ -476,7 +478,7 @@ answers.forEach((answers) => {
 			actualAnswer.classList.remove("answer-was-actual-correct");
 			getNewQuestion();
 		}, 1500);
-	});
+	});		
 });
 
 
