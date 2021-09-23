@@ -1,5 +1,5 @@
 //* Alter this set of variables for the Quiz game play
-const SetQtyOfQuestions =3; //* amount of questions for the quiz
+const SetQtyOfQuestions =10; //* amount of questions for the quiz
 const highScoresToShow = 8; //* amount of high scores to shw in high score list
 const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
