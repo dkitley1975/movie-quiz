@@ -171,9 +171,11 @@ The user selection is also added into the session storage, this way at the end o
 
 ### User feedback
 
-- During testing by friends, it was noted that they would like the correct answer to be revealed, this was a feature I had thought this may spoil the game play for repeat play if they had been told the answer previously, but following the feedback I added this feature.
-- I was also asked about increasing the total amount of questions asked per gameplay, I have opted to keep this as 10 questions.
+- **Correct Answer Indicator** During testing by friends, it was noted that they would like the correct answer to be revealed, this was a feature I had thought this may spoil the game play for repeat play if they had been told the answer previously, but following the feedback I added this feature.
+- **Difficulty Level Selection** Users reported that they were not aware there were difficulty levels. Although this is indicated on the welcome page, in the points description and there is a selection button with easy on it. I have hidden the play button until the user selects a difficulty level, when it it revealed.
+- **Increasing the Questions** I was also asked about increasing the total amount of questions asked per gameplay, I have opted to keep this as 10 questions.
 As I believe increasing the questions would increase the probability of the game being abandoned partway through.
+
 
 ### Chrome Lighthouse Report
 
