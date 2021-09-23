@@ -14,12 +14,13 @@ Thank you for visiting [my project!](https://dkitley1975.github.io/movie-quiz/)
     - [Sounds](#sounds)
     - [Insufficient Height message](#insufficient-height-message)
     - [Features Left to Implement](#features-left-to-implement)
-  - [User feedback](#user-feedback)
   - [Testing](#testing)
+    - [User feedback](#user-feedback)
     - [Chrome Lighthouse Report](#chrome-lighthouse-report)
     - [Validator Testing](#validator-testing)
     - [Unfixed Bugs](#unfixed-bugs)
   - [Deployment](#deployment)
+  - [Clone](#clone)
   - [Credits](#credits)
     - [Media](#media)
     - [Special Thanks](#special-thanks)
@@ -92,7 +93,7 @@ This has been done to help have a randomness of high scores and names populating
   
 - __The Quiz Section__
 
-  - The quiz page included the logo at the top.
+  - The quiz page includes the logo at the top.
   - The questions are populated randomly from the questions fetched from [Open Trivia (API) Database](https://opentdb.com/api_config.php). The quiz is set to return 10 questions, but is easily amended through `const SetQtyOfQuestions = 10`. These questions are obtained according to the difficulty level selected by the user. Instead of just 10 questions fetched from the API there is a multiplication factor used  to return more questions from the API `const questionsToFetchMultiplier = 3;`, this was reduced from 5 as there wasn't 50 questions within the hard questions selection in the API. this helps with the randomness of the questions. on testing if only 10 questions are fetched from the API it was the same 10 questions fetched each time, spoiling the quiz gameplay on any repeat attempts.
   - When an answer is selected the question either lights up Red for incorrect or green for correct.
   - When an answer is selected there is a sound, either a buzz or a ding to indicate if the answer was incorrect or correct, this feature is able to be turned off or on by the mute/play button at the bottom right of the play screen.
@@ -152,13 +153,27 @@ The user selection is also added into the session storage, this way at the end o
 
 - Styling the 'Select' button for the level difficulty. Although I have removed the default IOS styling, I hoped to also center the text within the button. The button looks perfect on all the browsers tested apart from Safari on the desktop and IOS mobile devices, where the text is left aligned with some left padding. This is acceptable but not in keeping with the buttons below.
 
-## User feedback
+## Testing
+- **Screen height** During My testing procedures, It was noted the the design and size of the game play did not display correctly on mobile devices when rotated. To avoid restyling the screen every time the mobile device is rotated to landscape a message displays when the screen height is less than a height of 450px. This feature is documented [here](#insufficient-height-message).
+
+- **Update level bug** It was noted that the level of the game did not up date during testing, returning only the easy questions were returned. I found that I had the fetch command initiating when the page loaded and did not refresh when the user selected a game play level. I then amended the javascript code to fetch the code only after the game play had been initiated.
+
+- **Fetch question multiplier restriction** It was noted that when `Const questionsToFetchMultiplier = 3;` is set higher that 3, the hard questions will fail during the fetch. This is because there are less that 40 hard level questions within the API. I have left a message with the code to reflect this.
+
+- **Iphone display**.
+  Whilst testing within the developer tools within the web browsers no issues were identified visually, but whilst testing on an iphone the address bar and navigation bar on Safari and Chrome interfered with the margins and the centralisation of the container. This didn't replicate in Edge or Firefox. I reached out for Tutor support to help resolve this issue and unfortunately the issue was unable to be fixed, at this time.
+  
+  It was noted if the user scrolls the page both these bars are removed by the device.
+
+  I did increase the margin and padding to help reduce the overlap, whilst ensuring the content fit within the screen.
+
+  It is also noticed that if the user adds the bookmark to the home screen when the web page is opened the toolbars are hidden by request of the webmanifest and the page is centralized and has no issues.
+
+### User feedback
 
 - During testing by friends, it was noted that they would like the correct answer to be revealed, this was a feature I had thought this may spoil the game play for repeat play if they had been told the answer previously, but following the feedback I added this feature.
-- I was also asked about increasing the total amount of questions asked per gameplay, I have opted to keep this as 10 questions. 
+- I was also asked about increasing the total amount of questions asked per gameplay, I have opted to keep this as 10 questions.
 As I believe increasing the questions would increase the probability of the game being abandoned partway through.
-
-## Testing
 
 ### Chrome Lighthouse Report
 
@@ -176,36 +191,29 @@ As I believe increasing the questions would increase the probability of the game
   
 ### Unfixed Bugs
 
-- Iphone display.
-  Whilst testing within the developer tools within the web browsers no issues were identified visually, but whilst testing on an iphone the address bar and navigation bar on Safari and Chrome interfered with the margins and the centralisation of the container. This didn't replicate in Edge or Firefox. I reached out for Tutor support to help resolve this issue and unfortunately the issue was unable to be fixed, at this time.
-  
-  It was noted if the user scrolls the page both these bars are removed by the device.
-
-  I did increase the margin and padding to help reduce the overlap, whilst ensuring the content fit within the screen.
-
-  It is also noticed that if the user adds the bookmark to the home screen when the web page is opened the toolbars are hidden by request of the webmanifest and the page is centralized and has no issues.
-
-- ios button styling.
+- **ios button styling**.
   An additional issue is the ios button styling for the select button, which I haven't as yet been able to style in the way I would like, this is noted within the [Features Left to Implement](#features-left-to-implement).
 
 ## Deployment
 
-This project was deployed via GitHub by executing the following steps.
+I deployed the project via GitHub by executing the following steps.
 After writing the code, committing and pushing it to GitHub:
 
-1. Navigate to the repository on github and click **Settings**.
-2. From there, go to the **Source section** within the Github Pages section.
-3. Select **master branch** on the dropdown menu, and click save.
+1. Navigate dto the repository on github and click **Settings**.
+2. From there, I went to the **Source section** within the Github **Pages section**.
+3. Selecting the **main branch** on the dropdown menu, and clicking save.
 4. Now the website is [live here](https://dkitley1975.github.io/movie-quiz/)
-5. Any time commits and pushes are sent to Github, the Github Pages site should update shortly after.
+5. Any time future commits and pushes are sent to Github, the Github Pages site should update shortly after.
 
-To run the project locally:
+## Clone
 
-1. Click the **green Clone or Download button** on the Github Repository
-2. Using the **Clone with HTTPS option**, copy the link displayed.
-3. Open your IDE, and ensure the Git Terminal is open.
-4. Change the working directory to the location where the cloned directory is to go.
-5. Use the **"git clone" command** and paste the [url](https://github.com/dkitley1975/movie-quiz.git) copied in the second step.
+To clone and run/amended the project locally:
+1. Navigate to [Github repository](https://github.com/dkitley1975/movie-quiz)
+2. Click the **green code button** on the Github Repository
+4. Using the **Clone with HTTPS option**, copy the link displayed.
+4. Open your IDE, and ensure the Git Terminal is open.
+5. Change the working directory to the location where the cloned directory is to go.
+6. Use the **"git clone" command** and paste the [url](https://github.com/dkitley1975/movie-quiz.git) copied in the third step.
 
 ## Credits
 
