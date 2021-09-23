@@ -64,7 +64,8 @@ __Site User Goals:__
 - The container contains the logo with brief instructions explaining the point scoring system.
   - The buttons are self-explanatory.
   - A button with a dropdown list for the difficulty level.
-  - A button to play the game, and a button, and
+  - Once the difficulty level has been selected the play button is revealed.
+  - A button to play the game.
   - A button to view the high scores.
 
 The points values are input within the Javascript file `const pointsPerCorrectAnswerEasy = 1` which updates the text on the welcome page. This ensures that if the scores are updated, from within the javascript file, the welcome page points section does not require updating manually.
