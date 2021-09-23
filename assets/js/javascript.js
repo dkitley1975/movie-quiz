@@ -10,35 +10,35 @@ const qtyOfQuestionsToFetch = (SetQtyOfQuestions * questionsToFetchMultiplier); 
 //* Check the actual amount of questions that are available though from the API.
 
 const answers = Array.from(document.getElementsByClassName("answers-text-jsRef"));
-const answerContainer1 = document.getElementById("answer-container-1-jsRef");
-const answerContainer2 = document.getElementById("answer-container-2-jsRef");
-const answerContainer3 = document.getElementById("answer-container-3-jsRef");
-const answerContainer4 = document.getElementById("answer-container-4-jsRef");
+const answerContainer1 = document.querySelector("#answer-container-1-jsRef");
+const answerContainer2 = document.querySelector("#answer-container-2-jsRef");
+const answerContainer3 = document.querySelector("#answer-container-3-jsRef");
+const answerContainer4 = document.querySelector("#answer-container-4-jsRef");
 const continuePlayingButton = document.querySelector("#btn-continue-playing-jsRef");
 const endGameHighScoresList = document.querySelector(".endGameHighScoresList-jsRef");
-const exitGame = document.getElementById("btn-exit-game-jsRef");
+const exitGame = document.querySelector("#btn-exit-game-jsRef");
 const exitQuizContainer = document.querySelector("#exit-quiz-container-jsRef");
 const highScoresContainer = document.querySelector("#high-score-container-jsRef");
 const highScoresList = document.querySelector(".highScoresList-jsRef");
 const homeContainer = document.querySelector("#home-container-jsRef");
 const homeScreenButton = document.querySelector("#btn-view-home-screen-jsRef");
 const loadingSpinner = document.querySelector(".loadingSpinner-jsRef");
-const muteButton = document.getElementById("btn-mute-jsRef");
+const muteButton = document.querySelector("#btn-mute-jsRef");
 const playButton = document.querySelector("#btn-play-game-jsRef");
-const playerFinalScore = document.getElementById("playerFinalScore-jsRef");
-const playername = document.getElementById("playername-jsRef");
+const playerFinalScore = document.querySelector("#playerFinalScore-jsRef");
+const playername = document.querySelector("#playername-jsRef");
 const progressBarFull = document.querySelector("#progressBarFull-jsRef");
-const progressText = document.getElementById("progressText-jsRef");
-const question = document.getElementById("question-jsRef");
+const progressText = document.querySelector("#progressText-jsRef");
+const question = document.querySelector("#question-jsRef");
 const quizContainer = document.querySelector("#quiz-container-jsRef");
 const returnHomeScreenButton = document.querySelector("#btn-return-to-home-screen-jsRef");
 const saveHighScore = document.querySelector("#btn-save-score-jsRef");
-const saveScoreBtn = document.getElementById("btn-save-score-jsRef");
+const saveScoreBtn = document.querySelector("#btn-save-score-jsRef");
 const scoreText = document.querySelector("#score-jsRef");
-const showExitGameOptions = document.getElementById("exit-quiz-options-jsRef");
+const showExitGameOptions = document.querySelector("#exit-quiz-options-jsRef");
 const soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
 const soundIncorrect = new Audio("assets/sounds/sound-incorrect.mp3");
-const unMuteButton = document.getElementById("btn-unmute-jsRef");
+const unMuteButton = document.querySelector("#btn-unmute-jsRef");
 const userFinalScoreContainer = document.querySelector("#user-final-score-container-jsRef");
 const viewHighScoresButton = document.querySelector("#btn-view-high-scores-jsRef");
 let acceptingAnswers = false;
@@ -48,12 +48,11 @@ let newQuestion = {};
 let getNewQuestion;
 let highScores = [];
 let incrementScore;
-let level = document.getElementById("selectLevelRef").value;
+let level = document.querySelector("#selectLevelRef").value;
 let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //* default value for easy -
 let questionCounter = 0;
 let questions = [];
 let score = 0;
-let quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${level}&type=multiple`;
 soundCorrect.volume = 0.4;
 soundIncorrect.volume = 0.4;
 
@@ -113,7 +112,7 @@ function sfxMuteOrPlay() {
  * Adds the points information to the home screen. 
  */
 function addPointsInformationToTheHomePage() {
-	let pointsInformation = document.getElementById("points-information");
+	let pointsInformation = document.querySelector("#points-information");
 	let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per question,<br>
 								Medium - ${pointsPerCorrectAnswerMedium} points per question &<br>
 								Hard - ${pointsPerCorrectAnswerHard} points per question`;
@@ -341,7 +340,7 @@ function formatTheQuestion(loadedQuestions){
  * for the quiz  then fetches the questions
  */
 function updateQuizLevel() {
-	level = document.getElementById("selectLevelRef").value;
+	level = document.querySelector("#selectLevelRef").value;
 	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${level}&type=multiple`;
 	pointsPerQuestion();
 	sessionStorage.setItem("API-URL", quizUrl);
