@@ -307,7 +307,16 @@ function fetchTheQuestions() {
 			return res.json();
 		})
 		.then((loadedQuestions) => {
-			questions = loadedQuestions.results.map((loadedQuestion) => {
+			formatTheQuestion(loadedQuestions)
+		});
+}
+
+/**
+ * Slice the question and
+ * randomize the answers
+ */
+function formatTheQuestion(loadedQuestions){
+	questions = loadedQuestions.results.map((loadedQuestion) => {
 				const formattedQuestion = {
 					question: loadedQuestion.question,
 				};
@@ -325,9 +334,7 @@ function fetchTheQuestions() {
 
 				return formattedQuestion;
 			});
-		});
 }
-
 
 /** 
  * Allows the user to select a difficulty level
