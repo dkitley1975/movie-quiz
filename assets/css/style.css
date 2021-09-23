@@ -44,7 +44,7 @@
 	--clr-hover: rgb(190, 91, 140);
 	--clr-box-shadow: rgba(110, 194, 181, 0.7);
 	--clr-button-background: rgb(255, 255, 255);
-	--clr-placeholder: var(--clr-placeholder);
+	--clr-placeholder: rgb(106, 106, 106);
 }
 
 html {
@@ -116,6 +116,10 @@ select {
 		-moz-appearance: none;
 		-webkit-appearance: none;
 		appearance: none;
+}
+
+select:invalid {
+  color: var(--clr-placeholder);
 }
 
 #exit-quiz-container-jsRef {

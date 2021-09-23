@@ -66,13 +66,13 @@ playButton.addEventListener("click", startQuiz);
 returnHomeScreenButton.addEventListener("click", returnToHomeScreen);
 saveHighScore.addEventListener("click", saveTheHighScore);
 selectLevelRef.addEventListener("change", updateQuizLevel);
+selectLevelRef.addEventListener("change", disableEnablePlayButton);
 showExitGameOptions.addEventListener("click", showExitQuizContainer);
 unMuteButton.addEventListener("click", sounds);
 playername.addEventListener("keyup", () => {
 	saveScoreBtn.disabled = !playername.value;
 });
 viewHighScoresButton.addEventListener("click", showHighScoresScreen);
-
 
 
 /** 
@@ -249,6 +249,18 @@ function hideSubmitButtonIfLowestScore() {
 	}
 }
 
+/**
+ * Reveals the play button  
+ * on level selection
+ */
+function disableEnablePlayButton() {
+    if (selectLevelRef.value === "") {
+        playButton.classList.add("hidden");
+    } else {
+        playButton.classList.remove("hidden");
+    }
+}
+
 
 /** 
  * function to start the game and 
@@ -344,7 +356,6 @@ function formatTheQuestion(loadedQuestions){
 function updateQuizLevel() {
 	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${selectLevelRef.value}&type=multiple`;
 	pointsPerQuestion();
-	sessionStorage.setItem("API-URL", quizUrl);
 	fetchTheQuestions();
 }
 updateQuizLevel();
