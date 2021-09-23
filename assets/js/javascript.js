@@ -1,5 +1,5 @@
 //* Alter this set of variables for the Quiz game play
-const SetQtyOfQuestions = 10; //* amount of questions for the quiz
+const SetQtyOfQuestions =3; //* amount of questions for the quiz
 const highScoresToShow = 8; //* amount of high scores to shw in high score list
 const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
@@ -65,12 +65,14 @@ muteButton.addEventListener("click", sounds);
 playButton.addEventListener("click", startQuiz);
 returnHomeScreenButton.addEventListener("click", returnToHomeScreen);
 saveHighScore.addEventListener("click", saveTheHighScore);
+selectLevelRef.addEventListener("change", updateQuizLevel);
 showExitGameOptions.addEventListener("click", showExitQuizContainer);
 unMuteButton.addEventListener("click", sounds);
 playername.addEventListener("keyup", () => {
 	saveScoreBtn.disabled = !playername.value;
 });
 viewHighScoresButton.addEventListener("click", showHighScoresScreen);
+
 
 
 /** 
@@ -340,8 +342,7 @@ function formatTheQuestion(loadedQuestions){
  * for the quiz  then fetches the questions
  */
 function updateQuizLevel() {
-	level = document.querySelector("#selectLevelRef").value;
-	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${level}&type=multiple`;
+	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${selectLevelRef.value}&type=multiple`;
 	pointsPerQuestion();
 	sessionStorage.setItem("API-URL", quizUrl);
 	fetchTheQuestions();
