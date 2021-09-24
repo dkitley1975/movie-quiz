@@ -9,3 +9,4 @@ node_modules/
 movie-quiz.code-workspace
 package.json
 package-lock.json
+assets/images/.DS_Store
