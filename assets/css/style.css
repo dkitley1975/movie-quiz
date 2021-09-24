@@ -215,7 +215,7 @@ select:invalid {
 }
 
 .answer-was-actual-correct {
-	box-shadow: 0 0 .8rem .5rem rgb(201, 201, 201);
+	box-shadow: 0 0 .8rem .5rem rgb(120, 220, 135);
 }
 
 .answered-correct {
