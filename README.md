@@ -152,7 +152,7 @@ The user selection is also added into the session storage, this way at the end o
 
 ### Features Left to Implement
 
-- Styling the 'Select' button for the level difficulty. Although I have removed the default IOS styling, I hoped to also center the text within the button. The button looks perfect on all the browsers tested apart from Safari on the desktop and IOS mobile devices, where the text is left aligned with some left padding. This is acceptable but not in keeping with the buttons below.
+- Styling the 'Select' button for the level difficulty. Although I have removed the default IOS styling, I hoped to also center the text within the button. The button looks perfect on all the browsers tested apart from Safari on the desktop and IOS mobile devices, where the text is left aligned with some left padding. This is acceptable but not in keeping with the buttons below. The width was later amended to auto fit and this has fixed the placeholder text but the selections are still out slightly.
 
 ## Testing
 - **Screen height** During My testing procedures, It was noted the the design and size of the game play did not display correctly on mobile devices when rotated. To avoid restyling the screen every time the mobile device is rotated to landscape a message displays when the screen height is less than a height of 450px. This feature is documented [here](#insufficient-height-message).
@@ -172,9 +172,9 @@ The user selection is also added into the session storage, this way at the end o
 
 ### User feedback
 
-- **Correct Answer Indicator** During testing by friends, it was noted that they would like the correct answer to be revealed, this was a feature I had thought this may spoil the game play for repeat play if they had been told the answer previously, but following the feedback I added this feature.
-- **Difficulty Level Selection** Users reported that they were not aware there were difficulty levels. Although this is indicated on the welcome page, in the points description and there is a selection button with easy on it. I have hidden the play button until the user selects a difficulty level, when it it revealed.
-- **Increasing the Questions** I was also asked about increasing the total amount of questions asked per gameplay, I have opted to keep this as 10 questions.
+- **Correct Answer Indicator,** During testing by friends, it was noted that they would like the correct answer to be revealed, this was a feature I had thought this may spoil the game play for repeat play if they had been told the answer previously, but following the feedback I added this feature.
+- **Difficulty Level Selection,** Users reported that they were not aware there were difficulty levels. Although this is indicated on the welcome page, in the points description and there is a selection button with easy on it. I have hidden the play button until the user selects a difficulty level, when it it revealed.
+- **Increasing the Question,s** I was also asked about increasing the total amount of questions asked per gameplay, I have opted to keep this as 10 questions.
 As I believe increasing the questions would increase the probability of the game being abandoned partway through.
 
 
@@ -191,6 +191,8 @@ As I believe increasing the questions would increase the probability of the game
 - **HTML** - No errors or warnings were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdkitley1975.github.io%2Fmovie-quiz%2Findex.html)
 - **CSS** -  No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fdkitley1975.github.io%2Fmovie-quiz&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
 - **Javascript** - No errors or warnings are shown when adding the code to this site. [(JSHint.com) validator](https://jshint.com/)
+  
+![JSHint.com Results](./docs/screenshots/jshint-results.png)
   
 ### Unfixed Bugs
 
@@ -227,7 +229,8 @@ To clone and run/amended the project locally:
 - The loading spinner was adapted from [loading.io](https://loading.io/css/)
 - The icons for the audio mute and play are from [Font Awesome](https://fontawesome.com/)
 - The Correct and Incorrect SFX are from [My Instants](https://www.myinstants.com/)
-- Mock up graphic from [Am I Responsive](http://ami.responsivedesign.is/).
+- Mock up graphic from [Am I Responsive](http://ami.responsivedesign.is/)
+- The background image is from [freepik.com](https://www.freepik.com/)
 
 ### Special Thanks
 
