@@ -22,11 +22,12 @@ const highScoresContainer = document.querySelector("#high-score-container-jsRef"
 const highScoresList = document.querySelector(".highScoresList-jsRef");
 const homeContainer = document.querySelector("#home-container-jsRef");
 const homeScreenButton = document.querySelector("#btn-view-home-screen-jsRef");
+const pointsInformation = document.querySelector("#points-information");
 const loadingSpinner = document.querySelector(".loadingSpinner-jsRef");
 const muteButton = document.querySelector("#btn-mute-jsRef");
 const playButton = document.querySelector("#btn-play-game-jsRef");
 const playerFinalScore = document.querySelector("#playerFinalScore-jsRef");
-const playername = document.querySelector("#playername-jsRef");
+const playerName = document.querySelector("#playername-jsRef");
 const progressBarFull = document.querySelector("#progressBarFull-jsRef");
 const progressText = document.querySelector("#progressText-jsRef");
 const question = document.querySelector("#question-jsRef");
@@ -69,8 +70,8 @@ selectLevelRef.addEventListener("change", updateQuizLevel);
 selectLevelRef.addEventListener("change", disableEnablePlayButton);
 showExitGameOptions.addEventListener("click", showExitQuizContainer);
 unMuteButton.addEventListener("click", sounds);
-playername.addEventListener("keyup", () => {
-	saveScoreBtn.disabled = !playername.value;
+playerName.addEventListener("keyup", () => {
+	saveScoreBtn.disabled = !playerName.value;
 });
 viewHighScoresButton.addEventListener("click", showHighScoresScreen);
 
@@ -114,7 +115,6 @@ function sfxMuteOrPlay() {
  * Adds the points information to the home screen. 
  */
 function addPointsInformationToTheHomePage() {
-	let pointsInformation = document.querySelector("#points-information");
 	let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per question,<br>
 								Medium - ${pointsPerCorrectAnswerMedium} points per question &<br>
 								Hard - ${pointsPerCorrectAnswerHard} points per question`;
@@ -245,7 +245,7 @@ function hideSubmitButtonIfLowestScore() {
 	lowestHighScoresNumber = highScoresNumbers.toString();
 	if (score < lowestHighScoresNumber) {
 		saveHighScore.classList.add("hidden");
-		playername.classList.add("hidden");
+		playerName.classList.add("hidden");
 	}
 }
 
@@ -287,9 +287,9 @@ function startQuiz() {
  * on the user selected difficulty level 
  */
 function pointsPerQuestion() {
-	if (level == "hard") {
+	if (selectLevelRef.value == "hard") {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerHard;
-	} else if (level == "medium") {
+	} else if (selectLevelRef.value == "medium") {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerMedium;
 	} else {
 		pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy;
@@ -358,7 +358,7 @@ function updateQuizLevel() {
 	pointsPerQuestion();
 	fetchTheQuestions();
 }
-updateQuizLevel();
+// updateQuizLevel();
 
 
 /** 
@@ -389,7 +389,7 @@ function saveTheHighScore(submit) {
 
 	score = {
 		score: score,
-		name: playername.value
+		name: playerName.value
 	};
 	highScores.push(score);
 	highScores.sort((a, b) => b.score - a.score);
