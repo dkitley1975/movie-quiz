@@ -22,7 +22,7 @@
          <h1 class="h1-too-small-to-play">This Quiz is best played in portrait mode on smaller devices.</h1>
          <h2 class="h2-too-small-to-play">Please rotate your device to <br>continue with the quiz</h2>
       </div>
-      <div id="home-container-jsRef" class="flex-center flex flex-column glass">
+      <div id="home-container" class="flex-center flex flex-column glass">
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <p class="points-info text-center">Please select a difficulty level before proceeding</p>
          <div id="points-information" class="text-center points-information-scores"></div>
@@ -32,86 +32,86 @@
             <option value="medium">Difficulty - Medium</option>
             <option value="hard">Difficulty - Hard</option>
          </select>
-         <button id="btn-play-game-jsRef" class="btn hidden">Play</button>
-         <button id="btn-view-high-scores-jsRef" class="btn">High Scores</button>
+         <button id="btn-play-game" class="btn hidden">Play</button>
+         <button id="btn-view-high-scores" class="btn">High Scores</button>
       </div>
-      <div id="quiz-container-jsRef" class="justify-space-around flex flex-column glass hidden">
-         <div class="loadingSpinner-jsRef justify-center flex flex-column">
+      <div id="quiz-container" class="justify-space-around flex flex-column glass hidden">
+         <div class="loadingSpinner justify-center flex flex-column">
             <h1>Loading</h1>
             <p>Quiz questions</p>
          </div>
          <div id="sfx-control">
-            <div id="btn-mute-jsRef" class="hidden"><i class="fas fa-volume-up"></i></div>
-            <div id="btn-unmute-jsRef" class="hidden"><i class="fas fa-volume-mute"></i></div>
+            <div id="btn-mute" class="hidden"><i class="fas fa-volume-up"></i></div>
+            <div id="btn-unmute" class="hidden"><i class="fas fa-volume-mute"></i></div>
          </div>
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
-         <h2 id="question-jsRef" class="question-text">What have I got in my pocket?</h2>
-         <div id="answer-container-1-jsRef" class="answers-container">
+         <h2 id="question" class="question-text">What have I got in my pocket?</h2>
+         <div id="answer-container-1" class="answers-container">
             <p class="answers-prefix">A</p>
-            <p class="answers-text-jsRef" data-number="1">handses</p>
+            <p class="answers-text" data-number="1">handses</p>
          </div>
-         <div id="answer-container-2-jsRef"  class="answers-container">
+         <div id="answer-container-2"  class="answers-container">
             <p class="answers-prefix">B</p>
-            <p class="answers-text-jsRef" data-number="2">knife</p>
+            <p class="answers-text" data-number="2">knife</p>
          </div>
-         <div id="answer-container-3-jsRef"  class="answers-container">
+         <div id="answer-container-3"  class="answers-container">
             <p class="answers-prefix">C</p>
-            <p class="answers-text-jsRef" data-number="3">String, or nothing!</p>
+            <p class="answers-text" data-number="3">String, or nothing!</p>
          </div>
-         <div id="answer-container-4-jsRef" class="answers-container">
+         <div id="answer-container-4" class="answers-container">
             <p class="answers-prefix">D</p>
-            <p class="answers-text-jsRef" data-number="4">A ring</p>
+            <p class="answers-text" data-number="4">A ring</p>
          </div>
          <div id="progress">
             <div id="progress-item">
-               <p id="progressText-jsRef" class="progress-prefix">
+               <p id="progressText" class="progress-prefix">
                   Question
                </p>
                <div id="progressBar">
-                  <div id="progressBarFull-jsRef"></div>
+                  <div id="progressBarFull"></div>
                </div>
             </div>
             <div>
                <p class="progress-prefix">
                   Score
                </p>
-               <h2 class="progress-main-text" id="score-jsRef">0</h2>
+               <h2 class="progress-main-text" id="score">0</h2>
             </div>
          </div>
-         <div id="exit-quiz-options-jsRef" class="flex flex-column flex-center">
+         <div id="exit-quiz-options" class="flex flex-column flex-center">
             <button class="btn btn-exit-quiz" type="button">Exit Quiz</button>
          </div>
       </div>
-      <div id="user-final-score-container-jsRef" class="flex-center flex flex-column glass hidden">
+      <div id="user-final-score-container" class="flex-center flex flex-column glass hidden">
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <h1>High Scores</h1>
          <div id="high-scores-lists">
-            <ul class="endGameHighScoresList-jsRef high-scores-lists"></ul>
+            <ul class="endGameHighScoresList high-scores-lists"></ul>
          </div>
-         <h3 id="playerFinalScore-jsRef">0</h3>
+         <h3 id="playerFinalScore">0</h3>
          <form>
-            <input type="text" name="username" id="playername-jsRef" placeholder="Name" />
-            <button type="submit" class="btn" id="btn-save-score-jsRef" disabled>
+            <input type="text" name="username" id="playername" placeholder="Name" />
+            <button type="submit" class="btn" id="btn-save-score" disabled>
                Submit score
             </button>
-            <button type="submit" id="btn-view-home-screen-jsRef" class="exit-reset-game-btn btn">
+            <button type="submit" id="btn-view-home-screen" class="exit-reset-game-btn btn">
                Play Again
             </button>
          </form>
       </div>
-      <div id="high-score-container-jsRef" class="flex-center flex flex-column glass hidden">
+      <div id="high-score-container" class="flex-center flex flex-column glass hidden">
          <img src="assets/images/logo.svg" class="logo" alt="Movie Quiz">
          <h1 class="high-scores-title">High Scores</h1>
          <div id="prev-high-scores-lists">
-            <ul class="highScoresList-jsRef high-scores-lists"></ul>
+            <ul class="highScoresList high-scores-lists"></ul>
          </div>
-         <button id="btn-return-to-home-screen-jsRef" class="btn">Play Quiz</button>
+         <button id="btn-return-to-home-screen" class="btn">Play Quiz</button>
       </div>
-      <div id="exit-quiz-container-jsRef" class="flex-center flex flex-column glass text-center hidden">
+      <div id="exit-quiz-container" class="flex-center flex flex-column glass text-center hidden">
          <h1>Are you sure you would like to exit the quiz?</h1>
          <p>Your game progress will be lost and you will be returned to the home screen</p>
-         <button id="btn-exit-game-jsRef" class="btn exit-game-button">Return home</button>
-         <button id="btn-continue-playing-jsRef" class="btn continue-game-button">Continue playing</button>
+         <button id="btn-exit-game" class="btn exit-game-button">Return home</button>
+         <button id="btn-continue-playing" class="btn continue-game-button">Continue playing</button>
       </div>
       <script src="assets/js/javascript.js"></script>
    </body>

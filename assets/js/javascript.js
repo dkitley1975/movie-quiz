@@ -4,44 +4,43 @@ const highScoresToShow = 8; //* amount of high scores to shw in high score list
 const pointsPerCorrectAnswerEasy = 1; //* points for easy questions
 const pointsPerCorrectAnswerHard = 2; //* points for hard questions
 const pointsPerCorrectAnswerMedium = 1.5; //* points for medium questions
-const questionsToFetchMultiplier = 3; //* Multiplies the amount of questions fetched (used within qtyOfQuestionsToFetch)
-const qtyOfQuestionsToFetch = (SetQtyOfQuestions * questionsToFetchMultiplier); //* increase this value to increase the randomness of the questions, 
-//* only fetching SetQtyOfQuestions value only pulls from the first section of the API, 
-//* Check the actual amount of questions that are available though from the API.
+const questionsToFetchMultiplier = 3; //* Multiplies the amount of questions fetched (used within qtyOfQuestionsToFetch) - check the actual amount of questions that are available though from the API.
+const qtyOfQuestionsToFetch = (SetQtyOfQuestions * questionsToFetchMultiplier); //* This ensure not just the same questions are fetched, and a larger selection is available to increase randomness in the questions.
 
-const answers = Array.from(document.getElementsByClassName("answers-text-jsRef"));
-const answerContainer1 = document.querySelector("#answer-container-1-jsRef");
-const answerContainer2 = document.querySelector("#answer-container-2-jsRef");
-const answerContainer3 = document.querySelector("#answer-container-3-jsRef");
-const answerContainer4 = document.querySelector("#answer-container-4-jsRef");
-const continuePlayingButton = document.querySelector("#btn-continue-playing-jsRef");
-const endGameHighScoresList = document.querySelector(".endGameHighScoresList-jsRef");
-const exitGame = document.querySelector("#btn-exit-game-jsRef");
-const exitQuizContainer = document.querySelector("#exit-quiz-container-jsRef");
-const highScoresContainer = document.querySelector("#high-score-container-jsRef");
-const highScoresList = document.querySelector(".highScoresList-jsRef");
-const homeContainer = document.querySelector("#home-container-jsRef");
-const homeScreenButton = document.querySelector("#btn-view-home-screen-jsRef");
+//* variables for the Quiz game play
+const answers = Array.from(document.getElementsByClassName("answers-text"));
+const answerContainer1 = document.querySelector("#answer-container-1");
+const answerContainer2 = document.querySelector("#answer-container-2");
+const answerContainer3 = document.querySelector("#answer-container-3");
+const answerContainer4 = document.querySelector("#answer-container-4");
+const continuePlayingButton = document.querySelector("#btn-continue-playing");
+const endGameHighScoresList = document.querySelector(".endGameHighScoresList");
+const exitGame = document.querySelector("#btn-exit-game");
+const exitQuizContainer = document.querySelector("#exit-quiz-container");
+const highScoresContainer = document.querySelector("#high-score-container");
+const highScoresList = document.querySelector(".highScoresList");
+const homeContainer = document.querySelector("#home-container");
+const homeScreenButton = document.querySelector("#btn-view-home-screen");
 const pointsInformation = document.querySelector("#points-information");
-const loadingSpinner = document.querySelector(".loadingSpinner-jsRef");
-const muteButton = document.querySelector("#btn-mute-jsRef");
-const playButton = document.querySelector("#btn-play-game-jsRef");
-const playerFinalScore = document.querySelector("#playerFinalScore-jsRef");
-const playerName = document.querySelector("#playername-jsRef");
-const progressBarFull = document.querySelector("#progressBarFull-jsRef");
-const progressText = document.querySelector("#progressText-jsRef");
-const question = document.querySelector("#question-jsRef");
-const quizContainer = document.querySelector("#quiz-container-jsRef");
-const returnHomeScreenButton = document.querySelector("#btn-return-to-home-screen-jsRef");
-const saveHighScore = document.querySelector("#btn-save-score-jsRef");
-const saveScoreBtn = document.querySelector("#btn-save-score-jsRef");
-const scoreText = document.querySelector("#score-jsRef");
-const showExitGameOptions = document.querySelector("#exit-quiz-options-jsRef");
+const loadingSpinner = document.querySelector(".loadingSpinner");
+const muteButton = document.querySelector("#btn-mute");
+const playButton = document.querySelector("#btn-play-game");
+const playerFinalScore = document.querySelector("#playerFinalScore");
+const playerName = document.querySelector("#playername");
+const progressBarFull = document.querySelector("#progressBarFull");
+const progressText = document.querySelector("#progressText");
+const question = document.querySelector("#question");
+const quizContainer = document.querySelector("#quiz-container");
+const returnHomeScreenButton = document.querySelector("#btn-return-to-home-screen");
+const saveHighScore = document.querySelector("#btn-save-score");
+const saveScoreBtn = document.querySelector("#btn-save-score");
+const scoreText = document.querySelector("#score");
+const showExitGameOptions = document.querySelector("#exit-quiz-options");
 const soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
 const soundIncorrect = new Audio("assets/sounds/sound-incorrect.mp3");
-const unMuteButton = document.querySelector("#btn-unmute-jsRef");
-const userFinalScoreContainer = document.querySelector("#user-final-score-container-jsRef");
-const viewHighScoresButton = document.querySelector("#btn-view-high-scores-jsRef");
+const unMuteButton = document.querySelector("#btn-unmute");
+const userFinalScoreContainer = document.querySelector("#user-final-score-container");
+const viewHighScoresButton = document.querySelector("#btn-view-high-scores");
 let acceptingAnswers = false;
 let actualAnswer = answerContainer1;
 let availableQuestions = [];
@@ -112,7 +111,8 @@ function sfxMuteOrPlay() {
 
 
 /**
- * Adds the points information to the home screen. 
+ * Adds the points information to the home screen
+ * the points are added in the const's at the top of the file. 
  */
 function addPointsInformationToTheHomePage() {
 	let pointsInformationText = `Easy - ${pointsPerCorrectAnswerEasy} point per question,<br>

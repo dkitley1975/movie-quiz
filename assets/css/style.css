@@ -122,7 +122,7 @@ select:invalid {
   color: var(--clr-placeholder);
 }
 
-#exit-quiz-container-jsRef {
+#exit-quiz-container {
 	z-index: 101;
 }
 
@@ -160,7 +160,7 @@ select:invalid {
 	margin-top: 1rem;
 }
 
-#progressBarFull-jsRef {
+#progressBarFull {
 	height: 2.2rem;
 	background-color: var(--clr-primary-400);
 	width: 0%;
@@ -186,9 +186,9 @@ select:invalid {
 	margin-bottom: 0.5rem;
 	width: 90%;
 	font-size: var(--fs-default);
-	border: rgb(86, 165, 235, 0.25) solid 0.1rem;
-	background-color: #ffffff
-;
+	border: var(--clr-primary-200) solid .2rem;
+	/* border: rgb(86, 165, 235, 0.25) solid 0.1rem; */
+	background-color: var(--clr-button-background);
 	border-top-left-radius: 1.8rem;
 	border-bottom-left-radius: 1.8rem;
 }
@@ -203,20 +203,19 @@ select:invalid {
 	padding: 1rem;
 	background-color: var(--clr-primary-100);
 	font-size: var(--fs-default);
-	border-top-left-radius: 1.8rem;
-	border-bottom-left-radius: 1.8rem;
-	color: #ffffff
-;
+	border-top-left-radius: 1.5rem;
+	border-bottom-left-radius: 1.5rem;
+	color: var(--clr-button-background);
 }
 
-.answers-text-jsRef {
+.answers-text {
 	padding: 1rem;
 	width: 100%;
 	font-size: var(--fs-default);
 }
 
 .answer-was-actual-correct {
-	box-shadow: 0 0 .8rem .5rem rgb(44, 224, 101);
+	box-shadow: 0 0 .8rem .5rem rgb(201, 201, 201);
 }
 
 .answered-correct {
@@ -321,41 +320,42 @@ select:invalid {
 	margin: 5rem auto 2rem;
 }
 
-.loadingSpinner-jsRef {
+.loadingSpinner {
 	width: 40vw;
 	height: 40vw;
 	z-index: 200;
-	background-color: rgb(255, 255, 255, 0.8);
+	background-color: rgba(255, 255, 255, 0.8);
 	backdrop-filter: blur(1.5rem);
 	position: absolute;
-	margin: 0 -5vw;
+  	left: 25%;
+  	margin: -25px 0 0 -25px;
 	padding: 1rem 2rem;
 	border-radius: 20%;
 	box-shadow: 1rem 1rem 2rem var(--clr-box-shadow);
 	text-align: center;
 }
 
-.loadingSpinner-jsRef h1 {
+.loadingSpinner h1 {
 	font-size: var(--fs-1);
 	margin-bottom: 1rem;
 	font-weight: var(--fw-b);
 	font-family: var(--ff-main);
 }
 
-.loadingSpinner-jsRef p {
+.loadingSpinner p {
 	font-size: var(--fs-4);
 	margin-bottom: 1rem;
 	font-weight: var(--fw-b);
 	font-family: var(--ff-main);
 }
 
-.loadingSpinner-jsRef:after {
+.loadingSpinner:after {
 	content: " ";
 	display: block;
 	width: 100px;
 	height: 100px;
 	margin: 0 auto;
-	animation: loadingSpinner-jsRef 1.2s linear infinite;
+	animation: loadingSpinner 1.2s linear infinite;
 	border-radius: 50%;
 	border: var(--clr-primary-400) solid .6rem;
 	border-color: var(--clr-primary-400) transparent var(--clr-primary-400) transparent;
@@ -405,9 +405,8 @@ select:invalid {
 .btn {
 	font-size: 1.8rem;
 	padding: 1rem 0;
-	width: 60vw;
-	max-width: 30rem;
-	text-align: center;
+	width: 20rem;
+	text-align: center !important;
 	border: 0.1rem solid var(--clr-primary-300);
 	background-color: var(--clr-button-background);
 	color: var(--clr-primary-000);
@@ -419,6 +418,8 @@ select:invalid {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
+ 	text-align: -moz-center !important;
+ 	text-align: -webkit-center !important;
 }
 
 .continue-game-button {
@@ -428,25 +429,24 @@ select:invalid {
 
 .btn-difficulty {
 	font-size: var(--fs-4);
-	margin-top: 4rem;
+	width: max-content;
 }
 
 .btn-exit-quiz {
 	font-size: var(--fs-5);
 	width: 15rem;
 	height: auto;
-	color: #ffffff;
+	color: var(--clr-button-background);
 	background-color: var(--clr-primary-Red);
 }
 
 .exit-game-button {
 	margin-top: 4rem;
 	background-color: var(--clr-primary-Red);
-	color: #ffffff
-;
+	color: var(--clr-button-background);
 }
 
-.btn-play-game-jsRef {
+.btn-play-game {
 	color: var(--clr-primary-000);
 }
 
@@ -469,8 +469,7 @@ select:invalid {
 	background-color: var(--clr-hover);
 	box-shadow: 0 0.4rem 1.4rem 0 var(--clr-primary-200);
 	transform: translateY(-0.1rem);
-	color: #ffffff
-;
+	color: var(--clr-button-background);
 }
 
 .btn[disabled] {
@@ -524,8 +523,7 @@ select:invalid {
 	.fa-volume-mute,
 	.fa-volume-up {
 		font-size: 2rem;
-		color: #ffffff
-;
+		color: var(--clr-button-background);
 	}
 	.glass {
 		height: 90%;
@@ -557,7 +555,7 @@ select:invalid {
 }
 
 
-@keyframes loadingSpinner-jsRef {
+@keyframes loadingSpinner {
 	0% {
 		transform: rotate(0deg);
 	}
