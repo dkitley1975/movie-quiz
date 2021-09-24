@@ -34,6 +34,7 @@ const quizContainer = document.querySelector("#quiz-container");
 const returnHomeScreenButton = document.querySelector("#btn-return-to-home-screen");
 const saveHighScore = document.querySelector("#btn-save-score");
 const saveScoreBtn = document.querySelector("#btn-save-score");
+const selectLevelRef = document.querySelector("#selectLevelRef");
 const scoreText = document.querySelector("#score");
 const showExitGameOptions = document.querySelector("#exit-quiz-options");
 const soundCorrect = new Audio("assets/sounds/sound-correct.mp3");
@@ -48,11 +49,11 @@ let newQuestion = {};
 let getNewQuestion;
 let highScores = [];
 let incrementScore;
-let level = document.querySelector("#selectLevelRef").value;
 let pointsPerCorrectAnswer = pointsPerCorrectAnswerEasy; //* default value for easy -
 let questionCounter = 0;
 let questions = [];
 let score = 0;
+
 soundCorrect.volume = 0.4;
 soundIncorrect.volume = 0.4;
 
@@ -314,13 +315,13 @@ function highScoresRetrieveAndSort() {
  * and map the question to an array 
  */
 function fetchTheQuestions() {
-
+	let quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${selectLevelRef.value}&type=multiple`;
 	fetch(quizUrl)
 		.then((res) => {
 			return res.json();
 		})
 		.then((loadedQuestions) => {
-			formatTheQuestion(loadedQuestions)
+			formatTheQuestion(loadedQuestions);
 		});
 }
 
@@ -354,11 +355,9 @@ function formatTheQuestion(loadedQuestions){
  * for the quiz  then fetches the questions
  */
 function updateQuizLevel() {
-	quizUrl = `https://opentdb.com/api.php?amount=${qtyOfQuestionsToFetch}&category=11&difficulty=${selectLevelRef.value}&type=multiple`;
 	pointsPerQuestion();
 	fetchTheQuestions();
 }
-// updateQuizLevel();
 
 
 /** 
